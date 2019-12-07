@@ -11,6 +11,7 @@ jobs:
       uses: dante-ev/latex-action@master
       with:
         root_file: resume/lucas-kjaero-zhang-resume.tex
+        args: -xelatex -pdf -file-line-error -interaction=nonstopmode"
     - name: Compile Chinese resume
       uses: dante-ev/latex-action@master
       with:
