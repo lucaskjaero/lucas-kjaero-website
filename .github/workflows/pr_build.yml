@@ -16,3 +16,4 @@ jobs:
       uses: dante-ev/latex-action@master
       with:
         root_file: resume/lucas-kjaero-zhang-个人简历.tex
+        args: -xelatex -file-line-error -interaction=nonstopmode"
