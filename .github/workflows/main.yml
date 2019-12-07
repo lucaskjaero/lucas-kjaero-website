@@ -10,6 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
+    - name: Compile LaTeX document
+      uses: dante-ev/latex-action@master
+      with:
+        root_file: resume/lucas-kjaero-zhang-resume.tex
     - uses: jakejarvis/s3-sync-action@master
       with:
         args: --acl public-read --follow-symlinks --delete
