@@ -1,0 +1,219 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Medium Length Graduate Curriculum Vitae
+% LaTeX Template
+% Version 1.2 (3/28/15)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Rensselaer Polytechnic Institute 
+% (http://www.rpi.edu/dept/arc/training/latex/resumes/)
+%
+% Modified by:
+% Daniel L Marks <xleafr@gmail.com> 3/28/2015
+%
+% Important note:
+% This template requires the res.cls file to be in the same directory as the
+% .tex file. The res.cls file provides the resume style used for structuring the
+% document.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%-------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%-------------------------------------------------------------------------------
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% You can have multiple style options the legal options ones are:
+%
+%   centered:	the name and address are centered at the top of the page 
+%				(default)
+%
+%   line:		the name is the left with a horizontal line then the address to
+%				the right
+%
+%   overlapped:	the section titles overlap the body text (default)
+%
+%   margin:		the section titles are to the left of the body text
+%		
+%   11pt:		use 11 point fonts instead of 10 point fonts
+%
+%   12pt:		use 12 point fonts instead of 10 point fonts
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[margin]{res}  
+
+% Default font is the helvetica postscript font
+\usepackage{helvet}
+
+% Create links
+\usepackage{hyperref}
+
+% Increase text height
+\textheight=700pt
+
+%\usepackage[space]{xeCJK}
+\usepackage{CJKutf8}
+
+%%% Assuming Chinese is the main CJK language...
+%\setCJKmainfont[
+%  BoldFont=WenQuanYi Zen Hei,
+%  ItalicFont=AR PL KaitiM GB]
+%  {AR PL SungtiL GB}
+%\setCJKsansfont{WenQuanYi Zen Hei}
+%\setCJKmonofont{cwTeXFangSong}
+
+\title{Lucas Kjaero个人简历}
+
+\begin{document}
+\begin{CJK*}{UTF8}{gbsn}
+
+%-------------------------------------------------------------------------------
+%	NAME AND ADDRESS SECTION
+%-------------------------------------------------------------------------------
+\name{Lucas Kj\ae{}r\o{}}
+
+% Note that addresses can be used for other contact information:
+% -phone numbers
+% -email addresses
+% -linked-in profile
+
+\address{电话号码：+1 \(619\) 905-1772\\永久住址： San Diego, CA 92123}
+\address{邮箱地址：\href{mailto:lucas@lucaskjaero.com}{Lucas@LucasKjaero.com}\\个人网址：\href{http://www.lucaskjaero.com}{www.LucasKjaero.com}}
+
+% Uncomment to add a third address
+%\address{Address 3 line 1\\Address 3 line 2\\Address 3 line 3}
+%-------------------------------------------------------------------------------
+
+\begin{resume}
+
+%----------------------------------------------------------------------------------------
+%	OBJECTIVE SECTION
+%----------------------------------------------------------------------------------------
+ 
+\section{}  
+To view English version, visit \href{http://www.lucaskjaero.com/resume/}{http://www.lucaskjaero.com/resume/}
+
+%-------------------------------------------------------------------------------
+%	EDUCATION SECTION
+%-------------------------------------------------------------------------------
+\section{教育经历}
+\textbf{Austin College}, 美国得克萨斯州谢尔曼\\
+2015年5月 以优秀毕业生的头衔成功毕业并且获得了双学士学位\hfill 总体年均绩点： 
+3.66\\
+专业：计算机科学和中文双专业\hfill 计算机科学专业绩点：3.71
+%-------------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------------
+%	EXPERIENCE SECTION
+%-------------------------------------------------------------------------------
+% Modify the format of each position
+\begin{format}
+\title{l}\employer{r}\\
+\dates{l}\location{r}\\
+\body\\
+\end{format}
+%-------------------------------------------------------------------------------
+
+\section{工作经历}
+\employer{\textbf{卡内基美隆大学 (Carnegie Mellon)}}
+\location{美国宾夕法尼亚州匹兹堡市}
+\dates{在2014年6月-8月}
+\title{\textbf{Heinz College ITLab Fellow}}
+\begin{position}
+经过一系列信息系统的研究从而创造并运行科技追踪宾夕法尼亚州的停车场实时用量及变化情况
+课程作业，主要包括：（1）运用表格对于建立数据模型（2）设计一个网站，通过组织各项数据从而提供医疗保健行业的价格动态。
+\end{position}
+
+\employer{\textbf{奥斯丁大学 (Austin College)}}
+\location{美国得克萨斯州谢尔曼}
+\dates{2013年6月-2014年11月}
+\title{\textbf{信息网络科技协会实习}}
+\begin{position}
+为学院5个新计算机科学实验室中的80台计算机配置环境，另外在学期间提供所有专业学生以及教职工的计算机修复等科技支持。
+\end{position}
+
+\employer{\textbf{\href{http://sdust.edu.cn/}{山东科技大学}}}
+\location{中国山东青岛}
+\dates{2016年3月-2017年1月}
+\title{\textbf{大学英语教授}}
+\begin{position}
+自主备课并教授创意英语课程给800余名研究生，并依据学生对未来的职业规划和学术目标来制定学习内容。
+\end{position}
+
+%-------------------------------------------------------------------------------
+%	PROJECTS SECTION
+%-------------------------------------------------------------------------------
+\section{参加项目}
+\par
+\textbf{MNIST}: 
+创建可以识别手写数字系统的计算机视觉，准确率达99\%， 本系统在全球所有Kaggle用户中排名前36\%。用TensorFlow创建Convolutional Neural Network系统。\textit{\href{https://github.com/lucaskjaero/MNIST}{Github}}
+ 
+\par
+\textbf{算法智能交易}:
+利用投资代理人的API设计了一个交易算法系统，根据数据变化的平均值和其他指标筛选并购买预期股票，并通过第一天的虚拟交易测试赚到10000美元。\textit{\href{https://github.com/lucaskjaero/Algorithmic-Trading-API}{Github}}
+
+%\par
+%\textbf{Puzzle-8}: 
+%Created a Python program to solve sliding tile puzzles with an A* search and multiple heuristics. The program finds optimal solutions. 
+
+\par
+\textbf{中文词汇分类建立系统}: 
+利用Python创建此系统，可以通过线上辞典精确检索词汇并且在文件夹中找出不熟悉的词汇，从而帮助提高自己的中文水平。\textit{\href{https://github.com/lucaskjaero/Chinese-Vocabulary-Finder}{Github}}
+
+% Include if systems level understanding is needed
+%\par
+%\textbf{Java Operating System}: 
+%Created simulated operating system in Java that can run arbitrary processes. Provides inter-process communication, and virtual memory.
+
+% Include if systems level understanding is needed
+%\par
+%\textbf{Home Server}: 
+%Build a home server with custom hardware using Linux Mint. Server headlessly provides file backup and synchronization, and media streaming.
+
+%-------------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------------
+%	COMPUTER SKILLS SECTION
+%-------------------------------------------------------------------------------
+\section{具备技能}
+
+\textbf{计算机语言和工具 (熟练掌握程度)}: \href{http://www.lucaskjaero.com/projects/tech/java/}{Java}, \href{http://www.lucaskjaero.com/projects/tech/python/}{Python}.
+\\
+\textbf{计算机语言和工具 (富有经验程度)}: \href{http://www.lucaskjaero.com/projects/tech/django/}{Django}, \href{http://www.lucaskjaero.com/projects/tech/keras/}{Keras}, \href{http://www.lucaskjaero.com/projects/tech/numpy/}{Numpy}, \href{http://www.lucaskjaero.com/projects/tech/sklearn/}{Scikit-Learn}, \href{http://www.lucaskjaero.com/projects/tech/postgresql/}{SQL}, \href{http://www.lucaskjaero.com/projects/tech/swing/}{Swing}
+\\
+\textbf{计算机语言和工具 (特别优秀程度)}: \href{http://www.lucaskjaero.com/projects/tech/c/}{C}, \href{http://www.lucaskjaero.com/projects/tech/cplusplus/}{C++}, \href{http://www.lucaskjaero.com/projects/tech/docker/}{Docker}, \href{http://www.lucaskjaero.com/projects/tech/pandas/}{Pandas}, \href{http://www.lucaskjaero.com/projects/tech/tensorflow/}{Tensorflow}.
+\\
+%\textbf{Operating Systems}: 
+%Mac OSX, Windows, Linux Mint, Ubuntu Linux, Android.
+%\\
+\textbf{人类语言}: 丹麦语（母语），\href{http://www.lucaskjaero.com/resume/}{英语（母语）}，普通话（中文简体和繁体）
+
+%-------------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------------
+%	Honors
+%-------------------------------------------------------------------------------
+\section{获得荣誉}
+作为计算机科学杰出优秀生获得Shellene Kelley奖学金\hfill 2014年\\
+%被列入学校的优秀模范生（绩点排名在全校人数的百分之20以内）\hfill 2012年秋至2013年秋\\
+获得大学生一等优秀生奖学金 \hfill 2011年秋至2015年春\\
+获得拉梅萨市社交协会的服务奖学金 \hfill 2011年秋
+%-------------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------------
+%	Leadership
+%-------------------------------------------------------------------------------
+\section{领导事迹}
+为大一新生的开学经验辅导做教授助理 \hfill 2014年秋\\
+为计算机科学课做课前辅导和介绍 \hfill 2012年秋\\
+奥斯丁大学日常贸易协会担任董事以及创始人之一 \hfill 2012年春至2013年秋\\
+在计算机科学和机器人制造应用学协会担任财务主管 \hfill 2012年春至2013年秋\\
+Rho Lambda Theta学生协会董事 \hfill 2014年秋至2015年春
+%-------------------------------------------------------------------------------
+
+\end{resume}
+\clearpage\end{CJK*}
+\end{document}
