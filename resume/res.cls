@@ -2,7 +2,7 @@
 %    for LaTeX version 2.09
 % Copyright (C) 1988,1989 by Michael DeCorte
 
-\typeout{Document Style `res' <26 Sep 89>.}
+\typeout{Document Style 'res' <26 Sep 89>.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % res.sty
