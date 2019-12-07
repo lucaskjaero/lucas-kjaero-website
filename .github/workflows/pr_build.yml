@@ -1,0 +1,17 @@
+name: PR Build
+
+on: [pull_request]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Compile English resume
+      uses: dante-ev/latex-action@master
+      with:
+        root_file: resume/lucas-kjaero-zhang-resume.tex
+    - name: Compile Chinese resume
+      uses: dante-ev/latex-action@master
+      with:
+        root_file: resume/lucas-kjaero-zhang-个人简历.tex
