@@ -1,0 +1,196 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Medium Length Graduate Curriculum Vitae
+% LaTeX Template
+% Version 1.2 (3/28/15)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Rensselaer Polytechnic Institute
+% (http://www.rpi.edu/dept/arc/training/latex/resumes/)
+%
+% Modified by:
+% Daniel L Marks <xleafr@gmail.com> 3/28/2015
+%
+% Important note:
+% This template requires the res.cls file to be in the same directory as the
+% .tex file. The res.cls file provides the resume style used for structuring the
+% document.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%-------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%-------------------------------------------------------------------------------
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% You can have multiple style options the legal options ones are:
+%
+%   centered:	the name and address are centered at the top of the page
+%				(default)
+%
+%   line:		the name is the left with a horizontal line then the address to
+%				the right
+%
+%   overlapped:	the section titles overlap the body text (default)
+%
+%   margin:		the section titles are to the left of the body text
+%
+%   11pt:		use 11 point fonts instead of 10 point fonts
+%
+%   12pt:		use 12 point fonts instead of 10 point fonts
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[margin]{res}
+
+% Default font is the helvetica postscript font
+\usepackage{helvet}
+
+% Create links
+\usepackage{hyperref}
+
+% Increase text height
+\textheight=700pt
+
+\usepackage[space]{xeCJK}
+
+%%% Assuming Chinese is the main CJK language...
+\setCJKmainfont[
+  BoldFont=WenQuanYi Zen Hei,
+  ItalicFont=AR PL KaitiM GB]
+  {AR PL SungtiL GB}
+\setCJKsansfont{WenQuanYi Zen Hei}
+\setCJKmonofont{cwTeXFangSong}
+
+\title{Lucas Kjaero Resume}
+
+\begin{document}
+
+%-------------------------------------------------------------------------------
+%	NAME AND ADDRESS SECTION
+%-------------------------------------------------------------------------------
+\name{Lucas Kj\ae{}r\o{}-Zhang}
+
+% Note that addresses can be used for other contact information:
+% -phone numbers
+% -email addresses
+% -linked-in profile
+
+\address{(619) 905-1772\\San Diego, CA}
+\address{\href{mailto:lucas@lucaskjaero.com}{Lucas@LucasKjaero.com}\\\href{http://www.lucaskjaero.com}{www.LucasKjaero.com}}
+
+% Uncomment to add a third address
+
+%-------------------------------------------------------------------------------
+
+\begin{resume}
+
+%----------------------------------------------------------------------------------------
+%	OBJECTIVE SECTION
+%----------------------------------------------------------------------------------------
+
+%\section{OBJECTIVE}
+%To work as part of a team utilizing data to make a difference in the real world.
+
+%-------------------------------------------------------------------------------
+%	EXPERIENCE SECTION
+%-------------------------------------------------------------------------------
+% Modify the format of each position
+\begin{format}
+\title{l}\employer{r}\\
+\dates{l}\location{r}\\
+\body\\
+\end{format}
+%-------------------------------------------------------------------------------
+
+\section{EXPERIENCE}
+
+\employer{\textbf{Intuit}}
+\location{San Diego, CA}
+\dates{March 2018-Present}
+\title{\textbf{Software Engineer - Release Engineering}}
+\begin{position}
+Created data collection infrastructure and customer dashboard to allow stakeholders and senior leadership to analyze the automation level of the TurboTax release pipeline. Metrics collection used Kinesis and Elasticsearch in AWS, with a React dashboard to display the data. Maintained and expanded a series of spring boot micro-services used to perform all releases in the TurboTax ecosystem, and to facilitate the automation necessary to practice continuous delivery. Owned rolling out capability to automatically redeploy all services with the latest security patches.
+\end{position}
+
+\employer{\textbf{Intuit (Via Tek-Systems)}}
+\location{San Diego, CA}
+\dates{August 2017-March 2018}
+\title{\textbf{Software Engineer in Quality}}
+\begin{position}
+Designed and expanded test suites for \href{https://www.FreeFileFillableForms.com}{Free File Fillable Forms}, including unit, service, UI, and performance tests as the project's sole quality engineer. Participated in all aspects of migrating tax forms between different TurboTax tax engines. Developed an internal tool to speed creation of tax calculation testing.
+\end{position}
+
+\employer{\textbf{Carnegie Mellon University}}
+\location{Pittsburgh, PA}
+\dates{June 2014-August 2014}
+\title{\textbf{Heinz College ITLab Fellow}}
+\begin{position}
+Created and deployed mobile technology to track parking lot usage in Pittsburgh with a team of information system researchers. Coursework included mathematically modeling decisions using Excel, and designing a website to disrupt the healthcare industry by organizing and providing transparent pricing information.
+\end{position}
+
+%-------------------------------------------------------------------------------
+%	PROJECTS SECTION
+%-------------------------------------------------------------------------------
+\section{PROJECTS}
+
+\par
+\textbf{MNIST}:
+Created a computer vision model to recognize handwritten digits with 99\% accuracy. Model ranked in the top 36\% globally of all Kaggle users. Used a Convolutional Neural Network implemented in TensorFlow. \textit{\href{https://github.com/lucaskjaero/MNIST}{Github}}
+
+\par
+\textbf{Chinese Vocabulary Finder}:
+Used open source libraries, and natural language processing algorithms to tokenize and find unfamiliar words in Chinese text to aid learning. \textit{\href{https://github.com/lucaskjaero/Chinese-Vocabulary-Finder}{Github}}
+\par
+\textbf{Puzzle-8}:
+Created an object-oriented Python program to solve sliding tile puzzles with an A* search and multiple heuristics. Finds solutions with the fewest possible number of moves. \textit{Source upon request.}
+
+%-------------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------------
+%	COMPUTER SKILLS SECTION
+%-------------------------------------------------------------------------------
+\section{SKILLS}
+
+\textbf{Technologies (Mastery)}: \href{http://www.lucaskjaero.com/projects/tech/java/}{Java}, Jenkins, \href{http://www.lucaskjaero.com/projects/tech/python/}{Python}, Selenium
+\\
+\textbf{Technologies (Experience)}: AWS, \href{http://www.lucaskjaero.com/projects/tech/django/}{Django},
+Docker, Elasticearch,
+\href{http://www.lucaskjaero.com/projects/tech/gatling/}{Gatling}, \href{http://www.lucaskjaero.com/projects/tech/scala/}{Scala}, \href{http://www.lucaskjaero.com/projects/tech/sklearn/}{Scikit-Learn}, Spring Boot, \href{http://www.lucaskjaero.com/projects/tech/postgresql/}{SQL}.
+\\
+\textbf{Technologies (Exposure)}: Chef, Elixir, Javascript,  \href{http://www.lucaskjaero.com/projects/tech/keras/}{Keras}, Kubernetes, \href{http://www.lucaskjaero.com/projects/tech/pandas/}{Pandas}, Spark,     Splunk.
+\\
+\textbf{Natural Languages}: Danish (Native - Heritage), English (Native), \href{http://www.lucaskjaero.com/gerenjianli/}{Mandarin Chinese (Working Proficiency)}
+
+%-------------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------------
+%	EDUCATION SECTION
+%-------------------------------------------------------------------------------
+\section{EDUCATION}
+\textbf{Austin College}, Sherman, TX\\
+Bachelor of Arts, Cum Laude, May 2015\hfill Overall GPA:
+3.66\\
+Majors: Computer Science and Chinese\hfill Computer Science GPA: 3.71\\
+%-------------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------------
+%	Honors
+%-------------------------------------------------------------------------------
+\section{HONORS}
+Shellene Kelley Scholarship for an Outstanding Student in Computer Science\hfill 2014\\
+Austin College Presidential Merit Scholarship \hfill Fall 2011 - Spring 2015\\
+%-------------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------------
+%	Leadership
+%-------------------------------------------------------------------------------
+%\section{LEADERSHIP}
+%AC Day Trading Club, {\sl President and Founding Member} \hfill Spring 2012 - Fall 2013\\
+%Rho Lambda Theta, {\sl President} \hfill Fall 2014 - Spring 2015
+%-------------------------------------------------------------------------------
+
+\end{resume}
+\end{document}
