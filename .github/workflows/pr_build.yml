@@ -3,7 +3,7 @@ name: PR Build
 on: [pull_request]
 
 jobs:
-  deploy:
+  build-resume:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
