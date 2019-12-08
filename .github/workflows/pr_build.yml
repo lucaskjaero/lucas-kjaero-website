@@ -8,7 +8,7 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - name: Install latex and fonts
-      run: sudo apt-get install texlive-xetex fonts-arphic-gbsn00lp fonts-wqy-zenhei fonts-arphic-gkai00mp
+      run: sudo apt-get install texlive-xetex fonts-arphic-gbsn00lp fonts-wqy-zenhei fonts-arphic-gkai00mp latex-cjk-all
     - name: Compile English resume
       run: xelatex -file-line-error -interaction=nonstopmode -recorder lucas-kjaero-zhang-resume.tex
       working-directory: resume
