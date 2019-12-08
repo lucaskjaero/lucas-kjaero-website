@@ -7,8 +7,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - name: Install latex
-      run: sudo apt-get install texlive-xetex
+    - name: Install latex and fonts
+      run: sudo apt-get install texlive-xetex fonts-arphic-gbsn00lp
     - name: Compile English resume
       run: xelatex -file-line-error -interaction=nonstopmode -recorder lucas-kjaero-zhang-resume.tex
       working-directory: resume
