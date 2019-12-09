@@ -15,3 +15,19 @@ jobs:
     - name: Compile Chinese resume
       run: xelatex -file-line-error -interaction=nonstopmode -recorder lucas-kjaero-zhang-个人简历.tex
       working-directory: resume
+
+  build-and-test-frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: nuxt/actions-yarn@master
+        name: Build dependencies
+        with:
+          args: install --prod --pure-lockfile
+      - uses: nuxt/actions-yarn@master
+        with:
+          args: add webpack-bundle-analyzer
+      - uses: nuxt/actions-yarn@master
+        name: Build production bundle
+        with:
+          args: run build

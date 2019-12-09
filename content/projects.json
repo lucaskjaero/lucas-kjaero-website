@@ -1,0 +1,36 @@
+[
+  {
+    name: "PyCasia",
+    description: "An open-source python library to work with the CASIA Chinese handwriting database. Reads custom binary filetypes to prepare for machine learning applications.",
+    learned: "I learned how to read custom file types using only a specification. I learned how to package and publish python code to the Python Package Index.",
+    complete: true,
+    built_with: ["numpy", "python"],
+    domain: ["computer-vision", "machine-learning"],
+    source: "https://github.com/lucaskjaero/PyCasia"
+  },
+  {
+    name: "MNIST",
+    description: "Created a computer vision model to recognize handwritten digits with 99% accuracy. Model ranked in the top 36% globally of all Kaggle users. Used a Convolutional Neural Network implemented in TensorFlow.",
+    learned: "This was my first complete solo computer vision project. I experimented with many CNN types, including LeNets, AlexNets, and GoogleNets. I also learned how to create a complete learning pipeline, including simple image processing.",
+    complete: true,
+    built_with: ["keras", "numpy", "pandas", "python", "tensorflow"],
+    domain: ["computer-vision", "machine-learning"],
+    source: "https://github.com/lucaskjaero/MNIST"
+  },
+  {
+    name: "Free File Fillable Forms Performance",
+    description: "Created a suite of performance testing scripts for Free File Fillable Forms. Used these scripts to prepare the site for the predicted traffic of the 2017 tax season as the team's sole performance engineer.",
+    learned: "How to write complex programs in scala. How to test the performance of a website, both in peak and endurance scenarios. FMEA testing - seeing what will happen if various component services go down, to plan for potential outages.",
+    complete: true,
+    built_with: ["gatling", "scala"],
+    domain: ["testing", "performance"]
+  },
+  {
+    name: "Puzzle-8",
+    description: "Created an object-oriented Python program to solve sliding tile puzzles with an A* search and multiple heuristics. Finds solutions with the fewest possible number of moves.",
+    learned: "I learned how to model problems as search problems, and use classic Artificial Intelligence approaches to solve them.",
+    complete: true,
+    built_with: ["python"],
+    domain: ["artificial-intelligence", "algorithms"]
+  }
+]
