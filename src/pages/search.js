@@ -10,14 +10,7 @@ import Seo from "../components/Seo";
 
 import AlgoliaIcon from "!svg-react-loader!../images/svg-icons/search-by-algolia.svg?name=AlgoliaLogo";
 
-const SearchPage = props => {
-  const {
-    data: {
-      site: {
-        siteMetadata: { algolia }
-      }
-    }
-  } = props;
+const SearchPage = () => {
 
   return (
     <React.Fragment>
@@ -28,7 +21,7 @@ const SearchPage = props => {
               <AlgoliaIcon />
             </div>
 
-            <Search algolia={algolia} theme={theme} />
+            <Search theme={theme} />
           </Article>
         )}
       </ThemeContext.Consumer>
@@ -55,18 +48,3 @@ SearchPage.propTypes = {
 };
 
 export default SearchPage;
-
-//eslint-disable-next-line no-undef
-export const query = graphql`
-  query SearchQuery {
-    site {
-      siteMetadata {
-        algolia {
-          appId
-          searchOnlyApiKey
-          indexName
-        }
-      }
-    }
-  }
-`;
