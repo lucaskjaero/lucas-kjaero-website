@@ -1,4 +1,3 @@
-require("dotenv").config();
 const config = require("./content/meta/config");
 const transformer = require("./src/utils/algolia");
 
