@@ -38,9 +38,6 @@ jobs:
         with:
           args: install --prod --pure-lockfile
       - uses: nuxt/actions-yarn@master
-        with:
-          args: add webpack-bundle-analyzer
-      - uses: nuxt/actions-yarn@master
         name: Build production bundle
         with:
           args: run build
