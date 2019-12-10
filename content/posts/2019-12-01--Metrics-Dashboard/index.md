@@ -1,13 +1,17 @@
 ---
 title: Release Metrics dashboard for Intuit consumer products
-category: "infrastructure"
-technologies: ["docker", "java", "spring-boot"]
+category: "data"
+technologies: ["spring-boot", "jms", "aws". "kinesis", "elastic-search", "react", "redux"]
 author: Lucas Kjaero-Zhang
-tldr: Created a suite of docker containers allowing new hires to begin local development on day one.
+tldr: Created a data collection pipeline and release information dashboard to enable leaders to self-serve deployment metrics.
 source:
 ---
 #Description
-Created a suite of docker containers allowing new hires to begin local development on day one. Prior to the docker setup, local development was a pain point, with no team-member having all microservices set up locally, and development frequently occurred in local environments
+Led a team of three engineers to create a data collection pipeline and release information dashboard to enable leaders to self-serve deployment metrics. This dashboard replaced manual queries from directors, enabling them to get data instantly. 
 #What I learned
-- How to dockerize spring boot applications.
-- How to recreate a microservice architecture locally using docker-compose.
+- How to collect data from microservices.
+- How to use an enterprise messaging bus.
+- How to use Kinesis to take data from a service to an elasticsearch instance in an ETL process.
+- How to use elasticsearch queries to gather statistics.
+- How to conduct design sessions to improve interface design.
+- How to display data using react and redux.
