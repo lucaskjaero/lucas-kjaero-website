@@ -16,7 +16,8 @@ const Item = props => {
       frontmatter: {
         title,
         category,
-        author
+        author,
+        tldr
       }
     }
   } = props;
@@ -41,7 +42,7 @@ const Item = props => {
               </span>
             )}
           </p>
-          <p>{excerpt}</p>
+          <p>{tldr}</p>
         </Link>
       </li>
 
