@@ -1,0 +1,14 @@
+---
+title: MNIST - Handwritten digit recognition
+category: "computer-vision"
+technologies: ["python", "keras", "numpy", "pandas", "tensorflow"]
+author: Lucas Kjaero-Zhang
+tldr: Created a computer vision model to recognize handwritten digits with 99% accuracy ranked in top 36% globally of all Kaggle users.
+source: https://github.com/lucaskjaero/MNIST
+---
+#Description
+Created a computer vision model to recognize handwritten digits with 99% accuracy. Model ranked in the top 36% globally of all Kaggle users. Used a Convolutional Neural Network implemented in TensorFlow.
+#What I learned
+- This was my first complete solo computer vision project.
+- I experimented with many CNN types, including LeNets, AlexNets, and GoogleNets.
+- I also learned how to create a complete learning pipeline, including simple image processing.
