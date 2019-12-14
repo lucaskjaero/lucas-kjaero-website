@@ -28,17 +28,17 @@ const TechnologiesPage = props => {
             </header>
             {projects.map(item => (
               <div>
-                <label>{item.frontmatter.title}</label>
+                <a href={item.fields.slug}>{item.frontmatter.title}</a>
                 <br />
                 <br />
               </div>
             ))}
             {/* --- STYLES --- */}
             <style jsx>{`
-              h2 {
+              label {
                 margin: 0 0 0.5em;
               }
-              h2 :global(svg) {
+              label :global(svg) {
                 height: 0.8em;
                 fill: ${theme.color.brand.primary};
               }
