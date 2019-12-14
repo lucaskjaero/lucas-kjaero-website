@@ -9,13 +9,12 @@ import List from "../components/List";
 import Seo from "../components/Seo";
 
 const TechnologiesPage = props => {
-  console.log("Props");
-  console.log(props);
   const {
     data: {
       posts: {
-        groups: technologies
-      }
+        projects: projects,
+        technologies: technologies
+      },
     }
   } = props;
 
@@ -27,13 +26,12 @@ const TechnologiesPage = props => {
             <header>
               <Headline title="Projects by technology" theme={theme} />
             </header>
-            {technologies.map(item => (
-              <section key={item.fieldValue}>
-                <h2>
-                  <FaTag /> {item.fieldValue}
-                </h2>
-                <List edges={item.edges} theme={theme} />
-              </section>
+            {projects.map(item => (
+              <div>
+                <label>{item.frontmatter.title}</label>
+                <br />
+                <br />
+              </div>
             ))}
             {/* --- STYLES --- */}
             <style jsx>{`
@@ -63,19 +61,18 @@ export default TechnologiesPage;
 //eslint-disable-next-line no-undef
 export const query = graphql`
   query TechnologiesQuery {
-    posts: allMarkdownRemark(filter: {fileAbsolutePath: {regex: "//posts/[0-9]+.*--/"}}) {
-      groups: group(field: frontmatter___technologies) {
-        fieldValue
-        edges {
-          node {
-            fields {
-              slug
-            }
-            frontmatter {
-              title
-            }
-          }
+    posts: allMarkdownRemark(filter: {fileAbsolutePath: {regex: "//posts/[0-9]+.*--/"}}, sort: {fields: fields___prefix}) {
+      projects: nodes {
+        fields {
+          slug
         }
+        frontmatter {
+          title
+          technologies
+        }
+      }
+      technologies: group(field: frontmatter___technologies) {
+        fieldValue
       }
     }
   }
