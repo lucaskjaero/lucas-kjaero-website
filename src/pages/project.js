@@ -8,7 +8,7 @@ import Headline from "../components/Article/Headline";
 import List from "../components/List";
 import Seo from "../components/Seo";
 
-const CategoryPage = props => {
+const ProjectPage = props => {
   const {
     data: {
       posts: { edges: posts }
@@ -73,11 +73,11 @@ const CategoryPage = props => {
   );
 };
 
-CategoryPage.propTypes = {
+ProjectPage.propTypes = {
   data: PropTypes.object.isRequired
 };
 
-export default CategoryPage;
+export default ProjectPage;
 
 //eslint-disable-next-line no-undef
 export const query = graphql`
