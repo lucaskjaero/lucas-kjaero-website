@@ -2,20 +2,39 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "gatsby";
 
+const MyLink = props => {
+  const { to, name, onClick, data_slug, external } = props;
+
+  if (external) {
+    return <a href={to} />;
+  } else {
+    return (
+      <Link
+        to={to}
+        className={name}
+        onClick={onClick}
+        data-slug={data_slug}
+      >
+      { props.children }
+      </Link>
+    );
+  }
+};
+
 const Item = props => {
-  const { theme, item: { label, to, icon: Icon } = {}, onClick } = props;
+  const { theme, item: { label, to, external, icon: Icon } = {}, onClick } = props;
 
   return (
     <React.Fragment>
       <li className={"hiddenItem" in props ? "hiddenItem" : "item"} key={label}>
-        <Link
+        <MyLink
           to={to}
-          className={"hiddenItem" in props ? "inHiddenItem" : ""}
+          name={"hiddenItem" in props ? "inHiddenItem" : ""}
           onClick={onClick}
-          data-slug={to}
+          data_slug={to}
         >
           {Icon && <Icon />} {label}
-        </Link>
+        </MyLink>
       </li>
 
       {/* --- STYLES --- */}
@@ -101,7 +120,8 @@ Item.propTypes = {
   hidden: PropTypes.bool,
   onClick: PropTypes.func,
   icon: PropTypes.func,
-  theme: PropTypes.object.isRequired
+  theme: PropTypes.object.isRequired,
+  external: PropTypes.bool
 };
 
 export default Item;
