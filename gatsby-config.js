@@ -1,5 +1,4 @@
 const config = require("./content/meta/config");
-const transformer = require("./src/utils/algolia");
 
 const query = `{
   allMarkdownRemark( filter: { fields: { slug: { ne: null } } }) {
@@ -248,6 +247,28 @@ module.exports = {
       options: {
         include: /svg-icons/
       }
+    },
+    {
+    resolve: `gatsby-plugin-favicon`,
+    options: {
+      logo: "./src/images/app-icons/icon.png",
+
+      appName: "LucasKjaeroZhang",
+      appDescription: null,
+      developerName: null,
+      developerURL: "https://www.lucaskjaerozhang.com",
+
+      icons: {
+        android: true,
+        appleIcon: true,
+        appleStartup: true,
+        coast: false,
+        favicons: true,
+        firefox: true,
+        yandex: false,
+        windows: false
+      }
     }
+  }
   ]
 };

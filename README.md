@@ -11,6 +11,5 @@ Still to do:
 2. Allow projects to have multiple tech stacks
 3. Come up with a better pitch / about me
 4. Customize theming
-5. Actually fix search
-6. Redirect lucaskjaero.com domain
-7. Sunset django site
+5. Redirect lucaskjaero.com domain
+6. Sunset django site
