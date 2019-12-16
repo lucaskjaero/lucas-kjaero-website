@@ -39,6 +39,8 @@ jobs:
           args: install --prod --pure-lockfile
       - uses: nuxt/actions-yarn@master
         name: Build production bundle
+        env:
+          GOOGLE_ANALYTICS_ID: ${{ secrets.GOOGLE_ANALYTICS_TRACKING_ID }}
         with:
           args: run build
       - uses: actions/upload-artifact@master
