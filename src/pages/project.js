@@ -11,7 +11,10 @@ import Seo from "../components/Seo";
 const ProjectPage = props => {
   const {
     data: {
-      posts: { edges: posts }
+      posts: {
+        edges: posts,
+        technologies: technologies
+      }
     }
   } = props;
 
@@ -99,6 +102,9 @@ export const query = graphql`
             author
           }
         }
+      },
+      technologies: group(field: frontmatter___technologies) {
+        fieldValue
       }
     }
   }
