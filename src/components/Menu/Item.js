@@ -1,22 +1,26 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Link } from "gatsby";
+import { Link as GatsbyLink } from "gatsby";
 
-const MyLink = props => {
+const Link = props => {
   const { to, name, onClick, data_slug, external } = props;
 
   if (external) {
-    return <a href={to} />;
+    return (
+      <a href={to} >
+      { props.children }
+      </a>
+    );
   } else {
     return (
-      <Link
+      <GatsbyLink
         to={to}
         className={name}
         onClick={onClick}
         data-slug={data_slug}
       >
       { props.children }
-      </Link>
+      </GatsbyLink>
     );
   }
 };
@@ -27,14 +31,15 @@ const Item = props => {
   return (
     <React.Fragment>
       <li className={"hiddenItem" in props ? "hiddenItem" : "item"} key={label}>
-        <MyLink
+        <Link
           to={to}
           name={"hiddenItem" in props ? "inHiddenItem" : ""}
           onClick={onClick}
           data_slug={to}
+          external={external}
         >
           {Icon && <Icon />} {label}
-        </MyLink>
+        </Link>
       </li>
 
       {/* --- STYLES --- */}
