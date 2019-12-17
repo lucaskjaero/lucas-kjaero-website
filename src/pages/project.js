@@ -7,6 +7,7 @@ import Article from "../components/Article/";
 import Headline from "../components/Article/Headline";
 import List from "../components/List";
 import Seo from "../components/Seo";
+import TechnologySelector from "../components/TechnologySelector";
 
 const ProjectPage = props => {
   const {
@@ -49,6 +50,7 @@ const ProjectPage = props => {
             <header>
               <Headline title="Projects by category" theme={theme} />
             </header>
+            <TechnologySelector technologies={technologies} onChange={change => console.log(change)} />
             {categoryList.map(item => (
               <section key={item[0]}>
                 <h2>
