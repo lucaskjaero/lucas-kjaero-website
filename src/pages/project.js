@@ -12,9 +12,8 @@ import TechnologySelector from "../components/TechnologySelector";
 class ProjectPage extends React.Component {
   constructor(props) {
     super(props);
-  }
+    this.generateCategories = this.generateCategories.bind(this);
 
-  render() {
     const {
       data: {
         posts: {
@@ -24,9 +23,21 @@ class ProjectPage extends React.Component {
       }
     } = this.props;
 
+    this.state = {
+      posts: posts,
+      technologies: technologies
+    };
+    this.generateCategories();
+  }
+
+  filterPosts() {
+
+  }
+
+  generateCategories() {
     // Create category list
     const categories = {};
-    posts.forEach(edge => {
+    this.state.posts.forEach(edge => {
       const {
         node: {
           frontmatter: { category }
@@ -47,6 +58,14 @@ class ProjectPage extends React.Component {
       categoryList.push([key, categories[key]]);
     }
 
+    this.setState({
+      categoryList: categoryList
+    });
+  }
+
+  render() {
+    console.log(this.state)
+
     return (
       <React.Fragment>
         <ThemeContext.Consumer>
@@ -55,8 +74,8 @@ class ProjectPage extends React.Component {
               <header>
                 <Headline title="Projects by category" theme={theme} />
               </header>
-              <TechnologySelector technologies={technologies} onChange={change => console.log(change)} />
-              {categoryList.map(item => (
+              <TechnologySelector technologies={this.state.technologies} onChange={change => console.log(change)} />
+              {this.state.categoryList.map(item => (
                 <section key={item[0]}>
                   <h2>
                     <FaTag /> {item[0]}
