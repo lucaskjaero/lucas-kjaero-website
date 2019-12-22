@@ -8,7 +8,6 @@ import { FaCalendar, FaCog, FaTag, FaUser } from "react-icons/fa/";
 
 const Meta = props => {
   const { prefix, category, technologies, theme } = props;
-  console.log(technologies);
 
   return (
     <p className="meta">
@@ -26,7 +25,7 @@ const Meta = props => {
           <FaCog size={18} />
           {technologies.sort().map(tech => {
             return (
-              <span>
+              <span key={tech}>
               <Link to={`/technology/${tech.split(" ").join("-")}`}>{tech}</Link>
               </span>
             )
