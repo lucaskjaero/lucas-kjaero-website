@@ -85,7 +85,7 @@ export const query = graphql`
           frontmatter {
             title
             category
-            author
+            technologies
             tldr
           }
         }

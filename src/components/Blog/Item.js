@@ -1,7 +1,4 @@
-import { FaArrowRight } from "react-icons/fa/";
-import { FaCalendar } from "react-icons/fa/";
-import { FaTag } from "react-icons/fa/";
-import { FaUser } from "react-icons/fa/";
+import { FaArrowRight, FaCalendar, FaCog, FaTag, FaUser } from "react-icons/fa/";
 import Img from "gatsby-image";
 import { Link } from "gatsby";
 import PropTypes from "prop-types";
@@ -16,7 +13,7 @@ const Item = props => {
       frontmatter: {
         title,
         category,
-        author,
+        technologies,
         tldr
       }
     }
@@ -33,12 +30,14 @@ const Item = props => {
             <span>
               <FaCalendar size={18} /> {prefix}
             </span>
-            <span>
-              <FaUser size={18} /> {author}
-            </span>
             {category && (
               <span>
                 <FaTag size={18} /> {category}
+              </span>
+            )}
+            {technologies && (
+              <span>
+              <FaCog size={18} /> {technologies.sort().join(", ")}
               </span>
             )}
           </p>

@@ -57,8 +57,8 @@ export const postQuery = graphql`
       }
       frontmatter {
         title
-        author
-        category
+        category,
+        technologies
       }
     }
     authornote: markdownRemark(fileAbsolutePath: { regex: "/author/" }) {

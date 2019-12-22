@@ -2,25 +2,34 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "gatsby";
 
-import { FaCalendar } from "react-icons/fa/";
-import { FaUser } from "react-icons/fa/";
-import { FaTag } from "react-icons/fa/";
+const _ = require("lodash");
+
+import { FaCalendar, FaCog, FaTag, FaUser } from "react-icons/fa/";
 
 const Meta = props => {
-  const { prefix, author: authorName, category, theme } = props;
+  const { prefix, category, technologies, theme } = props;
 
   return (
     <p className="meta">
       <span>
         <FaCalendar size={18} /> {prefix}
       </span>
-      <span>
-        <FaUser size={18} /> {authorName}
-      </span>
       {category && (
         <span>
           <FaTag size={18} />
-          <Link to={`/category/${category.split(" ").join("-")}`}>{category}</Link>
+          <Link to={`/category/${_.kebabCase(category)}`}>{category}</Link>
+        </span>
+      )}
+      {technologies && (
+        <span>
+          <FaCog size={18} />
+          {technologies.sort().map(tech => {
+            return (
+              <span key={tech}>
+              <Link to={`/technology/${tech.split(" ").join("-")}`}>{tech}</Link>
+              </span>
+            )
+          })}
         </span>
       )}
 
@@ -56,7 +65,6 @@ const Meta = props => {
 
 Meta.propTypes = {
   prefix: PropTypes.string.isRequired,
-  author: PropTypes.string.isRequired,
   category: PropTypes.string,
   theme: PropTypes.object.isRequired
 };

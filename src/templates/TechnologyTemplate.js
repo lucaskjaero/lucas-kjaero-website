@@ -1,4 +1,4 @@
-import { FaTag } from "react-icons/fa/";
+import { FaCog } from "react-icons/fa/";
 import PropTypes from "prop-types";
 import React from "react";
 import { graphql } from "gatsby";
@@ -8,13 +8,21 @@ import Article from "../components/Article";
 import Headline from "../components/Article/Headline";
 import List from "../components/List";
 
-const CategoryTemplate = props => {
+const TechnologyTemplate = props => {
   const {
-    pageContext: { category },
+    pageContext: { technology },
     data: {
-      allMarkdownRemark: { totalCount, edges },
+      allMarkdownRemark: { edges },
     }
   } = props;
+
+  // Gatsby doesn't currently support set ownership checks in graphql, so we do this manually
+  const selectedPosts = edges.filter(post => {
+    return post.node.frontmatter.technologies && (post.node.frontmatter.technologies != null)
+  }).filter(post => {
+    return post.node.frontmatter.technologies.includes(technology);
+  });
+  const totalCount = selectedPosts.length;
 
   return (
     <React.Fragment>
@@ -23,17 +31,17 @@ const CategoryTemplate = props => {
           <Article theme={theme}>
             <header>
               <Headline theme={theme}>
-                <span>Projects in category</span> <FaTag />
-                {category}
+                <span>Projects using technology</span> <FaCog />
+                {technology}
               </Headline>
               <p className="meta">
                 There {totalCount > 1 ? "are" : "is"} <strong>{totalCount}</strong> project{totalCount >
                 1
                   ? "s"
                   : ""}{" "}
-                in the category.
+                using this technology.
               </p>
-              <List edges={edges} theme={theme} />
+              <List edges={selectedPosts} theme={theme} />
             </header>
           </Article>
         )}
@@ -44,22 +52,20 @@ const CategoryTemplate = props => {
   );
 };
 
-CategoryTemplate.propTypes = {
+TechnologyTemplate.propTypes = {
   data: PropTypes.object.isRequired,
   pageContext: PropTypes.object.isRequired
 };
 
-export default CategoryTemplate;
+export default TechnologyTemplate;
 
 // eslint-disable-next-line no-undef
-export const categoryQuery = graphql`
-  query PostsByCategory($category: String) {
+export const technologyQuery = graphql`
+  query PostsByTechnology {
     allMarkdownRemark(
       limit: 1000
       sort: { fields: [fields___prefix], order: DESC }
-      filter: { frontmatter: { category: { eq: $category } } }
     ) {
-      totalCount
       edges {
         node {
           fields {
@@ -69,7 +75,7 @@ export const categoryQuery = graphql`
           timeToRead
           frontmatter {
             title
-            category
+            technologies
           }
         }
       }
