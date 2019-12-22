@@ -119,7 +119,6 @@ exports.createPages = ({ graphql, actions }) => {
               frontmatter: { technologies }
             }
           } = edge;
-          console.log(edge);
 
           if (technologies && technologies !== null) {
             technologies.forEach(tech => technologySet.add(tech));
