@@ -7,28 +7,37 @@ const { Option } = Select;
 const TechnologySelector = props => {
   const {
     technologies: technologies,
-    onChange: onChange
+    onChange: onChange,
+    theme: theme
   } = props;
 
   return (
-    <div>
-      <h2>Technologies</h2>
-      <Select
-        mode="tags"
-        defaultValue={technologies}
-        style={{width: "100%"}}
-        tokenSeparators={[',']}
-        onChange={onChange}
-      >
-        {
-          technologies.map(tech => {
-            return <Option key={tech}>{tech}</Option>
-          })
+    <React.Fragment>
+      <div className="techselector">
+        <h2>Technologies</h2>
+        <Select
+          mode="tags"
+          defaultValue={technologies}
+          style={{width: "100%"}}
+          tokenSeparators={[',']}
+          onChange={onChange}
+        >
+          {
+            technologies.map(tech => {
+              return <Option key={tech}>{tech}</Option>
+            })
+          }
+        </Select>
+      </div>
+
+      {/* --- STYLES --- */}
+      <style jsx>{`
+        .techselector {
+          margin: ${theme.space.stack.m};
+          padding-top: ${theme.space.m};
         }
-      </Select>
-      <br />
-      <br />
-    </div>
+      `}</style>
+    </React.Fragment>
   );
 };
 

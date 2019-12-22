@@ -50,7 +50,7 @@ class ProjectPage extends React.Component {
               <header>
                 <Headline title="Projects by category" theme={theme} />
               </header>
-              <TechnologySelector technologies={this.state.technologies} onChange={this.handleTechnologySelection} />
+              <TechnologySelector technologies={this.state.technologies} onChange={this.handleTechnologySelection} theme={theme} />
               {this.state.postsByCategory.map(item => (
                 <section key={item.fieldValue}>
                   <h2>
