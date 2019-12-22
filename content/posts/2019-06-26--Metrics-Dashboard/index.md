@@ -1,6 +1,6 @@
 ---
 title: Release Metrics dashboard for Intuit consumer products
-category: Data
+category: Data Engineering
 technologies: ["spring boot", "jms", "aws", "kinesis", "elasticsearch", "react", "redux"]
 tldr: Created a data collection pipeline and release information dashboard to enable leaders to self-serve deployment metrics.
 source:

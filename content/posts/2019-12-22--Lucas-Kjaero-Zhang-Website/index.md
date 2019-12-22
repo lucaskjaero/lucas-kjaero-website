@@ -1,6 +1,6 @@
 ---
-title: Lucas Kjaero-Zhang Website
-category: Frontend
+title: Lucas Kjaero-Zhang Website - This website
+category: Web
 technologies: ["aws", "gatsby", "graphql", "latex", "react"]
 tldr: This website! Displays projects and contact information using react and S3.
 source: https://github.com/lucaskjaero/lucas-kjaero-website
