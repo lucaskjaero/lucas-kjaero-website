@@ -36,8 +36,7 @@ class ProjectPage extends React.Component {
         fieldValue: category.fieldValue,
         edges: category.edges.filter(node => node.node.frontmatter.technologies.some(tech => technologies.includes(tech)))
       }
-    });
-    console.log(selectedPosts);
+    }).filter(category => category.edges.length > 0);
 
     this.setState({postsByCategory: selectedPosts});
   }
