@@ -1,8 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Select from "antd/lib/select";
-import "antd/lib/select/style/index.css";
-const { Option } = Select;
+import Checkbox from "antd/lib/checkbox";
+import Col from "antd/lib/col";
+import Row from "antd/lib/row";
+import "antd/lib/checkbox/style/index.css";
+import "antd/lib/col/style/css";
+import "antd/lib/row/style/css";
 
 const TechnologySelector = props => {
   const {
@@ -15,19 +18,19 @@ const TechnologySelector = props => {
     <React.Fragment>
       <div className="techselector">
         <h2>Technologies</h2>
-        <Select
-          mode="tags"
-          defaultValue={technologies}
-          style={{width: "100%"}}
-          tokenSeparators={[',']}
-          onChange={onChange}
-        >
+        <Checkbox.Group style={{ width: '100%' }} onChange={onChange} defaultValue={technologies}>
+          <Row>
           {
             technologies.map(tech => {
-              return <Option key={tech}>{tech}</Option>
+              return (
+                <Col span={8}>
+                  <Checkbox value={tech}>{tech}</Checkbox>
+                </Col>
+              )
             })
           }
-        </Select>
+          </Row>
+        </Checkbox.Group>
       </div>
 
       {/* --- STYLES --- */}
