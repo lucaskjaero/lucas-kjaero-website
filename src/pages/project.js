@@ -12,55 +12,20 @@ import TechnologySelector from "../components/TechnologySelector";
 class ProjectPage extends React.Component {
   constructor(props) {
     super(props);
-    this.generateCategories = this.generateCategories.bind(this);
 
     const {
       data: {
         posts: {
-          edges: posts,
+          categories: posts,
           technologies: technologies
         }
       }
     } = this.props;
 
     this.state = {
-      posts: posts,
-      technologies: technologies
+      postsByCategory: posts,
+      technologies: technologies.map(tech => tech.fieldValue)
     };
-    this.generateCategories();
-  }
-
-  filterPosts() {
-
-  }
-
-  generateCategories() {
-    // Create category list
-    const categories = {};
-    this.state.posts.forEach(edge => {
-      const {
-        node: {
-          frontmatter: { category }
-        }
-      } = edge;
-
-      if (category && category != null) {
-        if (!categories[category]) {
-          categories[category] = [];
-        }
-        categories[category].push(edge);
-      }
-    });
-
-    const categoryList = [];
-
-    for (var key in categories) {
-      categoryList.push([key, categories[key]]);
-    }
-
-    this.setState({
-      categoryList: categoryList
-    });
   }
 
   render() {
@@ -75,12 +40,12 @@ class ProjectPage extends React.Component {
                 <Headline title="Projects by category" theme={theme} />
               </header>
               <TechnologySelector technologies={this.state.technologies} onChange={change => console.log(change)} />
-              {this.state.categoryList.map(item => (
-                <section key={item[0]}>
+              {this.state.postsByCategory.map(item => (
+                <section key={item.fieldValue}>
                   <h2>
-                    <FaTag /> {item[0]}
+                    <FaTag /> {item.fieldValue}
                   </h2>
-                  <List edges={item[1]} theme={theme} />
+                  <List edges={item.edges} theme={theme} />
                 </section>
               ))}
               {/* --- STYLES --- */}
@@ -112,26 +77,26 @@ export default ProjectPage;
 //eslint-disable-next-line no-undef
 export const query = graphql`
   query PostsQuery {
-    posts: allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "//posts/[0-9]+.*--/" } }
-      sort: { fields: [fields___prefix], order: DESC }
-    ) {
-      edges {
-        node {
-          excerpt
-          fields {
-            slug
-            prefix
-          }
-          frontmatter {
-            title
-            category
-            author
-          }
-        }
-      },
+    posts: allMarkdownRemark(filter: {fileAbsolutePath: {regex: "//posts/[0-9]+.*--/"}}) {
       technologies: group(field: frontmatter___technologies) {
         fieldValue
+      },
+      categories: group(field: frontmatter___category) {
+        fieldValue
+        edges {
+          node {
+            excerpt
+            fields {
+              slug
+              prefix
+            }
+            frontmatter {
+              title
+              category
+              author
+            }
+          }
+        }
       }
     }
   }

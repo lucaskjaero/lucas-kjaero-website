@@ -6,10 +6,9 @@ const { Option } = Select;
 
 const TechnologySelector = props => {
   const {
-    technologies: technologiesRaw,
+    technologies: technologies,
     onChange: onChange
   } = props;
-  const technologies = technologiesRaw.map(tech => tech.fieldValue);
 
   return (
     <div>
