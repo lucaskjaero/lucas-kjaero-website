@@ -232,7 +232,8 @@ module.exports = {
                 }
               }
             `,
-            output: "/rss.xml"
+            output: "/rss.xml",
+            title: "Projects by Lucas Kjaero-Zhang"
           }
         ]
       }
