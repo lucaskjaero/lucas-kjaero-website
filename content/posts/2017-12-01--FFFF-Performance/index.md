@@ -1,8 +1,7 @@
 ---
 title: Free File Fillable Forms Performance
-category: "quality"
+category: Quality
 technologies: ["scala", "gatling"]
-author: Lucas Kjaero-Zhang
 tldr: Created a suite of performance scripts to prepare the site for the predicted traffic of the 2017 tax season as the team's sole performance engineer.
 source: https://github.com/lucaskjaero/MNIST
 ---

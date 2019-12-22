@@ -42,6 +42,7 @@ exports.createPages = ({ graphql, actions }) => {
     const postTemplate = path.resolve("./src/templates/PostTemplate.js");
     const pageTemplate = path.resolve("./src/templates/PageTemplate.js");
     const categoryTemplate = path.resolve("./src/templates/CategoryTemplate.js");
+    const technologyTemplate = path.resolve("./src/templates/TechnologyTemplate.js");
 
     // Do not create draft post files in production.
     let activeEnv = process.env.ACTIVE_ENV || process.env.NODE_ENV || "development"
@@ -69,6 +70,7 @@ exports.createPages = ({ graphql, actions }) => {
                   frontmatter {
                     title
                     category
+                    technologies
                   }
                 }
               }
@@ -105,6 +107,32 @@ exports.createPages = ({ graphql, actions }) => {
             component: categoryTemplate,
             context: {
               category
+            }
+          });
+        });
+
+        // Create technology list
+        const technologySet = new Set();
+        items.forEach(edge => {
+          const {
+            node: {
+              frontmatter: { technologies }
+            }
+          } = edge;
+
+          if (technologies && technologies !== null) {
+            technologies.forEach(tech => technologySet.add(tech));
+          }
+        });
+
+        // Create technology pages
+        const technologyList = Array.from(technologySet);
+        technologyList.forEach(technology => {
+          createPage({
+            path: `/technology/${_.kebabCase(technology)}/`,
+            component: technologyTemplate,
+            context: {
+              technology
             }
           });
         });
