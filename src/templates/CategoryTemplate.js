@@ -23,11 +23,11 @@ const CategoryTemplate = props => {
           <Article theme={theme}>
             <header>
               <Headline theme={theme}>
-                <span>Posts in category</span> <FaTag />
+                <span>Projects in category</span> <FaTag />
                 {category}
               </Headline>
               <p className="meta">
-                There {totalCount > 1 ? "are" : "is"} <strong>{totalCount}</strong> post{totalCount >
+                There {totalCount > 1 ? "are" : "is"} <strong>{totalCount}</strong> project{totalCount >
                 1
                   ? "s"
                   : ""}{" "}
