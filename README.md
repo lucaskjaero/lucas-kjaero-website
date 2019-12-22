@@ -8,8 +8,7 @@ Contents:
 
 Still to do:
 1. Enter projects for the portfolio
-2. Allow projects to have multiple tech stacks
-3. Come up with a better pitch / about me
-4. Customize theming
-5. Redirect lucaskjaero.com domain
-6. Sunset django site
+2. Come up with a better pitch / about me
+3. Customize theming
+4. Redirect lucaskjaero.com domain
+5. Sunset django site
