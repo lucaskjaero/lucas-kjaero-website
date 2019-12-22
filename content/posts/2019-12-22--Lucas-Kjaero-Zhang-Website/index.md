@@ -3,7 +3,7 @@ title: Lucas Kjaero-Zhang Website
 category: Frontend
 technologies: ["aws", "gatsby", "graphql", "latex", "react"]
 tldr: This website! Displays projects and contact information using react and S3.
-source:
+source: https://github.com/lucaskjaero/lucas-kjaero-website
 ---
 #Description
 A portfolio website to display projects, resume, and contact information. This website is entirely static content, served from an S3 bucket with no backend servers involved.
