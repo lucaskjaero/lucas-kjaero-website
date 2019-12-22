@@ -2,12 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "gatsby";
 
-import { FaCalendar } from "react-icons/fa/";
-import { FaUser } from "react-icons/fa/";
-import { FaTag } from "react-icons/fa/";
+import { FaCalendar, FaCog, FaTag, FaUser } from "react-icons/fa/";
 
 const Meta = props => {
-  const { prefix, category, theme } = props;
+  const { prefix, category, technologies, theme } = props;
+  console.log(technologies);
 
   return (
     <p className="meta">
@@ -18,6 +17,18 @@ const Meta = props => {
         <span>
           <FaTag size={18} />
           <Link to={`/category/${category.split(" ").join("-")}`}>{category}</Link>
+        </span>
+      )}
+      {technologies && (
+        <span>
+          <FaCog size={18} />
+          {technologies.sort().map(tech => {
+            return (
+              <span>
+              <Link to={`/technology/${tech.split(" ").join("-")}`}>{tech}</Link>
+              </span>
+            )
+          })}
         </span>
       )}
 
