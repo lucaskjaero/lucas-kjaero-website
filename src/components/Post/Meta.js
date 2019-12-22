@@ -2,6 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "gatsby";
 
+const _ = require("lodash");
+
 import { FaCalendar, FaCog, FaTag, FaUser } from "react-icons/fa/";
 
 const Meta = props => {
@@ -16,7 +18,7 @@ const Meta = props => {
       {category && (
         <span>
           <FaTag size={18} />
-          <Link to={`/category/${category.split(" ").join("-")}`}>{category}</Link>
+          <Link to={`/category/${_.kebabCase(category)}`}>{category}</Link>
         </span>
       )}
       {technologies && (
