@@ -26,11 +26,23 @@ class ProjectPage extends React.Component {
       postsByCategory: posts,
       technologies: technologies.map(tech => tech.fieldValue)
     };
+
+    this.handleTechnologySelection = this.handleTechnologySelection.bind(this);
+  }
+
+  handleTechnologySelection(technologies) {
+    const selectedPosts = this.props.data.posts.categories.map(category => {
+      return {
+        fieldValue: category.fieldValue,
+        edges: category.edges.filter(node => node.node.frontmatter.technologies.some(tech => technologies.includes(tech)))
+      }
+    });
+    console.log(selectedPosts);
+
+    this.setState({postsByCategory: selectedPosts});
   }
 
   render() {
-    console.log(this.state)
-
     return (
       <React.Fragment>
         <ThemeContext.Consumer>
@@ -39,7 +51,7 @@ class ProjectPage extends React.Component {
               <header>
                 <Headline title="Projects by category" theme={theme} />
               </header>
-              <TechnologySelector technologies={this.state.technologies} onChange={change => console.log(change)} />
+              <TechnologySelector technologies={this.state.technologies} onChange={this.handleTechnologySelection} />
               {this.state.postsByCategory.map(item => (
                 <section key={item.fieldValue}>
                   <h2>
@@ -94,6 +106,7 @@ export const query = graphql`
               title
               category
               author
+              technologies
             }
           }
         }
