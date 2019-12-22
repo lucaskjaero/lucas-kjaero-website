@@ -215,7 +215,7 @@ module.exports = {
                       slug: { ne: null }
                     },
                     frontmatter: {
-                      author: { ne: null }
+                      author: { ne: "Lucas Kjaero-Zhang" }
                     }
                   }
                 ) {

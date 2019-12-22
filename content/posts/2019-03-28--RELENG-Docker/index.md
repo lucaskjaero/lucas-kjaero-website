@@ -2,7 +2,6 @@
 title: Release Engineering local docker setup
 category: "infrastructure"
 technologies: ["docker", "java", "spring-boot"]
-author: Lucas Kjaero-Zhang
 tldr: Created a suite of docker containers allowing new hires to begin local development on day one.
 source:
 ---

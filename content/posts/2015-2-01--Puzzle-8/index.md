@@ -2,7 +2,6 @@
 title: Puzzle-8
 category: "artificial-intelligence"
 technologies: ["python"]
-author: Lucas Kjaero-Zhang
 tldr: Created an object-oriented Python program to solve sliding tile puzzles with an A* search and multiple heuristics.
 source:
 ---
