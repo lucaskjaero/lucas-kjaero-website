@@ -1,6 +1,7 @@
 ---
 title: Free File Fillable Forms Performance
-category: Quality
+tagline: Performance tests for a product
+category: DevOps
 technologies: ["scala", "gatling"]
 tldr: Created a suite of performance scripts to prepare the site for the predicted traffic of the 2017 tax season as the team's sole performance engineer.
 source: https://github.com/lucaskjaero/MNIST

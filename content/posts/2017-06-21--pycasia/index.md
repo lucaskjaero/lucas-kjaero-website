@@ -1,5 +1,6 @@
 ---
-title: PyCasia - Chinese handwriting in python
+title: PyCasia
+tagline: Chinese handwriting in python
 category: AI and Machine Learning
 technologies: ["python", "numpy"]
 tldr: An open-source python library to work with the CASIA Chinese handwriting database.

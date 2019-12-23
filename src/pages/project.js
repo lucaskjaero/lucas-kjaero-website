@@ -104,6 +104,7 @@ export const query = graphql`
             frontmatter {
               title
               category
+              tagline
               technologies
             }
           }

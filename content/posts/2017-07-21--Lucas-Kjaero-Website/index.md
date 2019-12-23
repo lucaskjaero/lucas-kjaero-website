@@ -1,6 +1,7 @@
 ---
-title: Lucas Kjaero Website - My old portfolio website
-category: Web
+title: Lucas Kjaero Website
+tagline: My old portfolio website
+category: Full Stack
 technologies: ["python", "sql", "django"]
 tldr: My old portfolio website, built using Django and served on Heroku
 source: https://github.com/lucaskjaero/LucasKjaero.com

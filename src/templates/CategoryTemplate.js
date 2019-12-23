@@ -70,6 +70,7 @@ export const categoryQuery = graphql`
           frontmatter {
             title
             category
+            tagline
           }
         }
       }

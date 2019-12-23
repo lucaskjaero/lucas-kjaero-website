@@ -1,5 +1,6 @@
 ---
-title: Puzzle-8 - Sliding puzzle solver
+title: Puzzle-8
+tagline: Sliding puzzle solver
 category: AI and Machine Learning
 technologies: ["python"]
 tldr: Created an object-oriented Python program to solve sliding tile puzzles with an A* search and multiple heuristics.

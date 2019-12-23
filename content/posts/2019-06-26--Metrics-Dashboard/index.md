@@ -1,5 +1,6 @@
 ---
-title: Release Metrics dashboard for Intuit consumer products
+title: CDD Metrics Dashboard
+tagline: Reports on production deployments for TurboTax and other Intuit products
 category: Data Engineering
 technologies: ["spring boot", "jms", "aws", "kinesis", "elasticsearch", "react", "redux"]
 tldr: Created a data collection pipeline and release information dashboard to enable leaders to self-serve deployment metrics.

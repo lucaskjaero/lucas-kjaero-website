@@ -75,6 +75,7 @@ export const technologyQuery = graphql`
           timeToRead
           frontmatter {
             title
+            tagline
             technologies
           }
         }
