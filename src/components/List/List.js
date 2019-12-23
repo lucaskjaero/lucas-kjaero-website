@@ -11,14 +11,16 @@ const List = props => {
         {edges.map(edge => {
           const {
             node: {
-              frontmatter: { title },
+              frontmatter: { title, tagline },
               fields: { slug }
             }
           } = edge;
 
+          const displayTitle = (tagline && tagline != 0) ? title + " - " + tagline : title;
+
           return (
             <li key={slug}>
-              <Link to={slug}>{title}</Link>
+              <Link to={slug}>{displayTitle}</Link>
             </li>
           );
         })}
