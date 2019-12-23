@@ -7,6 +7,7 @@ import Bodytext from "../Article/Bodytext";
 import Meta from "./Meta";
 import Author from "./Author";
 import NextPrev from "./NextPrev";
+import Source from "./Source";
 
 const Post = props => {
   const {
@@ -14,7 +15,7 @@ const Post = props => {
     post: {
       html,
       fields: { prefix, slug },
-      frontmatter: { title, author, category, technologies }
+      frontmatter: { title, author, category, source, technologies }
     },
     authornote,
     next: nextPost,
@@ -29,6 +30,7 @@ const Post = props => {
         <Meta prefix={prefix} author={author} category={category} technologies={technologies} theme={theme} />
       </header>
       <Bodytext html={html} theme={theme} />
+      <Source source={source} theme={theme} />
       <footer>
         <Author note={authornote} theme={theme} />
         <NextPrev next={nextPost} prev={prevPost} theme={theme} />
