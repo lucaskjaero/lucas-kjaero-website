@@ -40,6 +40,7 @@ color:
   # color options
   neutral:
     white: &color-white '#ffffff'
+    faded-white: &color-faded-white rgba(255,255,255,.7)
     gray:
       a: &color-gray-1 '#fafaf9'
       b: &color-gray-2 '#f3f2f2'
@@ -136,7 +137,12 @@ hero:
     size: *font-size-xxl
     color: *color-white
     lineHeight: *font-line-height-xs
-  background: 'linear-gradient(0deg, #E0306E, #6438B5)'
+  h2:
+    size: *font-size-l
+  background: *color-brand-primary
+pitch:
+  text:
+    color: *color-faded-white
 blog:
   h1:
     size: *font-size-l
@@ -147,4 +153,3 @@ header:
     default: 80px
     fixed: 50px;
     homepage: 100px;
-
