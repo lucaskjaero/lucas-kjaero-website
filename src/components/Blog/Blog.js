@@ -9,6 +9,7 @@ const Blog = props => {
   return (
     <React.Fragment>
       <main className="main">
+        <h1>Projects</h1>
         <ul>
           {posts.map(post => {
             const {
@@ -26,6 +27,14 @@ const Blog = props => {
       <style jsx>{`
         .main {
           padding: 0 ${theme.space.inset.default};
+        }
+
+        h1 {
+          text-align: center;
+          font-size: ${theme.font.size.xxl};
+          margin: ${theme.space.stack.l};
+          color: ${theme.color.brand.primary};
+          padding-top: ${theme.space.l};
         }
 
         ul {
