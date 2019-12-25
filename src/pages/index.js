@@ -19,8 +19,8 @@ class IndexPage extends React.Component {
     const {
       data: {
         posts: { edges: posts = [] },
-        about: {
-          edges: aboutPages
+        pitch: {
+          html: pitch
         },
         bgDesktop: {
           resize: { src: desktop }
@@ -52,7 +52,7 @@ class IndexPage extends React.Component {
 
         <ThemeContext.Consumer>
           {theme => (
-            <Pitch html={aboutPages[0].node.about} theme={theme} />
+            <Pitch html={pitch} theme={theme} />
           )}
         </ThemeContext.Consumer>
 
@@ -104,12 +104,8 @@ export const query = graphql`
         }
       }
     }
-    about: allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/.*1--about/.*/"}}) {
-      edges {
-        node {
-          about: html
-        }
-      }
+    pitch: markdownRemark(fileAbsolutePath: { regex: "/pitch/" }) {
+      html
     }
     bgDesktop: imageSharp(fluid: { originalName: { regex: "/lucas-background/" } }) {
       resize(width: 1200, quality: 90, cropFocus: CENTER) {
