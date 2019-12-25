@@ -4,19 +4,24 @@ import { graphql } from "gatsby";
 import { ThemeContext } from "../layouts";
 import Blog from "../components/Blog";
 import Hero from "../components/Hero";
+import Pitch from "../components/Pitch";
 import Seo from "../components/Seo";
 
 class IndexPage extends React.Component {
-  separator = React.createRef();
+  separator1 = React.createRef();
+  separator2 = React.createRef();
 
   scrollToContent = e => {
-    this.separator.current.scrollIntoView({ block: "start", behavior: "smooth" });
+    this.separator1.current.scrollIntoView({ block: "start", behavior: "smooth" });
   };
 
   render() {
     const {
       data: {
         posts: { edges: posts = [] },
+        pitch: {
+          html: pitch
+        },
         bgDesktop: {
           resize: { src: desktop }
         },
@@ -43,7 +48,15 @@ class IndexPage extends React.Component {
           )}
         </ThemeContext.Consumer>
 
-        <hr ref={this.separator} />
+        <hr ref={this.separator1} />
+
+        <ThemeContext.Consumer>
+          {theme => (
+            <Pitch html={pitch} theme={theme} />
+          )}
+        </ThemeContext.Consumer>
+
+        <hr ref={this.separator2} />
 
         <ThemeContext.Consumer>
           {theme => <Blog posts={posts} theme={theme} />}
@@ -90,6 +103,9 @@ export const query = graphql`
           }
         }
       }
+    }
+    pitch: markdownRemark(fileAbsolutePath: { regex: "/pitch/" }) {
+      html
     }
     bgDesktop: imageSharp(fluid: { originalName: { regex: "/lucas-background/" } }) {
       resize(width: 1200, quality: 90, cropFocus: CENTER) {

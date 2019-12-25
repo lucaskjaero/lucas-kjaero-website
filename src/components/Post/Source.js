@@ -4,7 +4,6 @@ import Button from "antd/lib/button";
 
 const Source = props => {
   const { source, theme } = props;
-  console.log(source);
 
   if (source && source != "") {
     return (
