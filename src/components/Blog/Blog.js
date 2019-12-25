@@ -31,9 +31,9 @@ const Blog = props => {
 
         h1 {
           text-align: center;
-          font-size: ${theme.font.size.xxl};
+          font-size: ${theme.font.size.xxxl};
           margin: ${theme.space.stack.l};
-          color: ${theme.color.brand.primary};
+          color: ${theme.text.color.primary};
           padding-top: ${theme.space.l};
         }
 
