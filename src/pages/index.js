@@ -4,19 +4,24 @@ import { graphql } from "gatsby";
 import { ThemeContext } from "../layouts";
 import Blog from "../components/Blog";
 import Hero from "../components/Hero";
+import Pitch from "../components/Pitch";
 import Seo from "../components/Seo";
 
 class IndexPage extends React.Component {
-  separator = React.createRef();
+  separator1 = React.createRef();
+  separator2 = React.createRef();
 
   scrollToContent = e => {
-    this.separator.current.scrollIntoView({ block: "start", behavior: "smooth" });
+    this.separator1.current.scrollIntoView({ block: "start", behavior: "smooth" });
   };
 
   render() {
     const {
       data: {
         posts: { edges: posts = [] },
+        about: {
+          edges: aboutPages
+        },
         bgDesktop: {
           resize: { src: desktop }
         },
@@ -43,7 +48,15 @@ class IndexPage extends React.Component {
           )}
         </ThemeContext.Consumer>
 
-        <hr ref={this.separator} />
+        <hr ref={this.separator1} />
+
+        <ThemeContext.Consumer>
+          {theme => (
+            <Pitch html={aboutPages[0].node.about} theme={theme} />
+          )}
+        </ThemeContext.Consumer>
+
+        <hr ref={this.separator2} />
 
         <ThemeContext.Consumer>
           {theme => <Blog posts={posts} theme={theme} />}
@@ -88,6 +101,13 @@ export const query = graphql`
             technologies
             tldr
           }
+        }
+      }
+    }
+    about: allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/.*1--about/.*/"}}) {
+      edges {
+        node {
+          about: html
         }
       }
     }
