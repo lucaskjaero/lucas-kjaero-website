@@ -19,9 +19,7 @@ class IndexPage extends React.Component {
     const {
       data: {
         posts: { edges: posts = [] },
-        pitch: {
-          html: pitch
-        },
+        pitch: { html: pitch },
         bgDesktop: {
           resize: { src: desktop }
         },
@@ -51,9 +49,7 @@ class IndexPage extends React.Component {
         <hr ref={this.separator1} />
 
         <ThemeContext.Consumer>
-          {theme => (
-            <Pitch html={pitch} theme={theme} />
-          )}
+          {theme => <Pitch html={pitch} theme={theme} />}
         </ThemeContext.Consumer>
 
         <hr ref={this.separator2} />
