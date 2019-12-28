@@ -22,24 +22,26 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - uses: nuxt/actions-yarn@master
-        name: Build dependencies
+      - uses: actions/setup-node@v1
+        name: Install node
         with:
-          args: install --prod --pure-lockfile
-      - uses: nuxt/actions-yarn@master
-        name: Build production bundle
+          node-version: '10.x'
+      - name: Build dependencies
+        run: npm ci
+      - name: Build production bundle
         env:
           GOOGLE_ANALYTICS_ID: ${{ secrets.GOOGLE_ANALYTICS_TRACKING_ID }}
-        with:
-          args: run build
+        run: npm run build
   test-frontend:
     name: "Lint and test frontend"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - uses: nuxt/actions-yarn@master
-        name: Install dependencies
-      - uses: nuxt/actions-yarn@master
-        name: Lint
+      - uses: actions/setup-node@v1
+        name: Install node
         with:
-          args: lint
+          node-version: '10.x'
+      - name: Install dependencies
+        run: npm install
+      - name: Lint
+        run: npm lint
