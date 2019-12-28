@@ -12,7 +12,7 @@ const CategoryTemplate = props => {
   const {
     pageContext: { category },
     data: {
-      allMarkdownRemark: { totalCount, edges },
+      allMarkdownRemark: { totalCount, edges }
     }
   } = props;
 
@@ -27,11 +27,8 @@ const CategoryTemplate = props => {
                 {category}
               </Headline>
               <p className="meta">
-                There {totalCount > 1 ? "are" : "is"} <strong>{totalCount}</strong> project{totalCount >
-                1
-                  ? "s"
-                  : ""}{" "}
-                in the category.
+                There {totalCount > 1 ? "are" : "is"} <strong>{totalCount}</strong> project
+                {totalCount > 1 ? "s" : ""} in the category.
               </p>
               <List edges={edges} theme={theme} />
             </header>

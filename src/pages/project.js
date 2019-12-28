@@ -15,10 +15,7 @@ class ProjectPage extends React.Component {
 
     const {
       data: {
-        posts: {
-          categories: posts,
-          technologies: technologies
-        }
+        posts: { categories: posts, technologies: technologies }
       }
     } = this.props;
 
@@ -31,14 +28,18 @@ class ProjectPage extends React.Component {
   }
 
   handleTechnologySelection(technologies) {
-    const selectedPosts = this.props.data.posts.categories.map(category => {
-      return {
-        fieldValue: category.fieldValue,
-        edges: category.edges.filter(node => node.node.frontmatter.technologies.some(tech => technologies.includes(tech)))
-      }
-    }).filter(category => category.edges.length > 0);
+    const selectedPosts = this.props.data.posts.categories
+      .map(category => {
+        return {
+          fieldValue: category.fieldValue,
+          edges: category.edges.filter(node =>
+            node.node.frontmatter.technologies.some(tech => technologies.includes(tech))
+          )
+        };
+      })
+      .filter(category => category.edges.length > 0);
 
-    this.setState({postsByCategory: selectedPosts});
+    this.setState({ postsByCategory: selectedPosts });
   }
 
   render() {
@@ -50,7 +51,11 @@ class ProjectPage extends React.Component {
               <header>
                 <Headline title="Projects by category" theme={theme} />
               </header>
-              <TechnologySelector technologies={this.state.technologies} onChange={this.handleTechnologySelection} theme={theme} />
+              <TechnologySelector
+                technologies={this.state.technologies}
+                onChange={this.handleTechnologySelection}
+                theme={theme}
+              />
               {this.state.postsByCategory.map(item => (
                 <section key={item.fieldValue}>
                   <h2>
@@ -77,7 +82,7 @@ class ProjectPage extends React.Component {
       </React.Fragment>
     );
   }
-};
+}
 
 ProjectPage.propTypes = {
   data: PropTypes.object.isRequired
@@ -85,13 +90,13 @@ ProjectPage.propTypes = {
 
 export default ProjectPage;
 
-//eslint-disable-next-line no-undef
+// eslint-disable-next-line no-undef
 export const query = graphql`
   query PostsQuery {
-    posts: allMarkdownRemark(filter: {fileAbsolutePath: {regex: "//posts/[0-9]+.*--/"}}) {
+    posts: allMarkdownRemark(filter: { fileAbsolutePath: { regex: "//posts/[0-9]+.*--/" } }) {
       technologies: group(field: frontmatter___technologies) {
         fieldValue
-      },
+      }
       categories: group(field: frontmatter___category) {
         fieldValue
         edges {
