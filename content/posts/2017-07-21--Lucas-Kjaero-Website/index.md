@@ -4,6 +4,7 @@ tagline: My old portfolio website
 category: Full Stack
 technologies: ["python", "sql", "django"]
 tldr: My old portfolio website, built using Django and served on Heroku
+for: personal
 source: https://github.com/lucaskjaero/LucasKjaero.com
 ---
 #Description

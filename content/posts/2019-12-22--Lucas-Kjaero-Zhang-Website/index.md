@@ -4,6 +4,7 @@ tagline: This website!
 category: Full Stack
 technologies: ["aws", "gatsby", "graphql", "latex", "react"]
 tldr: This website! Displays projects and contact information using react and S3.
+for: Intuit
 source: https://github.com/lucaskjaero/lucas-kjaero-website
 ---
 #Description

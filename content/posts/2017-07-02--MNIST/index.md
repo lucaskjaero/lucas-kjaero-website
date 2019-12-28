@@ -4,6 +4,7 @@ tagline: Handwritten digit recognition using neural networks
 category: AI and Machine Learning
 technologies: ["python", "keras", "numpy", "pandas", "tensorflow"]
 tldr: Created a computer vision model to recognize handwritten digits with 99% accuracy ranked in top 36% globally of all Kaggle users.
+for: personal
 source: https://github.com/lucaskjaero/MNIST
 ---
 #Description
