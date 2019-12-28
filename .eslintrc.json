@@ -27,7 +27,8 @@
     "global-require": "warn",
     "import/no-dynamic-require": "warn",
     "import/no-extraneous-dependencies": "off",
-    "no-console": "off",
+    "no-console": "error",
+    "no-invalid-this": "off",
     "no-multi-assign": "off",
     "no-param-reassign": "warn",
     "no-plusplus": "off",
@@ -40,6 +41,11 @@
     "prettier/prettier": ["error"],
     "react/jsx-uses-vars": "error",
     "require-jsdoc": "off"
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
   },
   "overrides": [
     {
