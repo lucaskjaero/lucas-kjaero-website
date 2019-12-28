@@ -12,7 +12,7 @@ const PostTemplate = props => {
   const {
     data: {
       post,
-      authornote: { html: authorNote },
+      authornote: { html: authorNote }
     },
     pageContext: { next, prev }
   } = props;
@@ -22,13 +22,7 @@ const PostTemplate = props => {
       <ThemeContext.Consumer>
         {theme => (
           <Article theme={theme}>
-            <Post
-              post={post}
-              next={next}
-              prev={prev}
-              authornote={authorNote}
-              theme={theme}
-            />
+            <Post post={post} next={next} prev={prev} authornote={authorNote} theme={theme} />
           </Article>
         )}
       </ThemeContext.Consumer>
@@ -45,7 +39,7 @@ PostTemplate.propTypes = {
 
 export default PostTemplate;
 
-//eslint-disable-next-line no-undef
+// eslint-disable-next-line no-undef
 export const postQuery = graphql`
   query PostBySlug($slug: String!) {
     post: markdownRemark(fields: { slug: { eq: $slug } }) {
@@ -57,8 +51,8 @@ export const postQuery = graphql`
       }
       frontmatter {
         title
-        category,
-        source,
+        category
+        source
         technologies
       }
     }
