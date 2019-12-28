@@ -33,16 +33,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - uses: nuxt/actions-yarn@master
-        name: Build dependencies
+      - uses: actions/setup-node@v1
+        name: Install node
         with:
-          args: install --prod --pure-lockfile
-      - uses: nuxt/actions-yarn@master
-        name: Build production bundle
+          node-version: '10.x'
+      - name: Build dependencies
+        run: npm ci
+      - name: Build production bundle
         env:
           GOOGLE_ANALYTICS_ID: ${{ secrets.GOOGLE_ANALYTICS_TRACKING_ID }}
-        with:
-          args: run build
+        run: npm run build
       - uses: actions/upload-artifact@master
         with:
           name: gatsby-public

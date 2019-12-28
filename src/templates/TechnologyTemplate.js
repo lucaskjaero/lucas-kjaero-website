@@ -12,16 +12,18 @@ const TechnologyTemplate = props => {
   const {
     pageContext: { technology },
     data: {
-      allMarkdownRemark: { edges },
+      allMarkdownRemark: { edges }
     }
   } = props;
 
   // Gatsby doesn't currently support set ownership checks in graphql, so we do this manually
-  const selectedPosts = edges.filter(post => {
-    return post.node.frontmatter.technologies && (post.node.frontmatter.technologies != null)
-  }).filter(post => {
-    return post.node.frontmatter.technologies.includes(technology);
-  });
+  const selectedPosts = edges
+    .filter(post => {
+      return post.node.frontmatter.technologies && post.node.frontmatter.technologies != null;
+    })
+    .filter(post => {
+      return post.node.frontmatter.technologies.includes(technology);
+    });
   const totalCount = selectedPosts.length;
 
   return (
@@ -35,10 +37,8 @@ const TechnologyTemplate = props => {
                 {technology}
               </Headline>
               <p className="meta">
-                There {totalCount > 1 ? "are" : "is"} <strong>{totalCount}</strong> project{totalCount >
-                1
-                  ? "s"
-                  : ""}{" "}
+                There {totalCount > 1 ? "are" : "is"} <strong>{totalCount}</strong> project
+                {totalCount > 1 ? "s " : " "}
                 using this technology.
               </p>
               <List edges={selectedPosts} theme={theme} />
@@ -62,10 +62,7 @@ export default TechnologyTemplate;
 // eslint-disable-next-line no-undef
 export const technologyQuery = graphql`
   query PostsByTechnology {
-    allMarkdownRemark(
-      limit: 1000
-      sort: { fields: [fields___prefix], order: DESC }
-    ) {
+    allMarkdownRemark(limit: 1000, sort: { fields: [fields___prefix], order: DESC }) {
       edges {
         node {
           fields {

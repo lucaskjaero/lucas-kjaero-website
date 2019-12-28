@@ -4,6 +4,7 @@ on: [pull_request]
 
 jobs:
   build-resume:
+    name: "Test that resumes build"
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
@@ -16,17 +17,31 @@ jobs:
       run: xelatex -file-line-error -interaction=nonstopmode -recorder lucas-kjaero-zhang-个人简历.tex
       working-directory: resume
 
-  build-and-test-frontend:
+  build-frontend:
+    name: "Test that frontend builds"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - uses: nuxt/actions-yarn@master
-        name: Build dependencies
+      - uses: actions/setup-node@v1
+        name: Install node
         with:
-          args: install --prod --pure-lockfile
-      - uses: nuxt/actions-yarn@master
-        name: Build production bundle
+          node-version: '10.x'
+      - name: Build dependencies
+        run: npm ci
+      - name: Build production bundle
         env:
           GOOGLE_ANALYTICS_ID: ${{ secrets.GOOGLE_ANALYTICS_TRACKING_ID }}
+        run: npm run build
+  test-frontend:
+    name: "Lint and test frontend"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@v1
+        name: Install node
         with:
-          args: run build
+          node-version: '10.x'
+      - name: Install dependencies
+        run: npm install
+      - name: Lint
+        run: npm run lint
