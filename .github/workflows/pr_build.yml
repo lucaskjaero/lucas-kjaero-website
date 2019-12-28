@@ -25,6 +25,10 @@ jobs:
         with:
           args: install --prod --pure-lockfile
       - uses: nuxt/actions-yarn@master
+        name: Lint
+        with:
+          args: lint
+      - uses: nuxt/actions-yarn@master
         name: Build production bundle
         env:
           GOOGLE_ANALYTICS_ID: ${{ secrets.GOOGLE_ANALYTICS_TRACKING_ID }}
