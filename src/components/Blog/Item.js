@@ -1,5 +1,4 @@
-import { FaArrowRight, FaCalendar, FaCog, FaTag, FaUser } from "react-icons/fa/";
-import Img from "gatsby-image";
+import { FaArrowRight, FaCalendar, FaCog, FaTag } from "react-icons/fa/";
 import { Link } from "gatsby";
 import PropTypes from "prop-types";
 import React from "react";
@@ -8,14 +7,8 @@ const Item = props => {
   const {
     theme,
     post: {
-      excerpt,
       fields: { slug, prefix },
-      frontmatter: {
-        title,
-        category,
-        technologies,
-        tldr
-      }
+      frontmatter: { title, category, technologies, tldr }
     }
   } = props;
 
@@ -37,7 +30,7 @@ const Item = props => {
             )}
             {technologies && (
               <span>
-              <FaCog size={18} /> {technologies.sort().join(", ")}
+                <FaCog size={18} /> {technologies.sort().join(", ")}
               </span>
             )}
           </p>
