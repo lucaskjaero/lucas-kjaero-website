@@ -43,5 +43,7 @@ jobs:
           node-version: '10.x'
       - name: Install dependencies
         run: npm install
+      - name: Validate security of dependencies
+        run: npx audit-ci --moderate
       - name: Lint
         run: npm run lint
