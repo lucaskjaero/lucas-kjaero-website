@@ -65,8 +65,8 @@ const Meta = props => {
 
 Meta.propTypes = {
   prefix: PropTypes.string.isRequired,
-  category: PropTypes.object,
-  technologies: PropTypes.string,
+  category: PropTypes.string,
+  technologies: PropTypes.array,
   theme: PropTypes.object.isRequired
 };
 

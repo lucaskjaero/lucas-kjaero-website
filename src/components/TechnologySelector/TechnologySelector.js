@@ -39,10 +39,9 @@ const TechnologySelector = props => {
 };
 
 TechnologySelector.propTypes = {
-  data: PropTypes.object,
-  onChange: PropTypes.opbject,
-  technologies: PropTypes.opbject,
-  theme: PropTypes.opbject
+  onChange: PropTypes.func.isRequired,
+  technologies: PropTypes.array.isRequired,
+  theme: PropTypes.object.isRequired
 };
 
 export default TechnologySelector;
