@@ -4,11 +4,15 @@ tagline: This website!
 category: Full Stack
 technologies: ["aws", "gatsby", "graphql", "latex", "react"]
 tldr: This website! Displays projects and contact information using react and S3.
+for: personal
 source: https://github.com/lucaskjaero/lucas-kjaero-website
 ---
-#Description
 A portfolio website to display projects, resume, and contact information. This website is entirely static content, served from an S3 bucket with no backend servers involved.
-#What I learned
+
+## Problem - Static content doesn't need a full backend
+My existing portfolio website used a full backend server and had content in a database. However, I only updated content every six months. This was an inefficient use of money and servers when a static site was all I needed.
+
+## What I learned
 - How to write react components.
 - How to use a static content generator (gatsby).
 - How to write graphql queries to populate a web page.
