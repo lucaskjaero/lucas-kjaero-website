@@ -14,7 +14,7 @@ import "antd/lib/input/style/index.css";
 import "antd/lib/button/style/index.css";
 import { ThemeContext } from "../../layouts";
 
-const axios = require('axios');
+const axios = require("axios");
 
 const Contact = props => {
   const { getFieldDecorator } = props.form;
@@ -29,19 +29,18 @@ const Contact = props => {
     e.preventDefault();
     props.form.validateFields((err, values) => {
       if (!err) {
-        console.log("Received values of form: ", values);
         sendMessage(values);
       }
     });
   }
 
   function sendMessage(values) {
-    axios.post("https://formspree.io/meqelqay", values)
+    axios
+      .post("https://formspree.io/meqelqay", values)
       .then(response => {
         navigate("/success");
       })
       .catch(error => {
-        console.error("Form submission error:", error);
         navigate("/failure");
       });
   }

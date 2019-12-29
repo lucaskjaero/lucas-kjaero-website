@@ -3,23 +3,14 @@ import PropTypes from "prop-types";
 import { Link as GatsbyLink } from "gatsby";
 
 const Link = props => {
-  const { to, name, onClick, data_slug, external } = props;
+  const { to, name, onClick, dataSlug, external } = props;
 
   if (external) {
-    return (
-      <a href={to} >
-      { props.children }
-      </a>
-    );
+    return <a href={to}>{props.children}</a>;
   } else {
     return (
-      <GatsbyLink
-        to={to}
-        className={name}
-        onClick={onClick}
-        data-slug={data_slug}
-      >
-      { props.children }
+      <GatsbyLink to={to} className={name} onClick={onClick} data-slug={dataSlug}>
+        {props.children}
       </GatsbyLink>
     );
   }
