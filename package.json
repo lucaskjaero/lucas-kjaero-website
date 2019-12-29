@@ -34,6 +34,7 @@
     "gatsby-transformer-remark": "^2.6.45",
     "gatsby-transformer-sharp": "^2.3.9",
     "js-yaml": "^3.12.0",
+    "lodash": "^4.17.15",
     "normalize.css": "^8.0.0",
     "postcss-cssnext": "^3.1.0",
     "postcss-easy-media-query": "^1.0.0",
@@ -66,7 +67,7 @@
     "develop": "gatsby develop",
     "format": "prettier --write 'src/**/*.js'",
     "lint-errors": "eslint src/**/*.{js,jsx} --quiet",
-    "lint": "eslint src/**/*.js",
+    "lint": "eslint 'src/**/*.js'",
     "stylelint": "stylelint src/**/*.js"
   },
   "devDependencies": {
