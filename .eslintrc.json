@@ -5,7 +5,9 @@
     "prettier",
     "prettier/react",
     "eslint:recommended",
-    "plugin:react/recommended"
+    "plugin:react/recommended",
+    "plugin:mocha/recommended",
+    "plugin:cypress/recommended"
   ],
   "parserOptions": {
     "ecmaVersion": 2016,
@@ -14,7 +16,7 @@
       "jsx": true
     }
   },
-  "plugins": ["prettier", "react", "jsx-a11y", "import", "graphql"],
+  "plugins": ["prettier", "react", "jsx-a11y", "import", "graphql", "mocha", "cypress"],
   "env": {
     "browser": true,
     "es6": true,

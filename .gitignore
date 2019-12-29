@@ -133,3 +133,6 @@ yarn-error.log
 report/
 static/lucas-kjaero-zhang-resume.pdf
 *.fls
+
+# Cypress test
+cypress/videos/*
