@@ -7,8 +7,7 @@ Contents:
 - Portfolio of projects
 
 Still to do:
-1. Enter projects for the portfolio
-2. Come up with a better pitch / about me
-3. Customize theming
-4. Redirect lucaskjaero.com domain
-5. Sunset django site
+1. Come up with a better pitch / about me
+2. Customize theming
+3. Redirect lucaskjaero.com domain
+4. Sunset django site
