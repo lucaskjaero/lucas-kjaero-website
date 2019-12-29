@@ -45,5 +45,7 @@ jobs:
         run: npm install
       - name: Validate security of dependencies
         run: npx audit-ci --moderate
+      - name: End to end test
+        run: npm test
       - name: Lint
         run: npm run lint
