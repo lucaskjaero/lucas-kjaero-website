@@ -39,6 +39,7 @@
     "postcss-nested": "^3.0.0",
     "postcss-text-remove-gap": "^1.1.1",
     "prismjs": "^1.15.0",
+    "prop-types": "^15.7.2",
     "react": "^16.5.2",
     "react-addons-perf": "^15.4.2",
     "react-dom": "^16.5.2",
