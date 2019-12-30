@@ -76,6 +76,7 @@ jobs:
         run: aws s3 sync public s3://${{ secrets.AWS_S3_BUCKET }}/ --no-progress
       - name: Invalidate Cloudfront cache
         run: aws cloudfront create-invalidation --distribution-id EWJC89C0ACD7D --paths /index.html /*
+  
   release: 
     name: Create release
     needs: [build-resume, build-frontend]
@@ -88,8 +89,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.sha }}
+          tag_name: ${{ github.sha }}
+          release_name: ${{ github.event_name }} - ${{ github.sha }}
           draft: false
           prerelease: false
       - uses: actions/download-artifact@master
