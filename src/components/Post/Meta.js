@@ -4,7 +4,7 @@ import { Link } from "gatsby";
 
 const _ = require("lodash");
 
-import { FaCalendar, FaCog, FaTag, FaUser } from "react-icons/fa/";
+import { FaCalendar, FaCog, FaTag } from "react-icons/fa/";
 
 const Meta = props => {
   const { prefix, category, technologies, theme } = props;
@@ -26,9 +26,9 @@ const Meta = props => {
           {technologies.sort().map(tech => {
             return (
               <span key={tech}>
-              <Link to={`/technology/${tech.split(" ").join("-")}`}>{tech}</Link>
+                <Link to={`/technology/${tech.split(" ").join("-")}`}>{tech}</Link>
               </span>
-            )
+            );
           })}
         </span>
       )}
@@ -66,6 +66,7 @@ const Meta = props => {
 Meta.propTypes = {
   prefix: PropTypes.string.isRequired,
   category: PropTypes.string,
+  technologies: PropTypes.array,
   theme: PropTypes.object.isRequired
 };
 

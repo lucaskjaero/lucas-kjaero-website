@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import React from "react";
 import { ThemeContext } from "../layouts";
 import Article from "../components/Article";
@@ -23,10 +22,6 @@ const ContactPage = props => {
       <Seo />
     </React.Fragment>
   );
-};
-
-ContactPage.propTypes = {
-  data: PropTypes.object.isRequired
 };
 
 export default ContactPage;

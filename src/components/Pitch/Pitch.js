@@ -1,8 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { FaArrowDown } from "react-icons/fa/";
-
 const Pitch = props => {
   const { html, theme } = props;
 
