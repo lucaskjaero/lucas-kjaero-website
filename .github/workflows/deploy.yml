@@ -76,3 +76,43 @@ jobs:
         run: aws s3 sync public s3://${{ secrets.AWS_S3_BUCKET }}/ --no-progress
       - name: Invalidate Cloudfront cache
         run: aws cloudfront create-invalidation --distribution-id EWJC89C0ACD7D --paths /index.html /*
+  release: 
+    name: Create release
+    needs: [build-resume, build-frontend]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Create release
+        id: create_release
+        uses: actions/create-release@v1.0.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: false
+      - uses: actions/download-artifact@master
+        with:
+          name: gatsby-public
+          path: public
+      - uses: actions/download-artifact@master
+        with:
+          name: lucas-kjaero-zhang-resume.pdf
+          path: public
+      - uses: actions/download-artifact@master
+        with:
+          name: lucas-kjaero-zhang-个人简历.pdf
+          path: public
+      - name: Zip release
+        run: zip -r release.zip public
+      - name: Upload zip
+        id: upload-release-asset 
+        uses: actions/upload-release-asset@v1.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./releaset.zip
+          asset_name: release.zip
+          asset_content_type: application/zip
