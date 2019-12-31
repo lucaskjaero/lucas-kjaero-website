@@ -38,7 +38,7 @@ jobs:
         with:
           node-version: '10.x'
       - name: Build dependencies
-        run: npm ci
+        run: npm ci --only=production
       - name: Build production bundle
         env:
           GOOGLE_ANALYTICS_ID: ${{ secrets.GOOGLE_ANALYTICS_TRACKING_ID }}
@@ -66,21 +66,58 @@ jobs:
         with:
           name: lucas-kjaero-zhang-个人简历.pdf
           path: public
-      - uses: jakejarvis/s3-sync-action@master
-        name: Push to S3
-        with:
-          args: --acl public-read --follow-symlinks --delete
-        env:
-          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: 'us-west-1'
-          SOURCE_DIR: 'public'
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-west-1
+      - name: Push to S3
+        run: aws s3 sync public s3://${{ secrets.AWS_S3_BUCKET }}/ --no-progress
       - name: Invalidate Cloudfront cache
         run: aws cloudfront create-invalidation --distribution-id EWJC89C0ACD7D --paths /index.html /*
+  
+  release: 
+    name: Create release
+    needs: [build-resume, build-frontend]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
+      - name: Create release
+        id: create_release
+        uses: actions/create-release@v1.0.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: ${{ github.event.head_commit.message }}
+          draft: false
+          prerelease: false
+      - uses: actions/download-artifact@master
+        with:
+          name: gatsby-public
+          path: public
+      - uses: actions/download-artifact@master
+        with:
+          name: lucas-kjaero-zhang-resume.pdf
+          path: public
+      - uses: actions/download-artifact@master
+        with:
+          name: lucas-kjaero-zhang-个人简历.pdf
+          path: public
+      - name: Zip release
+        run: zip -r release.zip public
+      - name: Upload zip
+        id: upload-release-asset 
+        uses: actions/upload-release-asset@v1.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./release.zip
+          asset_name: ${{ github.ref }}.zip
+          asset_content_type: application/zip

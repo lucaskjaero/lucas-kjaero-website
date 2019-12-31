@@ -11,10 +11,9 @@ import Source from "./Source";
 
 const Post = props => {
   const {
-    post,
     post: {
       html,
-      fields: { prefix, slug },
+      fields: { prefix },
       frontmatter: { title, author, category, source, technologies }
     },
     authornote,
@@ -27,7 +26,13 @@ const Post = props => {
     <React.Fragment>
       <header>
         <Headline title={title} theme={theme} />
-        <Meta prefix={prefix} author={author} category={category} technologies={technologies} theme={theme} />
+        <Meta
+          prefix={prefix}
+          author={author}
+          category={category}
+          technologies={technologies}
+          theme={theme}
+        />
       </header>
       <Bodytext html={html} theme={theme} />
       <Source source={source} theme={theme} />
