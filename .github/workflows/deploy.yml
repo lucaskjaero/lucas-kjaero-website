@@ -10,31 +10,33 @@ jobs:
     name: Build resume
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-      with:
-        ref: master
-    - name: Install latex and fonts
-      run: sudo apt-get install texlive-xetex fonts-arphic-gbsn00lp fonts-wqy-zenhei fonts-arphic-gkai00mp latex-cjk-all
-    - name: Compile English resume
-      run: xelatex -file-line-error -interaction=nonstopmode -recorder lucas-kjaero-zhang-resume.tex
-      working-directory: resume
-    - name: Compile Chinese resume
-      run: xelatex -file-line-error -interaction=nonstopmode -recorder lucas-kjaero-zhang-个人简历.tex
-      working-directory: resume
-    - uses: actions/upload-artifact@master
-      with:
-        name: lucas-kjaero-zhang-resume.pdf
-        path: resume/lucas-kjaero-zhang-resume.pdf
-    - uses: actions/upload-artifact@master
-      with:
-        name: lucas-kjaero-zhang-个人简历.pdf
-        path: resume/lucas-kjaero-zhang-个人简历.pdf
+      - uses: actions/checkout@master
+        with:
+          ref: master
+      - name: Install latex and fonts
+        run: sudo apt-get install texlive-xetex fonts-arphic-gbsn00lp fonts-wqy-zenhei fonts-arphic-gkai00mp latex-cjk-all
+      - name: Compile English resume
+        run: xelatex -file-line-error -interaction=nonstopmode -recorder lucas-kjaero-zhang-resume.tex
+        working-directory: resume
+      - name: Compile Chinese resume
+        run: xelatex -file-line-error -interaction=nonstopmode -recorder lucas-kjaero-zhang-个人简历.tex
+        working-directory: resume
+      - uses: actions/upload-artifact@master
+        with:
+          name: lucas-kjaero-zhang-resume.pdf
+          path: resume/lucas-kjaero-zhang-resume.pdf
+      - uses: actions/upload-artifact@master
+        with:
+          name: lucas-kjaero-zhang-个人简历.pdf
+          path: resume/lucas-kjaero-zhang-个人简历.pdf
   
   build-frontend:
     name: Build frontend
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
+        with:
+          ref: master
       - uses: actions/setup-node@v1
         name: Install node
         with:
@@ -55,7 +57,6 @@ jobs:
     needs: [build-resume, build-frontend]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
       - uses: actions/download-artifact@master
         with:
           name: gatsby-public
@@ -84,9 +85,6 @@ jobs:
     needs: [build-resume, build-frontend]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
-        with:
-          ref: master
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
