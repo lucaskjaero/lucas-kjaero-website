@@ -3,6 +3,7 @@ name: Deploy website to S3
 on:
   pull_request:
     types: closed
+    branches: master
 
 jobs:
   build-resume:
