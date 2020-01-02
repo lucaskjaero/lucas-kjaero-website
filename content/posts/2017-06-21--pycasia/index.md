@@ -9,7 +9,7 @@ source: https://github.com/lucaskjaero/PyCasia
 ---
 An open-source python library to work with the CASIA Chinese handwriting database. Reads custom binary filetypes to prepare for machine learning applications.
 
-## Problem - A dataset with a custom binary format
+## Problem: A dataset with a custom binary format
 The CASIA library uses a custom binary format to pack thousands of images into a single file. This allows for efficient processing, but doesn't work with anything else without extra glue code. This library is the glue code that allows this data to be used with off the shelf machine learning frameworks.
 
 ## What I learned

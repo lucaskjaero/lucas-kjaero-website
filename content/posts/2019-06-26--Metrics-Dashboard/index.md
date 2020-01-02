@@ -9,10 +9,10 @@ source:
 ---
 Led a team of three engineers to create a data collection pipeline and release information dashboard to enable leaders to self-serve deployment metrics. This dashboard replaced manual queries from directors, enabling them to get data instantly.
 
-## Problem - Weekly deployment reports required manual SQL queries
+## Problem: Weekly deployment reports required manual SQL queries
 Every week, my director would ask for deployment reports to give to senior leadership. Those reports required different information each time, so they couldn't be automated. Data was also difficult to collect because our deployment tool was built using micro-services, causing data to be stored in different places.
 
-## Solution - A dashboard for deployment metrics
+## Solution: A dashboard for deployment metrics
 We created a react dashboard that showed the last two years of deployment data, allowing filtering by product, team, whether it was in production, and more. We also created a metrics collection infrastructure to store raw user events, letting us answer questions about the level of automation in the release pipeline.
 
 ## How it works - Eventing

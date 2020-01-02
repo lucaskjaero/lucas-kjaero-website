@@ -32,6 +32,7 @@ jobs:
         env:
           GOOGLE_ANALYTICS_ID: ${{ secrets.GOOGLE_ANALYTICS_TRACKING_ID }}
         run: npm run build
+        
   test-frontend:
     name: "Lint and test frontend"
     runs-on: ubuntu-latest
