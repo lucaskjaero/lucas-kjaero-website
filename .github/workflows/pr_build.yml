@@ -32,6 +32,7 @@ jobs:
         env:
           GOOGLE_ANALYTICS_ID: ${{ secrets.GOOGLE_ANALYTICS_TRACKING_ID }}
         run: npm run build
+        
   test-frontend:
     name: "Lint and test frontend"
     runs-on: ubuntu-latest
@@ -49,3 +50,22 @@ jobs:
         run: npm test
       - name: Lint
         run: npm run lint
+        
+  test-release-process:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
+      - name: Create release
+        id: create_release
+        uses: K-Phoen/semver-release-action@master
+        with:
+          release_branch: master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Dump release output to see what it is
+        env:
+          RELEASE: ${{ toJson(steps.create_release.outputs.tag) }}
+        run: echo "$RELEASE"
