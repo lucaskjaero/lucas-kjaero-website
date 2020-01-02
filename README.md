@@ -8,6 +8,5 @@ Contents:
 
 Still to do:
 1. Come up with a better pitch / about me
-2. Customize theming
-3. Redirect lucaskjaero.com domain
-4. Sunset django site
+2. Redirect lucaskjaero.com domain
+3. Sunset django site
