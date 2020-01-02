@@ -1,9 +1,8 @@
 name: Deploy website to S3
 
 on:
-  push:
-    branches:
-    - master
+  pull_request:
+    types: closed
 
 jobs:
   build-resume:
