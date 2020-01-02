@@ -50,3 +50,13 @@ jobs:
         run: npm test
       - name: Lint
         run: npm run lint
+    
+  require-pr-data:
+    name: Enforce PR requirements
+    runs-on: ubuntu-latest
+    steps:
+      - name: Enforce PR label
+        uses: yogevbd/enforce-label-action@1.0.1
+        env:
+          VALID_LABELS: "major,minor,patch"
+
