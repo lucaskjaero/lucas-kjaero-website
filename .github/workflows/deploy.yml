@@ -1,38 +1,44 @@
 name: Deploy website to S3
 
 on:
-  push:
-    branches:
-    - master
+  pull_request:
+    types: closed
+    branches: master
 
 jobs:
   build-resume:
     name: Build resume
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-    - name: Install latex and fonts
-      run: sudo apt-get install texlive-xetex fonts-arphic-gbsn00lp fonts-wqy-zenhei fonts-arphic-gkai00mp latex-cjk-all
-    - name: Compile English resume
-      run: xelatex -file-line-error -interaction=nonstopmode -recorder lucas-kjaero-zhang-resume.tex
-      working-directory: resume
-    - name: Compile Chinese resume
-      run: xelatex -file-line-error -interaction=nonstopmode -recorder lucas-kjaero-zhang-个人简历.tex
-      working-directory: resume
-    - uses: actions/upload-artifact@master
-      with:
-        name: lucas-kjaero-zhang-resume.pdf
-        path: resume/lucas-kjaero-zhang-resume.pdf
-    - uses: actions/upload-artifact@master
-      with:
-        name: lucas-kjaero-zhang-个人简历.pdf
-        path: resume/lucas-kjaero-zhang-个人简历.pdf
+      - uses: actions/checkout@master
+        with:
+          ref: master
+      - name: Install latex and fonts
+        run: sudo apt-get install texlive-xetex fonts-arphic-gbsn00lp fonts-wqy-zenhei fonts-arphic-gkai00mp latex-cjk-all
+      - name: Compile English resume
+        run: xelatex -file-line-error -interaction=nonstopmode -recorder lucas-kjaero-zhang-resume.tex
+        working-directory: resume
+      - name: Compile Chinese resume
+        run: xelatex -file-line-error -interaction=nonstopmode -recorder lucas-kjaero-zhang-个人简历.tex
+        working-directory: resume
+      - uses: actions/upload-artifact@master
+        name: Upload resume
+        with:
+          name: lucas-kjaero-zhang-resume.pdf
+          path: resume/lucas-kjaero-zhang-resume.pdf
+      - uses: actions/upload-artifact@master
+        name: Upload Chinese resume
+        with:
+          name: lucas-kjaero-zhang-个人简历.pdf
+          path: resume/lucas-kjaero-zhang-个人简历.pdf
   
   build-frontend:
     name: Build frontend
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
+        with:
+          ref: master
       - uses: actions/setup-node@v1
         name: Install node
         with:
@@ -44,6 +50,7 @@ jobs:
           GOOGLE_ANALYTICS_ID: ${{ secrets.GOOGLE_ANALYTICS_TRACKING_ID }}
         run: npm run build
       - uses: actions/upload-artifact@master
+        name: Upload website content
         with:
           name: gatsby-public
           path: public
@@ -53,16 +60,18 @@ jobs:
     needs: [build-resume, build-frontend]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
       - uses: actions/download-artifact@master
+        name: Download website content
         with:
           name: gatsby-public
           path: public
       - uses: actions/download-artifact@master
+        name: Download resume
         with:
           name: lucas-kjaero-zhang-resume.pdf
           path: public
       - uses: actions/download-artifact@master
+        name: Download Chinese resume
         with:
           name: lucas-kjaero-zhang-个人简历.pdf
           path: public
@@ -76,3 +85,50 @@ jobs:
         run: aws s3 sync public s3://${{ secrets.AWS_S3_BUCKET }}/ --no-progress
       - name: Invalidate Cloudfront cache
         run: aws cloudfront create-invalidation --distribution-id EWJC89C0ACD7D --paths /index.html /*
+  
+  release: 
+    name: Add artifacts to release
+    needs: [build-resume, build-frontend]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: K-Phoen/semver-release-action@master
+        name: Calculate release version
+        id: release_version
+        with:
+          release_branch: master
+          release_strategy: none
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1.0.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ steps.release_version.outputs.tag }}
+          release_name: Release ${{ github.ref }}
+      - uses: actions/download-artifact@master
+        name: Download website content
+        with:
+          name: gatsby-public
+          path: public
+      - uses: actions/download-artifact@master
+        name: Download resume
+        with:
+          name: lucas-kjaero-zhang-resume.pdf
+          path: public
+      - uses: actions/download-artifact@master
+        name: Download Chinese resume
+        with:
+          name: lucas-kjaero-zhang-个人简历.pdf
+          path: public
+      - name: Zip release
+        run: zip -r release.zip public
+      - uses: actions/upload-release-asset@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./release.zip
+          asset_name: release.zip
+          asset_content_type: application/zip

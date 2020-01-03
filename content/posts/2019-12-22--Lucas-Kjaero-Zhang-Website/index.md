@@ -9,7 +9,7 @@ source: https://github.com/lucaskjaero/lucas-kjaero-website
 ---
 A portfolio website to display projects, resume, and contact information. This website is entirely static content, served from an S3 bucket with no backend servers involved.
 
-## Problem - Static content doesn't need a full backend
+## Problem: Static content doesn't need a full backend
 My existing portfolio website used a full backend server and had content in a database. However, I only updated content every six months. This was an inefficient use of money and servers when a static site was all I needed.
 
 ## What I learned

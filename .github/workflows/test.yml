@@ -3,19 +3,13 @@ name: PR Build
 on: [pull_request]
 
 jobs:
-  build-resume:
-    name: "Test that resumes build"
+  add-label:
+    name: Add patch label to pull request
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-    - name: Install latex and fonts
-      run: sudo apt-get install texlive-xetex fonts-arphic-gbsn00lp fonts-wqy-zenhei fonts-arphic-gkai00mp latex-cjk-all
-    - name: Compile English resume
-      run: xelatex -file-line-error -interaction=nonstopmode -recorder lucas-kjaero-zhang-resume.tex
-      working-directory: resume
-    - name: Compile Chinese resume
-      run: xelatex -file-line-error -interaction=nonstopmode -recorder lucas-kjaero-zhang-个人简历.tex
-      working-directory: resume
+    - uses: actions/labeler@v2
+      with:
+        repo-token: "${{ secrets.GITHUB_TOKEN }}"
 
   build-frontend:
     name: "Test that frontend builds"
@@ -32,6 +26,21 @@ jobs:
         env:
           GOOGLE_ANALYTICS_ID: ${{ secrets.GOOGLE_ANALYTICS_TRACKING_ID }}
         run: npm run build
+  
+  build-resume:
+    name: "Test that resumes build"
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Install latex and fonts
+      run: sudo apt-get install texlive-xetex fonts-arphic-gbsn00lp fonts-wqy-zenhei fonts-arphic-gkai00mp latex-cjk-all
+    - name: Compile English resume
+      run: xelatex -file-line-error -interaction=nonstopmode -recorder lucas-kjaero-zhang-resume.tex
+      working-directory: resume
+    - name: Compile Chinese resume
+      run: xelatex -file-line-error -interaction=nonstopmode -recorder lucas-kjaero-zhang-个人简历.tex
+      working-directory: resume
+        
   test-frontend:
     name: "Lint and test frontend"
     runs-on: ubuntu-latest
