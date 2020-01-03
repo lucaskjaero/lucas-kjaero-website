@@ -15,3 +15,4 @@ Deployed by github actions.
 1. Come up with a better pitch / about me
 2. Redirect lucaskjaero.com domain
 3. Sunset django site
+4. Keep this updated
