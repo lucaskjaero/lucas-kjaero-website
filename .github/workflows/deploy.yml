@@ -1,7 +1,8 @@
 name: Deploy website to S3
 
 on:
-  release
+  release:
+    types: [published]
 
 jobs:
   build-resume:
