@@ -124,7 +124,7 @@ jobs:
           path: public
       - name: Zip release
         run: zip -r release.zip public
-      - uses: actions/upload-release-artifact@master
+      - uses: actions/upload-release-asset@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
