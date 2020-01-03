@@ -108,7 +108,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ steps.release_version.outputs.tag }}
-          release_name: ${{ event.pull_request.title }}
+          release_name: ${{ github.event.pull_request.title }}
       - uses: actions/download-artifact@master
         name: Download website content
         with:
