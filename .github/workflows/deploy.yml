@@ -108,7 +108,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ steps.release_version.outputs.tag }}
-          release_name: Release ${{ github.ref }}
+          release_name: ${{ event.pull_request.title }}
       - uses: actions/download-artifact@master
         name: Download website content
         with:
@@ -134,3 +134,11 @@ jobs:
           asset_path: ./release.zip
           asset_name: release.zip
           asset_content_type: application/zip
+      - uses: actions/upload-release-asset@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./resume.pdf
+          asset_name: resume.pdf
+          asset_content_type: application/pdf
