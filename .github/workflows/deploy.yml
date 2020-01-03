@@ -9,6 +9,7 @@ jobs:
   build-resume:
     name: Build resume
     runs-on: ubuntu-latest
+    if: github.event.pull_request.merged
     steps:
       - uses: actions/checkout@master
         with:
@@ -35,6 +36,7 @@ jobs:
   build-frontend:
     name: Build frontend
     runs-on: ubuntu-latest
+    if: github.event.pull_request.merged
     steps:
       - uses: actions/checkout@master
         with:
