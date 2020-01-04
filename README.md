@@ -12,7 +12,6 @@ Served by Amazon S3 and Cloudfront.
 Deployed by github actions.
 
 ### Still to do:
-1. Come up with a better pitch / about me
-2. Redirect lucaskjaero.com domain
-3. Sunset django site
-4. Keep this updated
+1. Redirect lucaskjaero.com domain
+2. Sunset django site
+3. Keep this updated

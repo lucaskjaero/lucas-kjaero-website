@@ -2,4 +2,4 @@
 title: author
 ---
 
-**Lucas Kjaero-Zhang** I'm a full stack engineer with a focus on data and a broad variety of experience. I will build robust systems that effectively collect and clean your data. I have worked at enterprise scale for two years, and have worked on roles in diverse areas such as application development, devops, and quality. The application I maintained and improved has performed over 1 million deployments, and I know that because I built the metrics pipeline for it. I'm passionate about bringing valuable and actionable insights from your data.
+**Lucas Kjaero-Zhang** I'm a full stack engineer with a focus on data, located in San Diego, California. When I'm not maintaining the release pipelines at Intuit, I love traveling, going on long walks with my family, and automating everything possible in my house.
