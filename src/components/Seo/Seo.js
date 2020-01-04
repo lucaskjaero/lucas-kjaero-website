@@ -17,6 +17,7 @@ const Seo = props => {
 
   return (
     <Helmet
+      defer={false}
       htmlAttributes={{
         lang: config.siteLanguage,
         prefix: "og: http://ogp.me/ns#"
