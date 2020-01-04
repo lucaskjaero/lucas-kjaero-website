@@ -23,7 +23,7 @@ jobs:
         run: xelatex -file-line-error -interaction=nonstopmode -recorder lucas-kjaero-zhang-个人简历.tex
         working-directory: resume
       - uses: actions/upload-artifact@master
-        name: Upload resume
+        name: Upload English resume
         with:
           name: lucas-kjaero-zhang-resume.pdf
           path: resume/lucas-kjaero-zhang-resume.pdf
@@ -68,7 +68,7 @@ jobs:
           name: gatsby-public
           path: public
       - uses: actions/download-artifact@master
-        name: Download resume
+        name: Download English resume
         with:
           name: lucas-kjaero-zhang-resume.pdf
           path: public
@@ -115,7 +115,7 @@ jobs:
           name: gatsby-public
           path: public
       - uses: actions/download-artifact@master
-        name: Download resume
+        name: Download English resume
         with:
           name: lucas-kjaero-zhang-resume.pdf
           path: public
@@ -139,6 +139,14 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./public/resume.pdf
-          asset_name: resume.pdf
+          asset_path: ./public/lucas-kjaero-zhang-resume.pdf
+          asset_name: lucas-kjaero-zhang-resume.pdf
+          asset_content_type: application/pdf
+      - uses: actions/upload-release-asset@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./public/lucas-kjaero-zhang-个人简历.pdf
+          asset_name: lucas-kjaero-zhang-个人简历.pdf
           asset_content_type: application/pdf
