@@ -24,7 +24,7 @@ module.exports = {
   // Replace your email adress with md5-code.
   // Example https://www.gravatar.com/avatar/g.strainovic@gmail.com ->
   // gravatarImgMd5: "https://www.gravatar.com/avatar/1db853e4df386e8f699e4b35505dd8c6",
-  gravatarImgMd5: "contact@lucaskjaerozhang.com",
+  gravatarImgMd5: "",
 
   // social
   authorSocialLinks: [{ name: "github", url: "https://github.com/lucaskjaero" }]
