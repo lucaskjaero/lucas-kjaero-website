@@ -19,7 +19,10 @@ class IndexPage extends React.Component {
     const {
       data: {
         posts: { edges: posts = [] },
-        pitch: { html: pitch },
+        pitch: {
+          html: pitch,
+          frontmatter: { tagline }
+        },
         bgDesktop: {
           resize: { src: desktop }
         },
@@ -49,7 +52,7 @@ class IndexPage extends React.Component {
         <hr ref={this.separator1} />
 
         <ThemeContext.Consumer>
-          {theme => <Pitch html={pitch} theme={theme} />}
+          {theme => <Pitch html={pitch} tagline={tagline} theme={theme} />}
         </ThemeContext.Consumer>
 
         <hr ref={this.separator2} />
@@ -102,6 +105,9 @@ export const query = graphql`
     }
     pitch: markdownRemark(fileAbsolutePath: { regex: "/pitch/" }) {
       html
+      frontmatter {
+        tagline
+      }
     }
     bgDesktop: imageSharp(fluid: { originalName: { regex: "/lucas-background/" } }) {
       resize(width: 1200, quality: 90, cropFocus: CENTER) {
