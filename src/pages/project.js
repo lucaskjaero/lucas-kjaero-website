@@ -93,7 +93,10 @@ export default ProjectPage;
 // eslint-disable-next-line no-undef
 export const query = graphql`
   query PostsQuery {
-    posts: allMarkdownRemark(filter: { fileAbsolutePath: { regex: "//posts/[0-9]+.*--/" } }) {
+    posts: allMarkdownRemark(
+      filter: { fileAbsolutePath: { regex: "//posts/[0-9]+.*--/" } }
+      sort: { fields: fields___prefix, order: DESC }
+    ) {
       technologies: group(field: frontmatter___technologies) {
         fieldValue
       }
