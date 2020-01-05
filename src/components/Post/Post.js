@@ -7,14 +7,14 @@ import Bodytext from "../Article/Bodytext";
 import Meta from "./Meta";
 import Author from "./Author";
 import NextPrev from "./NextPrev";
-import Source from "./Source";
+import ViewButton from "./ViewButton";
 
 const Post = props => {
   const {
     post: {
       html,
       fields: { prefix },
-      frontmatter: { title, author, category, source, technologies }
+      frontmatter: { title, author, category, site, source, technologies }
     },
     authornote,
     next: nextPost,
@@ -35,7 +35,8 @@ const Post = props => {
         />
       </header>
       <Bodytext html={html} theme={theme} />
-      <Source source={source} theme={theme} />
+      <ViewButton link={source} text="View Source" theme={theme} />
+      <ViewButton link={site} text="View Site" theme={theme} />
       <footer>
         <Author note={authornote} theme={theme} />
         <NextPrev next={nextPost} prev={prevPost} theme={theme} />

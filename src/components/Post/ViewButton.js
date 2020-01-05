@@ -2,22 +2,23 @@ import React from "react";
 import PropTypes from "prop-types";
 import Button from "antd/lib/button";
 
-const Source = props => {
-  const { source, theme } = props;
+const ViewButton = props => {
+  const { link, text, theme } = props;
 
-  if (source && source != "") {
+  if (link && link != "") {
     return (
       <React.Fragment>
         <div className="source">
-          <Button type="primary" href={source}>
-            View Source
+          <Button type="primary" href={link}>
+            {text}
           </Button>
         </div>
 
         {/* --- STYLES --- */}
         <style jsx>{`
-          .ant-btn-primary {
+          a {
             background-color: ${theme.background.color.brand};
+            margin-bottom: 2em;
           }
         `}</style>
       </React.Fragment>
@@ -27,9 +28,10 @@ const Source = props => {
   }
 };
 
-Source.propTypes = {
-  source: PropTypes.string,
+ViewButton.propTypes = {
+  link: PropTypes.string,
+  text: PropTypes.string.isRequired,
   theme: PropTypes.object.isRequired
 };
 
-export default Source;
+export default ViewButton;
