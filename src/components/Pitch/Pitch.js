@@ -56,7 +56,7 @@ const Pitch = props => {
 
         .pitchtext {
           display: block;
-          font-size: 16px;
+          font-size: ${theme.font.size.m};
           text-align: center;
           padding-right: 15%;
           padding-left: 15%;
