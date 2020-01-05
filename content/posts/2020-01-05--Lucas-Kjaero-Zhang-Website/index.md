@@ -2,11 +2,11 @@
 title: Lucas Kjaero-Zhang Website
 tagline: This website!
 category: Full Stack
-technologies: ["aws", "gatsby", "graphql", "javascript", "latex", "react"]
+technologies: ["aws", "gatsby", "graphql", "javascript", "latex", "react", "S3"]
 tldr: This website! Displays projects and contact information using react and S3.
 for: personal
 source: https://github.com/lucaskjaero/lucas-kjaero-website
-site: 
+site:
 ---
 A portfolio website to display projects, resume, and contact information. This website is entirely static content, served from an S3 bucket with no backend servers involved.
 
