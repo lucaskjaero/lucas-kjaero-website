@@ -1,5 +1,5 @@
 ---
-title: About me
+title: About Me
 ---
 I'm a full stack engineer with a focus on data and a broad variety of experience. I will build robust systems that effectively collect and clean your data.
 
