@@ -148,5 +148,5 @@ jobs:
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./public/lucas-kjaero-zhang-个人简历.pdf
-          asset_name: lucas-kjaero-zhang-个人简历.pdf
+          asset_name: lucas-kjaero-zhang-resume-zh.pdf
           asset_content_type: application/pdf
