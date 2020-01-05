@@ -6,6 +6,7 @@ technologies: ["python", "keras", "numpy", "pandas", "tensorflow"]
 tldr: Created a computer vision model to recognize handwritten digits with 99% accuracy ranked in top 36% globally of all Kaggle users.
 for: personal
 source: https://github.com/lucaskjaero/MNIST
+site:
 ---
 Created a computer vision model to recognize handwritten digits with 99% accuracy. Model ranked in the top 36% globally of all Kaggle users. Used a Convolutional Neural Network implemented in TensorFlow.
 

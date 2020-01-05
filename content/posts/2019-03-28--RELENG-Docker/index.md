@@ -6,6 +6,7 @@ technologies: ["docker", "java", "spring boot"]
 tldr: Created a suite of docker containers allowing new hires to begin local development on day one.
 for: Intuit
 source:
+site:
 ---
 Created a suite of docker containers allowing new hires to begin local development on day one. Prior to the docker setup, local development was a pain point, with no team-member having all micro-services set up locally, and development frequently occurred in local environments
 

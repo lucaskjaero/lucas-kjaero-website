@@ -6,6 +6,7 @@ technologies: ["spring boot", "java", "jms", "aws", "kinesis", "elasticsearch", 
 tldr: Created a data collection pipeline and release information dashboard to enable leaders to self-serve deployment metrics.
 for: Intuit
 source:
+site:
 ---
 Led a team of three engineers to create a data collection pipeline and release information dashboard to enable leaders to self-serve deployment metrics. This dashboard replaced manual queries from directors, enabling them to get data instantly.
 

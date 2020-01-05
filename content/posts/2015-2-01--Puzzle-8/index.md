@@ -6,6 +6,7 @@ technologies: ["python"]
 tldr: Created an object-oriented Python program to solve sliding tile puzzles with an A* search and multiple heuristics.
 for: school
 source:
+site:
 ---
 Created a Python program to solve sliding tile puzzles with an A* search and multiple heuristics. Finds solutions with the fewest possible number of moves.
 

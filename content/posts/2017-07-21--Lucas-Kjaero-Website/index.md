@@ -6,6 +6,7 @@ technologies: ["python", "sql", "django"]
 tldr: My old portfolio website, built using Django and served on Heroku
 for: personal
 source: https://github.com/lucaskjaero/LucasKjaero.com
+site: https://murmuring-hamlet-3859.herokuapp.com/
 ---
 A portfolio website to display projects, resume, and contact information. The website was built using Django, and was served on Heroku.
 
