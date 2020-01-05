@@ -52,6 +52,7 @@ export const postQuery = graphql`
       frontmatter {
         title
         category
+        site
         source
         technologies
       }

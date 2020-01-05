@@ -2,12 +2,12 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const Pitch = props => {
-  const { html, theme } = props;
+  const { html, tagline, theme } = props;
 
   return (
     <React.Fragment>
       <section className="pitch">
-        <h2>The perfect addition to your team</h2>
+        <h2>{tagline}</h2>
         <div className="pitchtext" dangerouslySetInnerHTML={{ __html: html }} />
       </section>
 
@@ -23,6 +23,10 @@ const Pitch = props => {
           justify-content: center;
           padding-top: ${theme.header.height.homepage};
           padding-bottom: ${theme.header.height.homepage};
+        }
+
+        .pitchtext p {
+          margin-bottom: 2em;
         }
 
         h2 {
@@ -52,7 +56,7 @@ const Pitch = props => {
 
         .pitchtext {
           display: block;
-          font-size: 16px;
+          font-size: ${theme.font.size.m};
           text-align: center;
           padding-right: 15%;
           padding-left: 15%;
@@ -79,6 +83,7 @@ const Pitch = props => {
 
 Pitch.propTypes = {
   html: PropTypes.string.isRequired,
+  tagline: PropTypes.object.isRequired,
   theme: PropTypes.object.isRequired
 };
 

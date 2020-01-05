@@ -6,6 +6,7 @@ technologies: ["python", "numpy"]
 tldr: An open-source python library to work with the CASIA Chinese handwriting database.
 for: personal
 source: https://github.com/lucaskjaero/PyCasia
+site: https://pypi.org/project/Pycasia/
 ---
 An open-source python library to work with the CASIA Chinese handwriting database. Reads custom binary filetypes to prepare for machine learning applications.
 
