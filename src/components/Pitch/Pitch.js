@@ -25,6 +25,10 @@ const Pitch = props => {
           padding-bottom: ${theme.header.height.homepage};
         }
 
+        .pitchtext p {
+          margin-bottom: 2em;
+        }
+
         h2 {
           text-align: center;
           font-size: ${theme.hero.h1.size};
