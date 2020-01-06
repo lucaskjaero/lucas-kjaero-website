@@ -91,6 +91,17 @@ const technologyOptions = [
   }
 ];
 
+const technologiesInTree = technologyOptions.flatMap(tree => {
+  let techs = [tree.value];
+
+  tree.children.forEach(item => {
+    techs.push(item.value);
+  });
+
+  return techs;
+});
+
 export const NestedTechnologies = {
-  menu: technologyOptions
+  TechnologyTree: technologyOptions,
+  TechnologiesInTree: new Set(technologiesInTree)
 };
