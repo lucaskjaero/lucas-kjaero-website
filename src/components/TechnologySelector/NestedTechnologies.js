@@ -1,4 +1,4 @@
-const technologyOptions = [
+export const TechnologyTree = [
   {
     label: "aws",
     value: "aws",
@@ -91,7 +91,7 @@ const technologyOptions = [
   }
 ];
 
-const technologiesInTree = technologyOptions.flatMap(tree => {
+export const TechnologiesInTree = TechnologyTree.flatMap(tree => {
   let techs = [tree.value];
 
   tree.children.forEach(item => {
@@ -100,8 +100,3 @@ const technologiesInTree = technologyOptions.flatMap(tree => {
 
   return techs;
 });
-
-export const NestedTechnologies = {
-  TechnologyTree: technologyOptions,
-  TechnologiesInTree: new Set(technologiesInTree)
-};

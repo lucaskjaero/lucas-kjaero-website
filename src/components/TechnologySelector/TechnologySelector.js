@@ -15,10 +15,10 @@ const TechnologySelector = props => {
   const menu = technologies
     .filter(x => !TechnologiesInTree.includes(x))
     .map(item => {
-      return { name: item, value: item };
+      return { label: item, value: item };
     })
     .concat(TechnologyTree)
-    .sort((a, b) => (a.name > b.name ? 1 : -1));
+    .sort((a, b) => (a.label > b.label ? 1 : -1));
 
   return (
     <React.Fragment>
