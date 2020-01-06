@@ -6,9 +6,19 @@ import Row from "antd/lib/row";
 import "antd/lib/checkbox/style/index.css";
 import "antd/lib/col/style/css";
 import "antd/lib/row/style/css";
+import { TechnologyTree, TechnologiesInTree } from "./NestedTechnologies";
 
 const TechnologySelector = props => {
   const { technologies: technologies, onChange: onChange, theme: theme } = props;
+
+  // Add any technologies that don't have a specific hierarchy
+  const menu = technologies
+    .filter(x => !TechnologiesInTree.includes(x))
+    .map(item => {
+      return { name: item, value: item };
+    })
+    .concat(TechnologyTree)
+    .sort((a, b) => (a.name > b.name ? 1 : -1));
 
   return (
     <React.Fragment>
