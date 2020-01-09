@@ -24,6 +24,7 @@ const Hero = props => {
           background: ${theme.hero.background};
           background-image: url(${backgrounds.mobile});
           background-size: cover;
+          background-repeat: no-repeat;
           color: ${theme.text.color.primary.inverse};
           display: flex;
           flex-flow: column nowrap;
