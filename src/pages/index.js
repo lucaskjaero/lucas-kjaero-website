@@ -115,12 +115,12 @@ export const query = graphql`
       }
     }
     bgTablet: imageSharp(fluid: { originalName: { regex: "/lucas-background/" } }) {
-      resize(width: 800, height: 1100, quality: 90, cropFocus: CENTER) {
+      resize(width: 800, height: 600, quality: 90, cropFocus: CENTER) {
         src
       }
     }
     bgMobile: imageSharp(fluid: { originalName: { regex: "/lucas-background/" } }) {
-      resize(width: 450, height: 850, quality: 90, cropFocus: CENTER) {
+      resize(width: 600, height: 350, quality: 90, cropFocus: CENTER) {
         src
       }
     }
