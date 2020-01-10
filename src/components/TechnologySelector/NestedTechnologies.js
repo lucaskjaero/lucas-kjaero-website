@@ -7,13 +7,7 @@ export const TechnologyTree = {
 };
 
 const techList = Object.keys(TechnologyTree).flatMap(stack => {
-  let techs = [stack];
-
-  TechnologyTree[techs].forEach(tech => {
-    techs.push(tech);
-  });
-
-  return techs;
+  return TechnologyTree[stack].concat(stack);
 });
 
 export const TechnologiesInTree = new Set(techList);
