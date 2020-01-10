@@ -90,7 +90,6 @@ ProjectPage.propTypes = {
 
 export default ProjectPage;
 
-// eslint-disable-next-line no-undef
 export const query = graphql`
   query PostsQuery {
     posts: allMarkdownRemark(
