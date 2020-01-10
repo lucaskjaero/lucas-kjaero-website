@@ -59,7 +59,6 @@ TechnologyTemplate.propTypes = {
 
 export default TechnologyTemplate;
 
-// eslint-disable-next-line no-undef
 export const technologyQuery = graphql`
   query PostsByTechnology {
     allMarkdownRemark(limit: 1000, sort: { fields: [fields___prefix], order: DESC }) {

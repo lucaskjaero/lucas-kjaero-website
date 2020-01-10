@@ -80,7 +80,6 @@ IndexPage.propTypes = {
 
 export default IndexPage;
 
-// eslint-disable-next-line no-undef
 export const query = graphql`
   query IndexQuery {
     posts: allMarkdownRemark(
@@ -110,21 +109,19 @@ export const query = graphql`
       }
     }
     bgDesktop: imageSharp(fluid: { originalName: { regex: "/lucas-background/" } }) {
-      resize(width: 1200, quality: 90, cropFocus: CENTER) {
+      resize(width: 1200, quality: 90, cropFocus: ATTENTION) {
         src
       }
     }
     bgTablet: imageSharp(fluid: { originalName: { regex: "/lucas-background/" } }) {
-      resize(width: 800, height: 1100, quality: 90, cropFocus: CENTER) {
+      resize(width: 800, height: 600, quality: 90, cropFocus: ATTENTION) {
         src
       }
     }
     bgMobile: imageSharp(fluid: { originalName: { regex: "/lucas-background/" } }) {
-      resize(width: 450, height: 850, quality: 90, cropFocus: CENTER) {
+      resize(width: 600, height: 350, quality: 90, cropFocus: ATTENTION) {
         src
       }
     }
   }
 `;
-
-// hero-background
