@@ -6,7 +6,7 @@ export const TechnologyTree = {
   scala: ["gatling"]
 };
 
-export const TechnologiesInTree = Object.keys(TechnologyTree).flatMap(stack => {
+const techList = Object.keys(TechnologyTree).flatMap(stack => {
   let techs = [stack];
 
   TechnologyTree[techs].forEach(tech => {
@@ -15,3 +15,5 @@ export const TechnologiesInTree = Object.keys(TechnologyTree).flatMap(stack => {
 
   return techs;
 });
+
+export const TechnologiesInTree = new Set(techList);
