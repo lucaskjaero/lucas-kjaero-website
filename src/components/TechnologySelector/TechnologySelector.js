@@ -1,11 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Checkbox from "antd/lib/checkbox";
-import Col from "antd/lib/col";
-import Row from "antd/lib/row";
+import List from "antd/lib/list";
 import "antd/lib/checkbox/style/index.css";
-import "antd/lib/col/style/css";
-import "antd/lib/row/style/css";
+import "antd/lib/list/style/index.css";
 import { TechnologyTree, TechnologiesInTree } from "./NestedTechnologies";
 
 const TechnologySelector = props => {
@@ -21,15 +19,18 @@ const TechnologySelector = props => {
       <div className="techselector">
         <h2>Filter by technologies used</h2>
         <Checkbox.Group style={{ width: "100%" }} onChange={onChange} defaultValue={technologies}>
-          <Row>
-            {technologies.map(tech => {
-              return (
-                <Col span={8} key={tech}>
-                  <Checkbox value={tech}>{tech}</Checkbox>
-                </Col>
-              );
-            })}
-          </Row>
+          <List
+            bordered
+            dataSource={TechnologyTree}
+            footer={<div>Other: </div>}
+            renderItem={item => (
+              <List.Item>
+                <b>
+                  <Checkbox value={item.stack}>{item.stack + ": "}</Checkbox>
+                </b>
+              </List.Item>
+            )}
+          />
         </Checkbox.Group>
       </div>
 
