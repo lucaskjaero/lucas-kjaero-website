@@ -1,101 +1,16 @@
-export const TechnologyTree = [
-  {
-    label: "aws",
-    value: "aws",
-    children: [
-      {
-        label: "kinesis",
-        value: "kinesis"
-      },
-      {
-        label: "S3",
-        value: "S3"
-      }
-    ]
-  },
-  {
-    label: "java",
-    value: "java",
-    children: [
-      {
-        label: "jms",
-        value: "jms"
-      },
-      {
-        label: "spring boot",
-        value: "spring boot"
-      }
-    ]
-  },
-  {
-    label: "javascript",
-    value: "javascript",
-    children: [
-      {
-        label: "gatsby",
-        value: "gatsby"
-      },
-      {
-        label: "graphql",
-        value: "graphql"
-      },
-      {
-        label: "react",
-        value: "react"
-      },
-      {
-        label: "redux",
-        value: "redux"
-      }
-    ]
-  },
-  {
-    label: "python",
-    value: "python",
-    children: [
-      {
-        label: "django",
-        value: "django"
-      },
-      {
-        label: "keras",
-        value: "keras"
-      },
-      {
-        label: "numpy",
-        value: "numpy"
-      },
-      {
-        label: "pandas",
-        value: "pandas"
-      },
-      {
-        label: "sklearn",
-        value: "sklearn"
-      },
-      {
-        label: "tensorflow",
-        value: "tensorflow"
-      }
-    ]
-  },
-  {
-    label: "scala",
-    value: "scala",
-    children: [
-      {
-        label: "gatling",
-        value: "gatling"
-      }
-    ]
-  }
-];
+export const TechnologyTree = {
+  aws: ["kinesis", "S3"],
+  java: ["jms", "spring boot"],
+  javascript: ["gatsby", "graphql", "react", "redux"],
+  python: ["django", "keras", "numpy", "pandas", "sklearn", "tensorflow"],
+  scala: ["gatling"]
+};
 
-export const TechnologiesInTree = TechnologyTree.flatMap(tree => {
-  let techs = [tree.value];
+export const TechnologiesInTree = Object.keys(TechnologyTree).flatMap(stack => {
+  let techs = [stack];
 
-  tree.children.forEach(item => {
-    techs.push(item.value);
+  TechnologyTree[techs].forEach(tech => {
+    techs.push(tech);
   });
 
   return techs;
