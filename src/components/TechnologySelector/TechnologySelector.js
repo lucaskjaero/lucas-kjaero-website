@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import update from "immutability-helper";
 import Checkbox from "antd/lib/checkbox";
 import Col from "antd/lib/col";
 import Row from "antd/lib/row";
@@ -21,8 +22,7 @@ class TechnologySelector extends React.Component {
       .filter(x => !TechnologiesInTree.has(x))
       .sort((a, b) => (a > b ? 1 : -1));
 
-    // Build the table
-    const technologyCategories = TechnologyTree.concat([
+    const tableData = TechnologyTree.concat([
       {
         stack: "other",
         technologies: unmatchedTechnologies
@@ -34,75 +34,71 @@ class TechnologySelector extends React.Component {
       };
     });
 
-    // Use this to check categories
-    let categoryLookup = {};
-    technologyCategories.forEach(item => {
-      categoryLookup[item.stack] = item.technologies;
+    let checkedItems = {};
+    let techInCategory = new Map();
+    tableData.forEach(item => {
+      const { stack, technologies: technologiesInStack } = item;
+
+      let stateInStack = {};
+      technologiesInStack.forEach(tech => {
+        techInCategory.set(tech, stack);
+        stateInStack[tech] = true;
+      });
+
+      techInCategory.set(stack, stack);
+      checkedItems[stack] = stateInStack;
     });
 
     this.state = {
-      checked: new Set(technologies.concat(["other"])),
-      categoryLookup: categoryLookup,
-      stacks: new Set(technologyCategories.map(item => item.stack)),
-      technologyCategories: technologyCategories
+      checkedItems: checkedItems,
+      stacks: tableData.map(item => item.stack),
+      tableData: tableData,
+      techInCategory: techInCategory
     };
   }
 
-  onTechChecked = checkedTechnologies => {
-    /*
-     This should only act on non-category selection, but we need to do some calculation to figure it out.
-     We compare the state with the selected items to see if the changed item is not a category
-     */
+  onTechChecked = event => {
+    const {
+      target: { value: tech, checked: isChecked }
+    } = event;
+    const categoryOfTech = this.state.techInCategory.get(tech);
 
-    const currentlyChecked = new Set(checkedTechnologies);
+    const newCheckedItems = update(this.state.checkedItems, {
+      [categoryOfTech]: { [tech]: { $set: isChecked } }
+    });
 
-    const changedItem =
-      currentlyChecked.size > this.state.checked.size
-        ? checkedTechnologies.find(item => !this.state.checked.has(item))
-        : Array.from(this.state.checked).find(item => !currentlyChecked.has(item));
-
-    if (!this.state.stacks.has(changedItem)) {
-      this.props.onChange(checkedTechnologies);
-      this.setState({
-        checked: currentlyChecked
-      });
-    }
+    this.onSelectionsChanged(newCheckedItems);
   };
 
-  onCategoryChecked = e => {
+  onCategoryChecked = event => {
     const {
       target: { value: category, checked: isChecked }
-    } = e;
+    } = event;
 
-    const categoryItems = this.state.categoryLookup[category];
-    let checkedItems = new Set(this.state.checked);
-
-    if (isChecked || this.isPartiallyChecked(category)) {
-      categoryItems.forEach(tech => {
-        checkedItems.add(tech);
+    const categoryState = { ...this.state.checkedItems[category] };
+    if (isChecked) {
+      Object.keys(categoryState).forEach(tech => {
+        categoryState[tech] = true;
       });
-      checkedItems.add(category);
     } else {
-      categoryItems.forEach(tech => {
-        checkedItems.delete(tech);
+      Object.keys(categoryState).forEach(tech => {
+        categoryState[tech] = false;
       });
-      checkedItems.delete(category);
     }
 
-    this.setState({
-      checked: checkedItems
+    const newCheckedItems = update(this.state.checkedItems, {
+      [category]: { $set: categoryState }
     });
-    this.props.onChange(Array.from(checkedItems));
+
+    this.onSelectionsChanged(newCheckedItems);
   };
 
-  isPartiallyChecked = category => {
-    const checkedInCategory = this.state.categoryLookup[category].filter(tech =>
-      this.state.checked.has(tech)
-    );
-    return (
-      checkedInCategory.length != this.state.categoryLookup[category].length &&
-      checkedInCategory.length > 0
-    );
+  onSelectionsChanged = checkedItems => {
+    const onChanged = this.props.onChange;
+
+    this.setState({
+      checkedItems: checkedItems
+    });
   };
 
   columns = [
@@ -111,10 +107,17 @@ class TechnologySelector extends React.Component {
       dataIndex: "stack",
       key: "stack",
       render: stack => {
+        const techInStack = Object.keys(this.state.checkedItems[stack]);
+
+        const checked = techInStack.every(tech => this.state.checkedItems[stack][tech]);
+        const indeterminate =
+          !checked && techInStack.some(tech => this.state.checkedItems[stack][tech]);
+
         return (
           <Checkbox
             value={stack}
-            indeterminate={this.isPartiallyChecked(stack)}
+            checked={checked}
+            indeterminate={indeterminate}
             onChange={this.onCategoryChecked}
           >
             {stack}
@@ -126,19 +129,27 @@ class TechnologySelector extends React.Component {
       title: "Technologies",
       dataIndex: "technologies",
       key: "technologies",
-      render: item => (
-        <span>
-          <Row>
-            {item.map(tech => (
-              <Col span={8} key={tech}>
-                <Checkbox key={tech} value={tech}>
-                  {tech}
-                </Checkbox>
-              </Col>
-            ))}
-          </Row>
-        </span>
-      )
+      render: item => {
+        const category = this.state.techInCategory.get(item[0]);
+        return (
+          <span>
+            <Row>
+              {item.map(tech => (
+                <Col span={8} key={tech}>
+                  <Checkbox
+                    key={tech}
+                    value={tech}
+                    checked={this.state.checkedItems[category][tech]}
+                    onChange={this.onTechChecked}
+                  >
+                    {tech}
+                  </Checkbox>
+                </Col>
+              ))}
+            </Row>
+          </span>
+        );
+      }
     }
   ];
 
@@ -149,17 +160,7 @@ class TechnologySelector extends React.Component {
       <React.Fragment>
         <div className="techselector">
           <h2>Filter by technologies used</h2>
-          <Checkbox.Group
-            style={{ width: "100%" }}
-            onChange={this.onTechChecked}
-            value={Array.from(this.state.checked)}
-          >
-            <Table
-              columns={this.columns}
-              dataSource={this.state.technologyCategories}
-              pagination={false}
-            />
-          </Checkbox.Group>
+          <Table columns={this.columns} dataSource={this.state.tableData} pagination={false} />
         </div>
 
         {/* --- STYLES --- */}
