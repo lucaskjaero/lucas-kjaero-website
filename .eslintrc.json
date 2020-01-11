@@ -41,6 +41,7 @@
     "no-unused-vars": "error",
     "prettier/prettier": ["error"],
     "react/jsx-uses-vars": "error",
+    "react/display-name": "off",
     "require-jsdoc": "off"
   },
   "settings": {
