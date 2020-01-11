@@ -23,9 +23,12 @@ jobs:
       - name: Build dependencies
         run: npm ci --only=production
       - name: Build production bundle
-        env:
-          GOOGLE_ANALYTICS_ID: ${{ secrets.GOOGLE_ANALYTICS_TRACKING_ID }}
         run: npm run build
+      - uses: actions/upload-artifact@master
+        name: Upload website content
+        with:
+          name: gatsby-public
+          path: public
   
   build-resume:
     name: "Test that resumes build"
@@ -40,6 +43,16 @@ jobs:
     - name: Compile Chinese resume
       run: xelatex -file-line-error -interaction=nonstopmode -recorder lucas-kjaero-zhang-个人简历.tex
       working-directory: resume
+    - uses: actions/upload-artifact@master
+      name: Upload English resume
+      with:
+        name: lucas-kjaero-zhang-resume.pdf
+        path: resume/lucas-kjaero-zhang-resume.pdf
+    - uses: actions/upload-artifact@master
+      name: Upload Chinese resume
+      with:
+        name: lucas-kjaero-zhang-个人简历.pdf
+        path: resume/lucas-kjaero-zhang-个人简历.pdf
         
   test-frontend:
     name: "Lint and test frontend"
@@ -58,3 +71,34 @@ jobs:
         run: npm test
       - name: Lint
         run: npm run lint
+  
+  deploy: 
+    name: Deploy to dev environment
+    needs: [build-resume, build-frontend]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@master
+        name: Download website content
+        with:
+          name: gatsby-public
+          path: public
+      - uses: actions/download-artifact@master
+        name: Download English resume
+        with:
+          name: lucas-kjaero-zhang-resume.pdf
+          path: public
+      - uses: actions/download-artifact@master
+        name: Download Chinese resume
+        with:
+          name: lucas-kjaero-zhang-个人简历.pdf
+          path: public
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-west-1
+      - name: Push to S3
+        run: aws s3 sync public s3://${{ secrets.AWS_DEV_S3_BUCKET }}/ --no-progress --delete
+      - name: Echo dev address
+        run: echo "http://lucas-kjaero-zhang-website-dev.s3-website-us-west-1.amazonaws.com"
