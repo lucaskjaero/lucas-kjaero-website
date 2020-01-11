@@ -1,14 +1,19 @@
 import React from "react";
 import PropTypes from "prop-types";
 import update from "immutability-helper";
+
+import Button from "antd/lib/button";
 import Checkbox from "antd/lib/checkbox";
 import Col from "antd/lib/col";
 import Row from "antd/lib/row";
 import Table from "antd/lib/table";
+
+import "antd/lib/button/style/index.css";
 import "antd/lib/checkbox/style/index.css";
 import "antd/lib/col/style/css";
 import "antd/lib/row/style/css";
 import "antd/lib/table/style/index.css";
+
 import { TechnologyTree, TechnologiesInTree } from "./NestedTechnologies";
 
 class TechnologySelector extends React.Component {
@@ -17,7 +22,7 @@ class TechnologySelector extends React.Component {
 
     const { technologies: technologies } = props;
 
-    // Add any technologies that don't have a specific hierarchy
+    // Add any technologies that aren't already in our hierarchy
     const unmatchedTechnologies = technologies
       .filter(x => !TechnologiesInTree.has(x))
       .sort((a, b) => (a > b ? 1 : -1));
@@ -93,6 +98,22 @@ class TechnologySelector extends React.Component {
     });
 
     this.onSelectionsChanged(newCheckedItems);
+  };
+
+  onSelectAll = () => {
+    let checkedItems = {};
+    this.state.tableData.forEach(item => {
+      const { stack, technologies: technologiesInStack } = item;
+
+      let stateInStack = {};
+      technologiesInStack.forEach(tech => {
+        stateInStack[tech] = true;
+      });
+
+      checkedItems[stack] = stateInStack;
+    });
+
+    this.onSelectionsChanged(checkedItems);
   };
 
   // Update state and parent component on any checkbox change
@@ -177,11 +198,23 @@ class TechnologySelector extends React.Component {
   render = () => {
     const { theme: theme } = this.props;
 
+    const title = () => <h2>Filter by technologies used</h2>;
+    const footer = () => (
+      <Button type="primary" onClick={this.onSelectAll}>
+        Select all
+      </Button>
+    );
+
     return (
       <React.Fragment>
         <div className="techselector">
-          <h2>Filter by technologies used</h2>
-          <Table columns={this.columns} dataSource={this.state.tableData} pagination={false} />
+          <Table
+            columns={this.columns}
+            dataSource={this.state.tableData}
+            footer={footer}
+            title={title}
+            pagination={false}
+          />
         </div>
 
         {/* --- STYLES --- */}
