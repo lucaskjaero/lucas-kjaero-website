@@ -5,8 +5,8 @@ import Checkbox from "antd/lib/checkbox";
 import Col from "antd/lib/col";
 import Row from "antd/lib/row";
 import Table from "antd/lib/table";
-import "antd/lib/col/style/css";
 import "antd/lib/checkbox/style/index.css";
+import "antd/lib/col/style/css";
 import "antd/lib/row/style/css";
 import "antd/lib/table/style/index.css";
 import { TechnologyTree, TechnologiesInTree } from "./NestedTechnologies";
@@ -57,6 +57,7 @@ class TechnologySelector extends React.Component {
     };
   }
 
+  // Handle individual techs selected (not category)
   onTechChecked = event => {
     const {
       target: { value: tech, checked: isChecked }
@@ -70,6 +71,7 @@ class TechnologySelector extends React.Component {
     this.onSelectionsChanged(newCheckedItems);
   };
 
+  // Handle only if one entire category is selected
   onCategoryChecked = event => {
     const {
       target: { value: category, checked: isChecked }
@@ -93,14 +95,33 @@ class TechnologySelector extends React.Component {
     this.onSelectionsChanged(newCheckedItems);
   };
 
+  // Update state and parent component on any checkbox change
   onSelectionsChanged = checkedItems => {
     const onChanged = this.props.onChange;
 
+    let selections = [];
+    Object.keys(checkedItems).forEach(stack => {
+      const stackState = checkedItems[stack];
+      const techs = Object.keys(stackState);
+
+      techs.forEach(tech => {
+        if (stackState[tech]) {
+          selections.push(tech);
+        }
+      });
+
+      if (techs.every(tech => stackState[tech])) {
+        selections.push(stack);
+      }
+    });
+
+    onChanged(selections);
     this.setState({
       checkedItems: checkedItems
     });
   };
 
+  // Rendering instructions for the table
   columns = [
     {
       title: "Stack",
