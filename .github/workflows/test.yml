@@ -100,3 +100,5 @@ jobs:
           aws-region: us-west-1
       - name: Push to S3
         run: aws s3 sync public s3://${{ secrets.AWS_DEV_S3_BUCKET }}/ --no-progress --delete
+      - name: Echo dev address
+        run: echo "http://lucas-kjaero-zhang-website-dev.s3-website-us-west-1.amazonaws.com"
