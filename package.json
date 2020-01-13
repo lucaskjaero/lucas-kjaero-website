@@ -70,7 +70,7 @@
     "develop": "gatsby develop",
     "format": "prettier --write 'src/**/*.js'",
     "lint-errors": "eslint src/**/*.{js,jsx} --quiet",
-    "lint": "eslint 'src/**/*.js'",
+    "lint": "eslint '**/*.js'",
     "stylelint": "stylelint src/**/*.js",
     "test": "start-server-and-test develop http://localhost:8000 cy:run"
   },
