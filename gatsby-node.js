@@ -1,3 +1,6 @@
+/* eslint-disable no-console */
+// Console logs are fine during the build process, probably actually encouraged.
+
 const _ = require("lodash");
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 const path = require("path");
@@ -47,14 +50,17 @@ exports.createPages = ({ graphql, actions }) => {
     let activeEnv = process.env.ACTIVE_ENV || process.env.NODE_ENV || "development";
     console.log(`Using environment config: '${activeEnv}'`);
     let filters = `filter: { fields: { slug: { ne: null } } }`;
-    if (activeEnv == "production") filters = `filter: { fields: { slug: { ne: null } , prefix: { ne: null } } }`
+    if (activeEnv == "production")
+      filters = `filter: { fields: { slug: { ne: null } , prefix: { ne: null } } }`;
 
     resolve(
       graphql(
         `
           {
             allMarkdownRemark(
-              ` + filters + `
+              ` +
+          filters +
+          `
               sort: { fields: [fields___prefix], order: DESC }
               limit: 1000
             ) {

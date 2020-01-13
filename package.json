@@ -6,6 +6,7 @@
   "dependencies": {
     "antd": "^3.26.6",
     "axios": "^0.19.0",
+    "bluebird": "^3.7.2",
     "core-js": "^3.6.1",
     "fontfaceobserver": "^2.0.13",
     "gatsby": "^2.18.17",
@@ -70,7 +71,7 @@
     "develop": "gatsby develop",
     "format": "prettier --write 'src/**/*.js'",
     "lint-errors": "eslint src/**/*.{js,jsx} --quiet",
-    "lint": "eslint 'src/**/*.js'",
+    "lint": "eslint '**/*.js'",
     "stylelint": "stylelint src/**/*.js",
     "test": "start-server-and-test develop http://localhost:8000 cy:run"
   },

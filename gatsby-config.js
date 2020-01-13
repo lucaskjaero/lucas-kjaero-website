@@ -1,33 +1,5 @@
 const config = require("./content/meta/config");
 
-const query = `{
-  allMarkdownRemark( filter: { fields: { slug: { ne: null } } }) {
-    edges {
-      node {
-        objectID: fileAbsolutePath
-        fields {
-          slug
-        }
-        internal {
-          content
-        }
-        frontmatter {
-          title
-        }
-      }
-    }
-  }
-}`;
-
-const queries = [
-  {
-    query,
-    transformer: ({ data }) => {
-      return data.allMarkdownRemark.edges.reduce(transformer, []);
-    }
-  }
-];
-
 module.exports = {
   // pathPrefix: config.pathPrefix,
   siteMetadata: {
