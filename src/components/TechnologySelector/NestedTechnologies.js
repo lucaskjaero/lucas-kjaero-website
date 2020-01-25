@@ -1,7 +1,11 @@
 export const TechnologyTree = [
   {
     stack: "aws",
-    technologies: ["kinesis", "S3"]
+    technologies: ["kinesis", "lambda", "S3"]
+  },
+  {
+    stack: "datastores",
+    technologies: ["elasticsearch", "microsoft sql", "postgresql"]
   },
   {
     stack: "java",
@@ -9,15 +13,11 @@ export const TechnologyTree = [
   },
   {
     stack: "javascript",
-    technologies: ["gatsby", "graphql", "react", "redux"]
+    technologies: ["apollo", "gatsby", "graphql", "react", "redux"]
   },
   {
     stack: "python",
     technologies: ["django", "keras", "numpy", "pandas", "sklearn", "tensorflow"]
-  },
-  {
-    stack: "scala",
-    technologies: ["gatling"]
   }
 ];
 
