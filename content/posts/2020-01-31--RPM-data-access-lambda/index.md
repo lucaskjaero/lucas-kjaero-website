@@ -2,7 +2,7 @@
 title: RPM data access lambda
 tagline: Data access layer for legacy service to reduce developer wait time by a day.
 category: Data Engineering
-technologies: ["apollo", "graphql", "javascript", "lambda", "microsoft sql"]
+technologies: ["apollo", "aws", "graphql", "javascript", "lambda", "microsoft sql", "sql"]
 tldr: Data access layer for legacy service to reduce developer wait time from days to minutes and prevent service from being overloaded.
 for: Intuit
 source:
