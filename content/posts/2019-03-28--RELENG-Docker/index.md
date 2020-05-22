@@ -17,5 +17,5 @@ While working on a micro-service based project, you frequently have to work with
 Creating a docker container made it easy to get a service running locally for testing, usually within minutes. This removed all excuses for testing in pre-prod, and encouraged local testing.
 
 ## What I learned
-- How to dockerize spring boot applications.
-- How to recreate a microservice architecture locally using docker-compose.
+-   How to dockerize spring boot applications.
+-   How to recreate a microservice architecture locally using docker-compose.
