@@ -2,7 +2,7 @@
 title: Lucas Kjaero Website
 tagline: My old portfolio website
 category: Full Stack
-technologies: ["python", "postgresql", "django"]
+technologies: ["django", "postgresql", "python", "sql"]
 tldr: My old portfolio website, built using Django and served on Heroku
 for: personal
 source: https://github.com/lucaskjaero/LucasKjaero.com
