@@ -39,12 +39,12 @@ class TechnologySelector extends React.Component {
       };
     });
 
-    let checkedItems = {};
-    let techInCategory = new Map();
+    const checkedItems = {};
+    const techInCategory = new Map();
     tableData.forEach(item => {
       const { stack, technologies: technologiesInStack } = item;
 
-      let stateInStack = {};
+      const stateInStack = {};
       technologiesInStack.forEach(tech => {
         techInCategory.set(tech, stack);
         stateInStack[tech] = true;
@@ -120,7 +120,7 @@ class TechnologySelector extends React.Component {
   onSelectionsChanged = checkedItems => {
     const onChanged = this.props.onChange;
 
-    let selections = [];
+    const selections = [];
     Object.keys(checkedItems).forEach(stack => {
       const stackState = checkedItems[stack];
       const techs = Object.keys(stackState);
