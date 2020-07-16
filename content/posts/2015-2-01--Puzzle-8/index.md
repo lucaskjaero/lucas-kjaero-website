@@ -11,5 +11,5 @@ site:
 Created a Python program to solve sliding tile puzzles with an A* search and multiple heuristics. Finds solutions with the fewest possible number of moves.
 
 ## What I learned
-- How to model problems as graphs and search problems.
-- How to use classic Artificial Intelligence approaches to solve them.
+-   How to model problems as graphs and search problems.
+-   How to use classic Artificial Intelligence approaches to solve them.

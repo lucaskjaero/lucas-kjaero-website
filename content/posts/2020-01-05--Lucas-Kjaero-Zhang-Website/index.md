@@ -14,9 +14,9 @@ A portfolio website to display projects, resume, and contact information. This w
 My existing portfolio website used a full backend server and had content in a database. However, I only updated content every six months. This was an inefficient use of money and servers when a static site was all I needed.
 
 ## What I learned
-- How to write react components.
-- How to use a static content generator (gatsby).
-- How to write graphql queries to populate a web page.
-- How to use serve a website using a S3 bucket and Cloudfront.
-- How to continuously deliver a serverless static website.
-- How to add latex to a build pipeline.
+-   How to write react components.
+-   How to use a static content generator (gatsby).
+-   How to write graphql queries to populate a web page.
+-   How to use serve a website using a S3 bucket and Cloudfront.
+-   How to continuously deliver a serverless static website.
+-   How to add latex to a build pipeline.

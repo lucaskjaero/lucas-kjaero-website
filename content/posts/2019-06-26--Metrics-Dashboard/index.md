@@ -20,9 +20,9 @@ We created a react dashboard that showed the last two years of deployment data, 
 Our micro-services communicate over a message bus, so we collected user events there, creating new event messages as needed, and then stored those events into an elasticsearch instance. AWS Kinesis was used to decouple our services from elasticsearch, making it possible to change the metrics infrastructure without needing to change the deployment product. The dashboard used elasticsearch aggregations to get metrics about the deployment events, displaying them to the user in constant time.
 
 ## What I learned
-- How to collect data from micro-services.
-- How to use an enterprise messaging bus.
-- How to use Kinesis to take data from a service to an elasticsearch instance in an ETL process.
-- How to use elasticsearch queries to gather statistics.
-- How to conduct design sessions to improve interface design.
-- How to display data using react and redux.
+-   How to collect data from micro-services.
+-   How to use an enterprise messaging bus.
+-   How to use Kinesis to take data from a service to an elasticsearch instance in an ETL process.
+-   How to use elasticsearch queries to gather statistics.
+-   How to conduct design sessions to improve interface design.
+-   How to display data using react and redux.

@@ -11,7 +11,7 @@ site: https://murmuring-hamlet-3859.herokuapp.com/
 A portfolio website to display projects, resume, and contact information. The website was built using Django, and was served on Heroku.
 
 ## What I learned
-- How to set up a django project.
-- How to build a database model to display content.
-- How to deploy a website on Heroku.
-- How to render HTML pages on the server side.
+-   How to set up a django project.
+-   How to build a database model to display content.
+-   How to deploy a website on Heroku.
+-   How to render HTML pages on the server side.

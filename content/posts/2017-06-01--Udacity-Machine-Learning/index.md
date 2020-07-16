@@ -23,10 +23,10 @@ This project involved using census data to predict a person's income. This data 
 This project involved using customer purchase data for a food distributor to identify groups of customers with similar buying patterns. For this project, there was much more data than necessary, and much of it wasn't very useful. I compared many types of data against other types to see which ones had the same patterns, so that I could remove all but one of them. Afterwards, I used a Principal Component Analysis algorithm to reduce the amount of data even further, by combining multiple features into one. After this, I used an unsupervised learning algorithm called K-means clustering to cluster the data into two different groups. As it turned out, those groups predicted whether a customer was a restaurant or a grocery store, making me pretty comfortable with the model. [See the project report here](https://github.com/lucaskjaero/machine-learning/blob/master/projects/customer_segments/customer_segments.ipynb)
 
 ## What I learned
-- How to explore datasets to find features for machine learning using pandas
-- How to train and test machine learning models
-- How to evaluate a machine learning model's performance
-- Several supervised learning algorithms and how to apply them: Gradient Boost, SVM, and K Nearest Neighbors
-- How to tune a machine learning algorithm
-- How to transform multiple features into a single one to create simpler models
-- How to set up unsupervised learning and then interpret the results
+-   How to explore datasets to find features for machine learning using pandas
+-   How to train and test machine learning models
+-   How to evaluate a machine learning model's performance
+-   Several supervised learning algorithms and how to apply them: Gradient Boost, SVM, and K Nearest Neighbors
+-   How to tune a machine learning algorithm
+-   How to transform multiple features into a single one to create simpler models
+-   How to set up unsupervised learning and then interpret the results
