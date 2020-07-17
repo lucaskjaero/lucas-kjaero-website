@@ -6,7 +6,7 @@ const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPl
 const path = require("path");
 const Promise = require("bluebird");
 
-const { createFilePath } = require(`gatsby-source-filesystem`);
+const { createFilePath } = require("gatsby-source-filesystem");
 
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions;
@@ -49,9 +49,10 @@ exports.createPages = ({ graphql, actions }) => {
     // Do not create draft post files in production.
     const activeEnv = process.env.ACTIVE_ENV || process.env.NODE_ENV || "development";
     console.log(`Using environment config: '${activeEnv}'`);
-    let filters = `filter: { fields: { slug: { ne: null } } }`;
-    if (activeEnv == "production")
-      filters = `filter: { fields: { slug: { ne: null } , prefix: { ne: null } } }`;
+    const filters =
+      activeEnv === "production"
+        ? `filter: { fields: { slug: { ne: null } , prefix: { ne: null } } }`
+        : `filter: { fields: { slug: { ne: null } } }`;
 
     resolve(
       graphql(
