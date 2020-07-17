@@ -55,10 +55,10 @@ class TechnologySelector extends React.Component {
     });
 
     this.state = {
-      checkedItems: checkedItems,
+      checkedItems,
       stacks: tableData.map(item => item.stack),
-      tableData: tableData,
-      techInCategory: techInCategory
+      tableData,
+      techInCategory
     };
   }
 
@@ -138,7 +138,7 @@ class TechnologySelector extends React.Component {
 
     onChanged(selections);
     this.setState({
-      checkedItems: checkedItems
+      checkedItems
     });
   };
 

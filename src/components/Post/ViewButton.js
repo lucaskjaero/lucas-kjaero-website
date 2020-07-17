@@ -5,7 +5,7 @@ import Button from "antd/lib/button";
 const ViewButton = props => {
   const { link, text, theme } = props;
 
-  if (link && link != "") {
+  if (link && link !== "") {
     return (
       <React.Fragment>
         <div className="source">

@@ -26,7 +26,7 @@ class Layout extends React.Component {
       theme: themeObjectFromYaml
     };
 
-    if (typeof window !== `undefined`) {
+    if (typeof window !== "undefined") {
       this.loadFont("font400", "Open Sans", 400);
       this.loadFont("font600", "Open Sans", 600);
     }
@@ -61,7 +61,7 @@ class Layout extends React.Component {
 
   loadFont = (name, family, weight) => {
     const font = new FontFaceObserver(family, {
-      weight: weight
+      weight
     });
 
     font.load(null, 10000).then(
