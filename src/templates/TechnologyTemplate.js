@@ -19,7 +19,7 @@ const TechnologyTemplate = props => {
   // Gatsby doesn't currently support set ownership checks in graphql, so we do this manually
   const selectedPosts = edges
     .filter(post => {
-      return post.node.frontmatter.technologies && post.node.frontmatter.technologies != null;
+      return post.node.frontmatter.technologies && post.node.frontmatter.technologies !== null;
     })
     .filter(post => {
       return post.node.frontmatter.technologies.includes(technology);

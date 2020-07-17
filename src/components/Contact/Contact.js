@@ -25,15 +25,6 @@ const Contact = props => {
       .join("&");
   }
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    props.form.validateFields((err, values) => {
-      if (!err) {
-        sendMessage(values);
-      }
-    });
-  }
-
   function sendMessage(values) {
     axios
       .post("https://formspree.io/meqelqay", values)
@@ -43,6 +34,15 @@ const Contact = props => {
       .catch(error => {
         navigate("/failure");
       });
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    props.form.validateFields((err, values) => {
+      if (!err) {
+        sendMessage(values);
+      }
+    });
   }
 
   return (

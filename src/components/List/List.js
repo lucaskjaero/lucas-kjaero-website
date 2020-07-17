@@ -16,7 +16,7 @@ const List = props => {
             }
           } = edge;
 
-          const displayTitle = tagline && tagline != "" ? title + " - " + tagline : title;
+          const displayTitle = tagline && tagline !== "" ? title + " - " + tagline : title;
 
           return (
             <li key={slug}>
