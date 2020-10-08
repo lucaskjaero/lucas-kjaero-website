@@ -68,7 +68,7 @@ jobs:
       - name: Install dependencies
         run: npm install
       - name: Validate security of dependencies
-        run: npx audit-ci --moderate
+        run: npx audit-ci --moderate -a 1550
       - name: End to end test
         run: npm test
       - name: Lint
