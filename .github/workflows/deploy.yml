@@ -122,7 +122,7 @@ jobs:
       - uses: actions/download-artifact@master
         name: Download Chinese resume
         with:
-          name: lucas-kjaero-zhang-个人简历.pdf
+          name: lucas-kjaero-zhang-chinese-resume.pdf
           path: public
       - name: Zip release
         run: zip -r release.zip public
