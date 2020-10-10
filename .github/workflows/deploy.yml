@@ -30,7 +30,7 @@ jobs:
       - uses: actions/upload-artifact@master
         name: Upload Chinese resume
         with:
-          name: lucas-kjaero-zhang-个人简历.pdf
+          name: lucas-kjaero-zhang-resume-chinese.pdf
           path: resume/lucas-kjaero-zhang-个人简历.pdf
   
   build-frontend:
@@ -76,8 +76,10 @@ jobs:
       - uses: actions/download-artifact@master
         name: Download Chinese resume
         with:
-          name: lucas-kjaero-zhang-个人简历.pdf
+          name: lucas-kjaero-zhang-resume-chinese.pdf
           path: public
+      - name: Correct Chinese Resume Name
+        run: mv lucas-kjaero-zhang-resume-chinese.pdf lucas-kjaero-zhang-个人简历.pdf
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -123,7 +125,7 @@ jobs:
       - uses: actions/download-artifact@master
         name: Download Chinese resume
         with:
-          name: lucas-kjaero-zhang-个人简历.pdf
+          name: lucas-kjaero-zhang-chinese-resume.pdf
           path: public
       - name: Zip release
         run: zip -r release.zip public
