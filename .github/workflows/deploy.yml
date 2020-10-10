@@ -37,6 +37,7 @@ jobs:
     name: Build frontend
     runs-on: ubuntu-latest
     if: github.event.pull_request.merged
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@master
         with:

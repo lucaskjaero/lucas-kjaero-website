@@ -14,6 +14,7 @@ jobs:
   build-frontend:
     name: "Test that frontend builds"
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@master
       - uses: actions/setup-node@v1
