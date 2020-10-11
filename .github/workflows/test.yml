@@ -98,7 +98,7 @@ jobs:
           name: lucas-kjaero-zhang-resume-chinese.pdf
           path: public
       - name: Correct Chinese Resume Name
-        run: mv lucas-kjaero-zhang-resume-chinese.pdf lucas-kjaero-zhang-个人简历.pdf
+        run: mv public/lucas-kjaero-zhang-resume-chinese.pdf public/lucas-kjaero-zhang-个人简历.pdf
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
