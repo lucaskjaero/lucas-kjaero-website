@@ -7,6 +7,6 @@ Static content for my website at [www.lucaskjaerozhang.com](https://www.lucaskja
 
 ## Technology
 Built with Gatsby -- a static site generator for React.
-Tested with Cypress and linted by Eslint on every build.
+End to end tested with Cypress and a python link checker.
 Served by Amazon S3 and Cloudfront.
-Deployed by github actions.
+Continuously Integrated and Delivered using github actions.
