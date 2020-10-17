@@ -2,7 +2,7 @@ name: PR Build
 
 on:
   schedule:
-    - cron:  '38 2 * * *'
+    - cron:  '0 9 * * *'
   
 jobs:
   verify-site-is-up:
