@@ -2,7 +2,7 @@ import glob
 import re
 import requests
 
-default_pattern = r"(http[^}]+)"
+default_pattern = r"(http[^\n\)]+)"
 latex_link_pattern = r"\\href\{(http[^}]+)\}"
 
 
