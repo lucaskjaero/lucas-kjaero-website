@@ -34,6 +34,10 @@ def check_links(links):
     broken_links = []
     for link in links:
         print("Checking link " + link)
+        if link[:5] != "https":
+            print("Insecure link")
+            broken_links.append(link)
+
         try:
             result = requests.get(link)
             if result.status_code != 200:
