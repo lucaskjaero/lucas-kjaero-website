@@ -121,16 +121,3 @@ jobs:
         run: aws s3 sync public s3://${{ secrets.AWS_DEV_S3_BUCKET }}/ --no-progress --delete
       - name: Echo dev address
         run: echo "http://lucas-kjaero-zhang-website-dev.s3-website-us-west-1.amazonaws.com"
-
-  verify-site-is-up:
-    name: "Verify site is up"
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check main page
-        run: curl https://www.lucaskjaerozhang.com/
-      - name: Check resumes
-        run: |
-          curl https://www.lucaskjaerozhang.com/lucas-kjaero-zhang-resume.pdf
-          curl https://www.lucaskjaerozhang.com/lucas-kjaero-zhang-%E4%B8%AA%E4%BA%BA%E7%AE%80%E5%8E%86.pdf
-      - name: Break
-        run: curl https://www.lucaskjaerozhang.com/lucas-kjaero-zhang-个人简历q.pdf
