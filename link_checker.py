@@ -26,8 +26,7 @@ def get_broken_links_on_resumes():
     links = []
     for resume_path in glob.glob('./resume/*.tex'):
         print("Checking resume at " + resume_path)
-        broken_links = check_links(get_links_from_latex(resume_path))
-        links.extend(broken_links)
+        links.extend(get_links_from_latex(resume_path))
     return links
 
 
@@ -48,7 +47,8 @@ def check_links(links):
 
 
 def main():
-    broken_links = get_broken_links_on_resumes()
+    links = get_broken_links_on_resumes()
+    broken_links = set(check_links(links))
 
     if len(broken_links) > 0:
         raise BrokenLinksError(broken_links)
