@@ -43,7 +43,7 @@ def check_links(links):
             if result.status_code != 200:
                 print("Failed to connect")
                 broken_links.append(link)
-        except ConnectionError as err:
+        except Exception as err:
             print(err)
             broken_links.append(link)
 
