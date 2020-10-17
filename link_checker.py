@@ -39,7 +39,7 @@ def check_links(links):
             broken_links.append(link)
 
         try:
-            result = requests.get(link)
+            result = requests.get(link, allow_redirects=False)
             if result.status_code != 200:
                 print("Failed to connect")
                 broken_links.append(link)
