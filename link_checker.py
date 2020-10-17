@@ -2,6 +2,7 @@ import glob
 import re
 import requests
 
+default_pattern = r"(http[^}]+)"
 latex_link_pattern = r"\\href\{(http[^}]+)\}"
 
 
@@ -14,19 +15,27 @@ class BrokenLinksError(Exception):
         return self.message
 
 
-def get_links_from_latex(path):
+def get_links_from_file(path, pattern=default_pattern):
     links = []
     with open(path) as document:
         for line in document:
-            links.extend(re.findall(latex_link_pattern, line))
+            links.extend(re.findall(pattern, line))
     return links
 
 
-def get_broken_links_on_resumes():
+def get_links_from_resumes():
     links = []
     for resume_path in glob.glob('./resume/*.tex'):
         print("Checking resume at " + resume_path)
-        links.extend(get_links_from_latex(resume_path))
+        links.extend(get_links_from_file(resume_path, latex_link_pattern))
+    return links
+
+
+def get_links_from_markdown():
+    links = []
+    for markdown_path in glob.glob('content/**/*.md', recursive=True):
+        print("Checking markdown at " + markdown_path)
+        links.extend(get_links_from_file(markdown_path))
     return links
 
 
@@ -51,7 +60,9 @@ def check_links(links):
 
 
 def main():
-    links = get_broken_links_on_resumes()
+    links = get_links_from_resumes()
+    links.extend(get_links_from_markdown())
+
     broken_links = check_links(set(links))
 
     if len(broken_links) > 0:
