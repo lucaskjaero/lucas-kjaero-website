@@ -32,16 +32,16 @@ def get_broken_links_on_resumes():
 
 def check_links(links):
     broken_links = []
-    for link in links:
+    for link in sorted(links):
         print("Checking link " + link)
         if link[:5] != "https":
             print("Insecure link")
             broken_links.append(link)
 
         try:
-            result = requests.get(link, allow_redirects=False)
+            result = requests.get(link, allow_redirects=False, timeout=30)
             if result.status_code != 200:
-                print("Failed to connect")
+                print("Failed to connect, status=%s" % (result.status_code))
                 broken_links.append(link)
         except Exception as err:
             print(err)
@@ -52,7 +52,7 @@ def check_links(links):
 
 def main():
     links = get_broken_links_on_resumes()
-    broken_links = set(check_links(links))
+    broken_links = check_links(set(links))
 
     if len(broken_links) > 0:
         raise BrokenLinksError(broken_links)
