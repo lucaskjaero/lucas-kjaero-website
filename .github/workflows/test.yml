@@ -133,4 +133,4 @@ jobs:
           curl https://www.lucaskjaerozhang.com/lucas-kjaero-zhang-resume.pdf
           curl https://www.lucaskjaerozhang.com/lucas-kjaero-zhang-%E4%B8%AA%E4%BA%BA%E7%AE%80%E5%8E%86.pdf
       - name: Break
-        run: curl https://sfsdfsdfsdfsdfsdfsdffdsfds.com
+        run: curl https://www.lucaskjaerozhang.com/lucas-kjaero-zhang-个人简历q.pdf
