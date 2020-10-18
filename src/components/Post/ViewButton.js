@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Button from "antd/lib/button";
 
-const ViewButton = props => {
+const ViewButton = (props) => {
   const { link, text, theme } = props;
 
   if (link && link !== "") {
@@ -31,7 +31,7 @@ const ViewButton = props => {
 ViewButton.propTypes = {
   link: PropTypes.string,
   text: PropTypes.string.isRequired,
-  theme: PropTypes.object.isRequired
+  theme: PropTypes.object.isRequired,
 };
 
 export default ViewButton;

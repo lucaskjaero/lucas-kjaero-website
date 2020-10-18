@@ -27,5 +27,5 @@ module.exports = {
   gravatarImgMd5: "",
 
   // social
-  authorSocialLinks: [{ name: "github", url: "https://github.com/lucaskjaero" }]
+  authorSocialLinks: [{ name: "github", url: "https://github.com/lucaskjaero" }],
 };

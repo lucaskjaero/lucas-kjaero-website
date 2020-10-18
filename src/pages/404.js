@@ -8,7 +8,7 @@ import Seo from "../components/Seo";
 const NotFoundPage = () => (
   <React.Fragment>
     <ThemeContext.Consumer>
-      {theme => (
+      {(theme) => (
         <Article theme={theme}>
           <header>
             <Headline title="Not Found" theme={theme} />

@@ -21,18 +21,18 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
       createNodeField({
         node,
         name: `slug`,
-        value: `${separtorIndex ? "/" : ""}${slug.substring(shortSlugStart)}`
+        value: `${separtorIndex ? "/" : ""}${slug.substring(shortSlugStart)}`,
       });
     }
     createNodeField({
       node,
       name: `prefix`,
-      value: separtorIndex ? slug.substring(1, separtorIndex) : ""
+      value: separtorIndex ? slug.substring(1, separtorIndex) : "",
     });
     createNodeField({
       node,
       name: `source`,
-      value: source
+      value: source,
     });
   }
 };
@@ -83,7 +83,7 @@ exports.createPages = ({ graphql, actions }) => {
             }
           }
         `
-      ).then(result => {
+      ).then((result) => {
         if (result.errors) {
           console.log(result.errors);
           reject(result.errors);
@@ -93,11 +93,11 @@ exports.createPages = ({ graphql, actions }) => {
 
         // Create category list
         const categorySet = new Set();
-        items.forEach(edge => {
+        items.forEach((edge) => {
           const {
             node: {
-              frontmatter: { category }
-            }
+              frontmatter: { category },
+            },
           } = edge;
 
           if (category && category !== null) {
@@ -107,44 +107,44 @@ exports.createPages = ({ graphql, actions }) => {
 
         // Create category pages
         const categoryList = Array.from(categorySet);
-        categoryList.forEach(category => {
+        categoryList.forEach((category) => {
           createPage({
             path: `/category/${_.kebabCase(category)}/`,
             component: categoryTemplate,
             context: {
-              category
-            }
+              category,
+            },
           });
         });
 
         // Create technology list
         const technologySet = new Set();
-        items.forEach(edge => {
+        items.forEach((edge) => {
           const {
             node: {
-              frontmatter: { technologies }
-            }
+              frontmatter: { technologies },
+            },
           } = edge;
 
           if (technologies && technologies !== null) {
-            technologies.forEach(tech => technologySet.add(tech));
+            technologies.forEach((tech) => technologySet.add(tech));
           }
         });
 
         // Create technology pages
         const technologyList = Array.from(technologySet);
-        technologyList.forEach(technology => {
+        technologyList.forEach((technology) => {
           createPage({
             path: `/technology/${_.kebabCase(technology)}/`,
             component: technologyTemplate,
             context: {
-              technology
-            }
+              technology,
+            },
           });
         });
 
         // Create posts
-        const posts = items.filter(item => item.node.fields.source === "posts");
+        const posts = items.filter((item) => item.node.fields.source === "posts");
         posts.forEach(({ node }, index) => {
           const slug = node.fields.slug;
           const next = index === 0 ? undefined : posts[index - 1].node;
@@ -158,13 +158,13 @@ exports.createPages = ({ graphql, actions }) => {
               slug,
               prev,
               next,
-              source
-            }
+              source,
+            },
           });
         });
 
         // and pages.
-        const pages = items.filter(item => item.node.fields.source === "pages");
+        const pages = items.filter((item) => item.node.fields.source === "pages");
         pages.forEach(({ node }) => {
           const slug = node.fields.slug;
           const source = node.fields.source;
@@ -174,8 +174,8 @@ exports.createPages = ({ graphql, actions }) => {
             component: pageTemplate,
             context: {
               slug,
-              source
-            }
+              source,
+            },
           });
         });
       })
@@ -193,9 +193,9 @@ exports.onCreateWebpackConfig = ({ stage, actions }, options) => {
             reportFilename: "./report/treemap.html",
             openAnalyzer: true,
             logLevel: "error",
-            defaultSizes: "gzip"
-          })
-        ]
+            defaultSizes: "gzip",
+          }),
+        ],
       });
   }
 };

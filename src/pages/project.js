@@ -15,13 +15,13 @@ class ProjectPage extends React.Component {
 
     const {
       data: {
-        posts: { categories: posts, technologies: technologies }
-      }
+        posts: { categories: posts, technologies: technologies },
+      },
     } = this.props;
 
     this.state = {
       postsByCategory: posts,
-      technologies: technologies.map(tech => tech.fieldValue)
+      technologies: technologies.map((tech) => tech.fieldValue),
     };
 
     this.handleTechnologySelection = this.handleTechnologySelection.bind(this);
@@ -29,15 +29,15 @@ class ProjectPage extends React.Component {
 
   handleTechnologySelection(technologies) {
     const selectedPosts = this.props.data.posts.categories
-      .map(category => {
+      .map((category) => {
         return {
           fieldValue: category.fieldValue,
-          edges: category.edges.filter(node =>
-            node.node.frontmatter.technologies.some(tech => technologies.includes(tech))
-          )
+          edges: category.edges.filter((node) =>
+            node.node.frontmatter.technologies.some((tech) => technologies.includes(tech))
+          ),
         };
       })
-      .filter(category => category.edges.length > 0);
+      .filter((category) => category.edges.length > 0);
 
     this.setState({ postsByCategory: selectedPosts });
   }
@@ -46,7 +46,7 @@ class ProjectPage extends React.Component {
     return (
       <React.Fragment>
         <ThemeContext.Consumer>
-          {theme => (
+          {(theme) => (
             <Article theme={theme}>
               <header>
                 <Headline title="Projects by category" theme={theme} />
@@ -56,7 +56,7 @@ class ProjectPage extends React.Component {
                 onChange={this.handleTechnologySelection}
                 theme={theme}
               />
-              {this.state.postsByCategory.map(item => (
+              {this.state.postsByCategory.map((item) => (
                 <section key={item.fieldValue}>
                   <h2>
                     <FaTag /> {item.fieldValue}
@@ -85,7 +85,7 @@ class ProjectPage extends React.Component {
 }
 
 ProjectPage.propTypes = {
-  data: PropTypes.object.isRequired
+  data: PropTypes.object.isRequired,
 };
 
 export default ProjectPage;

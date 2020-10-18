@@ -24,28 +24,28 @@ class TechnologySelector extends React.Component {
 
     // Add any technologies that aren't already in our hierarchy
     const unmatchedTechnologies = technologies
-      .filter(x => !TechnologiesInTree.has(x))
+      .filter((x) => !TechnologiesInTree.has(x))
       .sort((a, b) => (a > b ? 1 : -1));
 
     const tableData = TechnologyTree.concat([
       {
         stack: "other",
-        technologies: unmatchedTechnologies
-      }
-    ]).map(item => {
+        technologies: unmatchedTechnologies,
+      },
+    ]).map((item) => {
       return {
         ...item,
-        key: item.stack
+        key: item.stack,
       };
     });
 
     const checkedItems = {};
     const techInCategory = new Map();
-    tableData.forEach(item => {
+    tableData.forEach((item) => {
       const { stack, technologies: technologiesInStack } = item;
 
       const stateInStack = {};
-      technologiesInStack.forEach(tech => {
+      technologiesInStack.forEach((tech) => {
         techInCategory.set(tech, stack);
         stateInStack[tech] = true;
       });
@@ -56,57 +56,57 @@ class TechnologySelector extends React.Component {
 
     this.state = {
       checkedItems,
-      stacks: tableData.map(item => item.stack),
+      stacks: tableData.map((item) => item.stack),
       tableData,
-      techInCategory
+      techInCategory,
     };
   }
 
   // Handle individual techs selected (not category)
-  onTechChecked = event => {
+  onTechChecked = (event) => {
     const {
-      target: { value: tech, checked: isChecked }
+      target: { value: tech, checked: isChecked },
     } = event;
     const categoryOfTech = this.state.techInCategory.get(tech);
 
     const newCheckedItems = update(this.state.checkedItems, {
-      [categoryOfTech]: { [tech]: { $set: isChecked } }
+      [categoryOfTech]: { [tech]: { $set: isChecked } },
     });
 
     this.onSelectionsChanged(newCheckedItems);
   };
 
   // Handle only if one entire category is selected
-  onCategoryChecked = event => {
+  onCategoryChecked = (event) => {
     const {
-      target: { value: category, checked: isChecked }
+      target: { value: category, checked: isChecked },
     } = event;
 
     const categoryState = { ...this.state.checkedItems[category] };
     if (isChecked) {
-      Object.keys(categoryState).forEach(tech => {
+      Object.keys(categoryState).forEach((tech) => {
         categoryState[tech] = true;
       });
     } else {
-      Object.keys(categoryState).forEach(tech => {
+      Object.keys(categoryState).forEach((tech) => {
         categoryState[tech] = false;
       });
     }
 
     const newCheckedItems = update(this.state.checkedItems, {
-      [category]: { $set: categoryState }
+      [category]: { $set: categoryState },
     });
 
     this.onSelectionsChanged(newCheckedItems);
   };
 
   onSelectAll = () => {
-    let checkedItems = {};
-    this.state.tableData.forEach(item => {
+    const checkedItems = {};
+    this.state.tableData.forEach((item) => {
       const { stack, technologies: technologiesInStack } = item;
 
-      let stateInStack = {};
-      technologiesInStack.forEach(tech => {
+      const stateInStack = {};
+      technologiesInStack.forEach((tech) => {
         stateInStack[tech] = true;
       });
 
@@ -117,28 +117,28 @@ class TechnologySelector extends React.Component {
   };
 
   // Update state and parent component on any checkbox change
-  onSelectionsChanged = checkedItems => {
+  onSelectionsChanged = (checkedItems) => {
     const onChanged = this.props.onChange;
 
     const selections = [];
-    Object.keys(checkedItems).forEach(stack => {
+    Object.keys(checkedItems).forEach((stack) => {
       const stackState = checkedItems[stack];
       const techs = Object.keys(stackState);
 
-      techs.forEach(tech => {
+      techs.forEach((tech) => {
         if (stackState[tech]) {
           selections.push(tech);
         }
       });
 
-      if (techs.every(tech => stackState[tech])) {
+      if (techs.every((tech) => stackState[tech])) {
         selections.push(stack);
       }
     });
 
     onChanged(selections);
     this.setState({
-      checkedItems
+      checkedItems,
     });
   };
 
@@ -148,12 +148,12 @@ class TechnologySelector extends React.Component {
       title: "Stack",
       dataIndex: "stack",
       key: "stack",
-      render: stack => {
+      render: (stack) => {
         const techInStack = Object.keys(this.state.checkedItems[stack]);
 
-        const checked = techInStack.every(tech => this.state.checkedItems[stack][tech]);
+        const checked = techInStack.every((tech) => this.state.checkedItems[stack][tech]);
         const indeterminate =
-          !checked && techInStack.some(tech => this.state.checkedItems[stack][tech]);
+          !checked && techInStack.some((tech) => this.state.checkedItems[stack][tech]);
 
         return (
           <Checkbox
@@ -165,18 +165,18 @@ class TechnologySelector extends React.Component {
             {stack}
           </Checkbox>
         );
-      }
+      },
     },
     {
       title: "Technologies",
       dataIndex: "technologies",
       key: "technologies",
-      render: item => {
+      render: (item) => {
         const category = this.state.techInCategory.get(item[0]);
         return (
           <span>
             <Row>
-              {item.map(tech => (
+              {item.map((tech) => (
                 <Col span={8} key={tech}>
                   <Checkbox
                     key={tech}
@@ -191,8 +191,8 @@ class TechnologySelector extends React.Component {
             </Row>
           </span>
         );
-      }
-    }
+      },
+    },
   ];
 
   render = () => {
@@ -232,7 +232,7 @@ class TechnologySelector extends React.Component {
 TechnologySelector.propTypes = {
   onChange: PropTypes.func.isRequired,
   technologies: PropTypes.array.isRequired,
-  theme: PropTypes.object.isRequired
+  theme: PropTypes.object.isRequired,
 };
 
 export default TechnologySelector;

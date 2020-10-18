@@ -9,17 +9,17 @@ import Author from "./Author";
 import NextPrev from "./NextPrev";
 import ViewButton from "./ViewButton";
 
-const Post = props => {
+const Post = (props) => {
   const {
     post: {
       html,
       fields: { prefix },
-      frontmatter: { title, author, category, site, source, technologies }
+      frontmatter: { title, author, category, site, source, technologies },
     },
     authornote,
     next: nextPost,
     prev: prevPost,
-    theme
+    theme,
   } = props;
 
   return (
@@ -50,7 +50,7 @@ Post.propTypes = {
   authornote: PropTypes.string.isRequired,
   next: PropTypes.object,
   prev: PropTypes.object,
-  theme: PropTypes.object.isRequired
+  theme: PropTypes.object.isRequired,
 };
 
 export default Post;

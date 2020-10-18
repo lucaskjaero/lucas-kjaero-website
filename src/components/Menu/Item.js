@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link as GatsbyLink } from "gatsby";
 
-const Link = props => {
+const Link = (props) => {
   const { to, name, onClick, dataSlug, external } = props;
 
   if (external) {
@@ -16,7 +16,7 @@ const Link = props => {
   }
 };
 
-const Item = props => {
+const Item = (props) => {
   const { theme, item: { label, to, external, icon: Icon } = {}, onClick } = props;
 
   return (
@@ -117,7 +117,7 @@ Item.propTypes = {
   onClick: PropTypes.func,
   icon: PropTypes.func,
   theme: PropTypes.object.isRequired,
-  external: PropTypes.bool
+  external: PropTypes.bool,
 };
 
 export default Item;
