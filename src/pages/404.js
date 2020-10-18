@@ -7,20 +7,20 @@ import Seo from "../components/Seo";
 
 const NotFoundPage = () => (
   <React.Fragment>
-      <ThemeContext.Consumer>
-        {theme => (
-          <Article theme={theme}>
-            <header>
-              <Headline title="Not Found" theme={theme} />
-            </header>
-            <div>
-              <p>You just hit a page that doesn't exist. Were you looking for <b><Link to="/project/">projects</Link></b> or <b><a href="/lucas-kjaero-zhang-resume.pdf">my resume</a></b>?</p>
-            </div>
-          </Article>
-        )}
-      </ThemeContext.Consumer>
+    <ThemeContext.Consumer>
+      {theme => (
+        <Article theme={theme}>
+          <header>
+            <Headline title="Not Found" theme={theme} />
+          </header>
+          <div>
+            <p>You just hit a page that doesn't exist. Were you looking for <b><Link to="/project/">projects</Link></b> or <b><a href="/lucas-kjaero-zhang-resume.pdf">my resume</a></b>?</p>
+          </div>
+        </Article>
+      )}
+    </ThemeContext.Consumer>
 
-      <Seo />
+    <Seo />
     </React.Fragment>
 );
 
