@@ -15,7 +15,7 @@ const NotFoundPage = () => (
           </header>
           <div>
             <p>
-              You just hit a page that doesn't exist. Were you looking for
+              You just hit a page that doesn&#39;t exist. Were you looking for
               <b>
                 <Link to="/project/">projects</Link>
               </b>
