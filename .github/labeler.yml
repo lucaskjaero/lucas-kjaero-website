@@ -1,7 +1,10 @@
 patch:
-  - ./*
   - cypress/*
   - resume/*
+  - ./*
+  - '**'
+  - '.*'
+  - '.*/**'
 
 minor:
   - content/*
