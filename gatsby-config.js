@@ -5,7 +5,7 @@ module.exports = {
   siteMetadata: {
     title: config.siteTitle,
     description: config.siteDescription,
-    siteUrl: config.siteUrl
+    siteUrl: config.siteUrl,
   },
   plugins: [
     `gatsby-plugin-styled-jsx`, // the plugin's code is inserted directly to gatsby-node.js and gatsby-ssr.js files
@@ -13,36 +13,36 @@ module.exports = {
     {
       resolve: `gatsby-plugin-layout`,
       options: {
-        component: require.resolve(`./src/layouts/`)
-      }
+        component: require.resolve(`./src/layouts/`),
+      },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/src/images/`
-      }
+        path: `${__dirname}/src/images/`,
+      },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/content/posts/`,
-        name: "posts"
-      }
+        name: "posts",
+      },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/content/pages/`,
-        name: "pages"
-      }
+        name: "pages",
+      },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `parts`,
-        path: `${__dirname}/content/parts/`
-      }
+        path: `${__dirname}/content/parts/`,
+      },
     },
     {
       resolve: `gatsby-transformer-remark`,
@@ -53,14 +53,14 @@ module.exports = {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 800,
-              backgroundColor: "transparent"
-            }
+              backgroundColor: "transparent",
+            },
           },
           {
             resolve: `gatsby-remark-responsive-iframe`,
             options: {
-              wrapperStyle: `margin-bottom: 2em`
-            }
+              wrapperStyle: `margin-bottom: 2em`,
+            },
           },
           `gatsby-remark-prismjs`,
           `gatsby-remark-copy-linked-files`,
@@ -81,12 +81,12 @@ module.exports = {
                 "margin-top": "1px",
                 position: "relative",
                 top: "5px",
-                width: "25px"
-              }
-            }
-          }
-        ]
-      }
+                width: "25px",
+              },
+            },
+          },
+        ],
+      },
     },
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
@@ -105,48 +105,48 @@ module.exports = {
           {
             src: "/icons/icon-48x48.png",
             sizes: "48x48",
-            type: "image/png"
+            type: "image/png",
           },
           {
             src: "/icons/icon-96x96.png",
             sizes: "96x96",
-            type: "image/png"
+            type: "image/png",
           },
           {
             src: "/icons/icon-144x144.png",
             sizes: "144x144",
-            type: "image/png"
+            type: "image/png",
           },
           {
             src: "/icons/icon-192x192.png",
             sizes: "192x192",
-            type: "image/png"
+            type: "image/png",
           },
           {
             src: "/icons/icon-256x256.png",
             sizes: "256x256",
-            type: "image/png"
+            type: "image/png",
           },
           {
             src: "/icons/icon-384x384.png",
             sizes: "384x384",
-            type: "image/png"
+            type: "image/png",
           },
           {
             src: "/icons/icon-512x512.png",
             sizes: "512x512",
-            type: "image/png"
-          }
-        ]
-      }
+            type: "image/png",
+          },
+        ],
+      },
     },
     `gatsby-plugin-offline`,
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
         trackingId: process.env.GOOGLE_ANALYTICS_ID,
-        respectDNT: true
-      }
+        respectDNT: true,
+      },
     },
     {
       resolve: `gatsby-plugin-feed`,
@@ -166,13 +166,13 @@ module.exports = {
         feeds: [
           {
             serialize: ({ query: { site, allMarkdownRemark } }) => {
-              return allMarkdownRemark.edges.map(edge => {
+              return allMarkdownRemark.edges.map((edge) => {
                 return Object.assign({}, edge.node.frontmatter, {
                   description: edge.node.excerpt,
                   date: edge.node.fields.prefix,
                   url: site.siteMetadata.siteUrl + edge.node.fields.slug,
                   guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
-                  custom_elements: [{ "content:encoded": edge.node.html }]
+                  custom_elements: [{ "content:encoded": edge.node.html }],
                 });
               });
             },
@@ -205,19 +205,19 @@ module.exports = {
               }
             `,
             output: "/rss.xml",
-            title: "Projects by Lucas Kjaero-Zhang"
-          }
-        ]
-      }
+            title: "Projects by Lucas Kjaero-Zhang",
+          },
+        ],
+      },
     },
     {
-      resolve: `gatsby-plugin-sitemap`
+      resolve: `gatsby-plugin-sitemap`,
     },
     {
       resolve: "gatsby-plugin-react-svg",
       options: {
-        include: /svg-icons/
-      }
+        include: /svg-icons/,
+      },
     },
     {
       resolve: `gatsby-plugin-favicon`,
@@ -237,15 +237,15 @@ module.exports = {
           favicons: true,
           firefox: true,
           yandex: false,
-          windows: false
-        }
-      }
+          windows: false,
+        },
+      },
     },
     {
       resolve: `gatsby-plugin-canonical-urls`,
       options: {
-        siteUrl: `https://www.lucaskjaerozhang.com`
-      }
-    }
-  ]
+        siteUrl: `https://www.lucaskjaerozhang.com`,
+      },
+    },
+  ],
 };

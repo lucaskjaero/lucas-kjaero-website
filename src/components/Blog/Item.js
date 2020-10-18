@@ -3,13 +3,13 @@ import { Link } from "gatsby";
 import PropTypes from "prop-types";
 import React from "react";
 
-const Item = props => {
+const Item = (props) => {
   const {
     theme,
     post: {
       fields: { slug, prefix },
-      frontmatter: { title, category, technologies, tldr }
-    }
+      frontmatter: { title, category, technologies, tldr },
+    },
   } = props;
 
   return (
@@ -228,7 +228,7 @@ const Item = props => {
 
 Item.propTypes = {
   post: PropTypes.object.isRequired,
-  theme: PropTypes.object.isRequired
+  theme: PropTypes.object.isRequired,
 };
 
 export default Item;

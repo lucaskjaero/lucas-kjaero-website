@@ -11,10 +11,10 @@ import avatar from "../../images/jpg/avatar.jpg";
 
 class Header extends React.Component {
   state = {
-    fixed: false
+    fixed: false,
   };
 
-  visibilitySensorChange = val => {
+  visibilitySensorChange = (val) => {
     if (val) {
       this.setState({ fixed: false });
     } else {
@@ -49,9 +49,9 @@ class Header extends React.Component {
             </div>
           </Link>
           <FontLoadedContext.Consumer>
-            {loaded => (
+            {(loaded) => (
               <ScreenWidthContext.Consumer>
-                {width => (
+                {(width) => (
                   <Menu
                     path={path}
                     fixed={fixed}
@@ -254,7 +254,7 @@ class Header extends React.Component {
 Header.propTypes = {
   pages: PropTypes.array.isRequired,
   path: PropTypes.string.isRequired,
-  theme: PropTypes.object.isRequired
+  theme: PropTypes.object.isRequired,
 };
 
 export default Header;

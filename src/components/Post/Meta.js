@@ -6,7 +6,7 @@ const _ = require("lodash");
 
 import { FaCalendar, FaCog, FaTag } from "react-icons/fa/";
 
-const Meta = props => {
+const Meta = (props) => {
   const { prefix, category, technologies, theme } = props;
 
   return (
@@ -23,7 +23,7 @@ const Meta = props => {
       {technologies && (
         <span>
           <FaCog size={18} />
-          {technologies.sort().map(tech => {
+          {technologies.sort().map((tech) => {
             return (
               <span key={tech}>
                 <Link to={`/technology/${tech.split(" ").join("-")}`}>{tech}</Link>
@@ -67,7 +67,7 @@ Meta.propTypes = {
   prefix: PropTypes.string.isRequired,
   category: PropTypes.string,
   technologies: PropTypes.array,
-  theme: PropTypes.object.isRequired
+  theme: PropTypes.object.isRequired,
 };
 
 export default Meta;

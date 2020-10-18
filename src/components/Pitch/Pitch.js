@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Pitch = props => {
+const Pitch = (props) => {
   const { html, tagline, theme } = props;
 
   return (
@@ -84,7 +84,7 @@ const Pitch = props => {
 Pitch.propTypes = {
   html: PropTypes.string.isRequired,
   tagline: PropTypes.object.isRequired,
-  theme: PropTypes.object.isRequired
+  theme: PropTypes.object.isRequired,
 };
 
 export default Pitch;

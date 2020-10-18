@@ -11,7 +11,7 @@ class IndexPage extends React.Component {
   separator1 = React.createRef();
   separator2 = React.createRef();
 
-  scrollToContent = e => {
+  scrollToContent = (e) => {
     this.separator1.current.scrollIntoView({ block: "start", behavior: "smooth" });
   };
 
@@ -21,30 +21,30 @@ class IndexPage extends React.Component {
         posts: { edges: posts = [] },
         pitch: {
           html: pitch,
-          frontmatter: { tagline }
+          frontmatter: { tagline },
         },
         bgDesktop: {
-          resize: { src: desktop }
+          resize: { src: desktop },
         },
         bgTablet: {
-          resize: { src: tablet }
+          resize: { src: tablet },
         },
         bgMobile: {
-          resize: { src: mobile }
-        }
-      }
+          resize: { src: mobile },
+        },
+      },
     } = this.props;
 
     const backgrounds = {
       desktop,
       tablet,
-      mobile
+      mobile,
     };
 
     return (
       <React.Fragment>
         <ThemeContext.Consumer>
-          {theme => (
+          {(theme) => (
             <Hero scrollToContent={this.scrollToContent} backgrounds={backgrounds} theme={theme} />
           )}
         </ThemeContext.Consumer>
@@ -52,13 +52,13 @@ class IndexPage extends React.Component {
         <hr ref={this.separator1} />
 
         <ThemeContext.Consumer>
-          {theme => <Pitch html={pitch} tagline={tagline} theme={theme} />}
+          {(theme) => <Pitch html={pitch} tagline={tagline} theme={theme} />}
         </ThemeContext.Consumer>
 
         <hr ref={this.separator2} />
 
         <ThemeContext.Consumer>
-          {theme => <Blog posts={posts} theme={theme} />}
+          {(theme) => <Blog posts={posts} theme={theme} />}
         </ThemeContext.Consumer>
 
         <Seo />
@@ -75,7 +75,7 @@ class IndexPage extends React.Component {
 }
 
 IndexPage.propTypes = {
-  data: PropTypes.object.isRequired
+  data: PropTypes.object.isRequired,
 };
 
 export default IndexPage;

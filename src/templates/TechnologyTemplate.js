@@ -8,20 +8,20 @@ import Article from "../components/Article";
 import Headline from "../components/Article/Headline";
 import List from "../components/List";
 
-const TechnologyTemplate = props => {
+const TechnologyTemplate = (props) => {
   const {
     pageContext: { technology },
     data: {
-      allMarkdownRemark: { edges }
-    }
+      allMarkdownRemark: { edges },
+    },
   } = props;
 
   // Gatsby doesn't currently support set ownership checks in graphql, so we do this manually
   const selectedPosts = edges
-    .filter(post => {
+    .filter((post) => {
       return post.node.frontmatter.technologies && post.node.frontmatter.technologies !== null;
     })
-    .filter(post => {
+    .filter((post) => {
       return post.node.frontmatter.technologies.includes(technology);
     });
   const totalCount = selectedPosts.length;
@@ -29,7 +29,7 @@ const TechnologyTemplate = props => {
   return (
     <React.Fragment>
       <ThemeContext.Consumer>
-        {theme => (
+        {(theme) => (
           <Article theme={theme}>
             <header>
               <Headline theme={theme}>
@@ -54,7 +54,7 @@ const TechnologyTemplate = props => {
 
 TechnologyTemplate.propTypes = {
   data: PropTypes.object.isRequired,
-  pageContext: PropTypes.object.isRequired
+  pageContext: PropTypes.object.isRequired,
 };
 
 export default TechnologyTemplate;
