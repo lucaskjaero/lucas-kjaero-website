@@ -8,11 +8,9 @@ latex_link_pattern = r"\\href\{(http[^}]+)\}"
 
 class BrokenLinksError(Exception):
     def __init__(self, broken_links):
+        """Takes a collection of broken links"""
         self.broken_links = broken_links
         self.message = "There are broken links:\n" + "\n".join(broken_links)
-    
-    def __repr__(self):
-        return self.message
 
 
 def get_links_from_file(path, pattern=default_pattern):
