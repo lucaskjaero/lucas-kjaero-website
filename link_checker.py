@@ -19,7 +19,7 @@ def get_links_from_file(path, pattern=default_pattern):
     with open(path) as document:
         for line in document:
             links.extend(re.findall(pattern, line))
-    return links
+    return [link.lower() for link in links]
 
 
 def get_links_from_resumes():
