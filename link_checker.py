@@ -5,6 +5,11 @@ import requests
 default_pattern = r"(http[^\n\)]+)"
 latex_link_pattern = r"\\href\{(http[^}]+)\}"
 
+whitelisted_links = [
+    # This site redirects to a closure page half of the year
+    "https://www.freefilefillableforms.com"
+]
+
 
 class BrokenLinksError(Exception):
     def __init__(self, broken_links):
@@ -61,7 +66,7 @@ def main():
     links = get_links_from_resumes()
     links.extend(get_links_from_markdown())
 
-    broken_links = check_links(set(links))
+    broken_links = check_links(set([link for link in links if link not in whitelisted_links]))
 
     if len(broken_links) > 0:
         raise BrokenLinksError(broken_links)
