@@ -98,7 +98,7 @@
     "postcss": "^7.0.27",
     "postcss-cli": "^5.0.1",
     "postcss-custom-properties": "^7.0.0",
-    "postcss-custom-selectors": "^4.0.1",
+    "postcss-custom-selectors": "^5.1.2",
     "postcss-load-plugins": "^2.3.0",
     "postcss-loader": "^2.1.6",
     "postcss-media-variables": "^2.0.1",
