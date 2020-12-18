@@ -79,6 +79,7 @@ jobs:
 
   deploy:
     name: Deploy to dev environment
+    if: ${{ github.event.label.name != 'automerge' }}
     needs: [build-resume, build-frontend]
     runs-on: ubuntu-latest
     steps:
@@ -107,3 +108,18 @@ jobs:
         run: aws s3 sync public s3://${{ secrets.AWS_DEV_S3_BUCKET }}/ --no-progress --delete
       - name: Echo dev address
         run: echo "http://lucas-kjaero-zhang-website-dev.s3-website-us-west-1.amazonaws.com"
+  
+  automerge:
+    name: Automatically merge
+    runs-on: ubuntu-latest
+    needs: [build-resume, build-frontend]
+    steps:
+      - name: automerge
+        uses: "pascalgn/automerge-action@v0.12.0"
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+        with:
+          MERGE_METHOD: squash
+          MERGE_COMMIT_MESSAGE: pull-request-title-and-description
+          MERGE_FORKS: false
+          MERGE_DELETE_BRANCH: true
