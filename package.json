@@ -86,7 +86,7 @@
     "dotenv": "^6.0.0",
     "eslint": "^7.10.0",
     "eslint-config-google": "^0.14.0",
-    "eslint-config-prettier": "^6.12.0",
+    "eslint-config-prettier": "^7.0.0",
     "eslint-plugin-cypress": "^2.11.1",
     "eslint-plugin-graphql": "^4.0.0",
     "eslint-plugin-import": "^2.22.1",
