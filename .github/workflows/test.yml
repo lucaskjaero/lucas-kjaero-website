@@ -112,7 +112,7 @@ jobs:
   automerge:
     name: Automatically merge
     runs-on: ubuntu-latest
-    needs: [build-resume, build-frontend]
+    needs: [add-label, build-resume, build-frontend, test-frontend]
     steps:
       - name: automerge
         uses: "pascalgn/automerge-action@v0.12.0"
