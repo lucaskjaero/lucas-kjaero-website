@@ -118,8 +118,8 @@ jobs:
         uses: "pascalgn/automerge-action@v0.12.0"
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-        with:
           MERGE_METHOD: squash
           MERGE_COMMIT_MESSAGE: pull-request-title-and-description
           MERGE_FORKS: false
           MERGE_DELETE_BRANCH: true
+          UPDATE_METHOD: rebase
