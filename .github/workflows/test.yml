@@ -59,7 +59,7 @@ jobs:
         name: lucas-kjaero-zhang-resume-chinese.pdf
         path: resume/lucas-kjaero-zhang-个人简历.pdf
 
-  test-frontend:
+  test:
     name: "Lint and test frontend"
     runs-on: ubuntu-latest
     steps:
@@ -76,11 +76,42 @@ jobs:
         run: npm test
       - name: Lint
         run: npm run lint
+  
+  links:
+    name: "Check links"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Set up Python 3.7
+        uses: actions/setup-python@v2.2.1
+        with:
+          python-version: 3.7
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Check links
+        run: python link_checker.py
+  
+  security:
+    name: Security Scan
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        language: ['javascript']
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v1
+      with:
+        languages: ${{ matrix.language }}
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v1
 
   deploy:
     name: Deploy to dev environment
-    if: ${{ github.event.label.name != 'automerge' }}
-    needs: [build-resume, build-frontend]
+    needs: [build-resume, build-frontend, security]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/download-artifact@master
@@ -108,18 +139,3 @@ jobs:
         run: aws s3 sync public s3://${{ secrets.AWS_DEV_S3_BUCKET }}/ --no-progress --delete
       - name: Echo dev address
         run: echo "http://lucas-kjaero-zhang-website-dev.s3-website-us-west-1.amazonaws.com"
-  
-  automerge:
-    name: Automatically merge
-    runs-on: ubuntu-latest
-    needs: [add-label, build-resume, build-frontend, test-frontend]
-    steps:
-      - name: automerge
-        uses: "pascalgn/automerge-action@v0.12.0"
-        env:
-          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-          MERGE_METHOD: squash
-          MERGE_COMMIT_MESSAGE: pull-request-title-and-description
-          MERGE_FORKS: false
-          MERGE_DELETE_BRANCH: true
-          UPDATE_METHOD: rebase
