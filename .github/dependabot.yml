@@ -9,6 +9,7 @@ updates:
       - "automerge"
       - "javascript"
       - "dependencies"
+    rebase-strategy: "disabled"
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
