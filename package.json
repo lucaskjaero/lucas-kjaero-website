@@ -52,7 +52,7 @@
     "react-dom": "^16.13.1",
     "react-helmet": "^6.1.0",
     "react-icons": "^4.1.0",
-    "react-md-spinner": "^0.3.0",
+    "react-md-spinner": "^1.0.0",
     "react-obfuscate": "^2.1.4",
     "react-share": "^2.2.0",
     "react-visibility-sensor": "^5.1.1",
