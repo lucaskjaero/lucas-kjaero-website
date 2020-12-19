@@ -38,7 +38,7 @@ const Contact = (props) => {
 
   function handleSubmit(e) {
     e.preventDefault();
-    props.form.validateFields((err, values) => {
+    form.validateFields((err, values) => {
       if (!err) {
         sendMessage(values);
       }
