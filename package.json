@@ -104,7 +104,7 @@
     "postcss-media-variables": "^2.0.1",
     "postcss-sorting": "^6.0.0",
     "postcss-utilities": "^0.8.0",
-    "precss": "^3.1.2",
+    "precss": "^4.0.0",
     "prettier": "^2.2.1",
     "serve": "^11.3.2",
     "start-server-and-test": "^1.11.6",
