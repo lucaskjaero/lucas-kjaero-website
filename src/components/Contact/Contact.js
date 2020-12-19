@@ -16,34 +16,23 @@ import { ThemeContext } from "../../layouts";
 
 const axios = require("axios");
 
-const Contact = (props) => {
+const Contact = () => {
   const [form] = Form.useForm();
 
-  function encode(data) {
-    return Object.keys(data)
-      .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-      .join("&");
-  }
-
-  function sendMessage(values) {
+  const onFinish = (values) => {
     axios
       .post("https://formspree.io/meqelqay", values)
-      .then((response) => {
+      .then(() => {
         navigate("/success");
       })
-      .catch((error) => {
+      .catch(() => {
         navigate("/failure");
       });
-  }
+  };
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    form.validateFields((err, values) => {
-      if (!err) {
-        sendMessage(values);
-      }
-    });
-  }
+  const onFinishFailed = () => {
+    navigate("/failure");
+  };
 
   return (
     <React.Fragment>
@@ -53,7 +42,8 @@ const Contact = (props) => {
             <Form
               name="contact"
               form={form}
-              onSubmit={handleSubmit}
+              onFinish={onFinish}
+              onFinishFailed={onFinishFailed}
               data-netlify="true"
               data-netlify-honeypot="bot-field"
             >
@@ -139,8 +129,6 @@ const Contact = (props) => {
   );
 };
 
-Contact.propTypes = {
-  form: PropTypes.object,
-};
+Contact.propTypes = {};
 
 export default Contact;
