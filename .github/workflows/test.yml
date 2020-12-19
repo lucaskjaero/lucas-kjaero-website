@@ -123,3 +123,4 @@ jobs:
           MERGE_COMMIT_MESSAGE: pull-request-title-and-description
           MERGE_FORKS: false
           MERGE_DELETE_BRANCH: true
+          UPDATE_METHOD: rebase
