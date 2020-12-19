@@ -4,11 +4,6 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
-    open-pull-requests-limit: 100
-    labels:
-      - "automerge"
-      - "javascript"
-      - "dependencies"
     rebase-strategy: "disabled"
   - package-ecosystem: "github-actions"
     directory: "/"
