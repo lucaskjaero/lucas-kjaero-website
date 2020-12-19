@@ -27,7 +27,7 @@
     "gatsby-plugin-sitemap": "^2.3.4",
     "gatsby-plugin-styled-jsx": "^3.2.3",
     "gatsby-plugin-styled-jsx-postcss": "^2.0.2",
-    "gatsby-remark-copy-linked-files": "^2.2.3",
+    "gatsby-remark-copy-linked-files": "^2.7.0",
     "gatsby-remark-emojis": "^0.2.3",
     "gatsby-remark-external-links": "^0.0.4",
     "gatsby-remark-images": "^2.0.1",
