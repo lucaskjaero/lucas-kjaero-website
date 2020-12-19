@@ -13,7 +13,7 @@
     "fs-extra": "^9.0.1",
     "gatsby": "^2.24.73",
     "gatsby-image": "^2.8.0",
-    "gatsby-plugin-canonical-urls": "^2.2.3",
+    "gatsby-plugin-canonical-urls": "^2.7.0",
     "gatsby-plugin-catch-links": "^2.7.0",
     "gatsby-plugin-favicon": "^3.1.6",
     "gatsby-plugin-feed": "^2.10.0",
