@@ -45,7 +45,7 @@
     "postcss-easy-media-query": "^1.0.0",
     "postcss-nested": "^4.2.3",
     "postcss-text-remove-gap": "^1.1.1",
-    "prismjs": "^1.21.0",
+    "prismjs": "^1.22.0",
     "prop-types": "^15.7.2",
     "react": "^16.14.0",
     "react-addons-perf": "^15.4.2",
