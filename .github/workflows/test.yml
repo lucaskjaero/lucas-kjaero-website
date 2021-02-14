@@ -23,8 +23,6 @@ jobs:
           node-version: '12.x'
       - name: Build dependencies
         run: npm ci --only=production
-      - name: Validate security of dependencies
-        run: npx audit-ci --moderate -a 1550
       - name: Build production bundle
         env:
           CI: true
@@ -71,8 +69,6 @@ jobs:
           node-version: '10.x'
       - name: Install dependencies
         run: npm install
-      - name: Validate security of dependencies
-        run: npx audit-ci --moderate -a 1550
       - name: End to end test
         run: npm test
       - name: Lint
@@ -109,6 +105,14 @@ jobs:
         languages: ${{ matrix.language }}
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v1
+    - uses: actions/setup-node@v2.1.4
+      name: Install node
+      with:
+        node-version: '12.x'
+    - name: Build dependencies
+      run: npm ci --only=production
+    - name: Validate security of dependencies
+      run: npx audit-ci --moderate -a 1550
 
   deploy:
     name: Deploy to dev environment
