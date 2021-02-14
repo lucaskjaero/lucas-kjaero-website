@@ -1,11 +1,14 @@
-name: PR Build
+name: PR Dependency test
 
-on: [pull_request]
+on: 
+  pull_request:
+    paths:
+      - "package.json"
+      - "package-lock.json"
 
 jobs:
-
   build-frontend:
-    name: "Test that frontend builds"
+    name: Test that frontend builds
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -41,3 +44,20 @@ jobs:
       run: npm ci --only=production
     - name: Validate security of dependencies
       run: npx audit-ci --moderate -a 1550
+  
+  test:
+    name: Lint and test frontend
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@v2.1.4
+        name: Install node
+        with:
+          node-version: '10.x'
+      - name: Install dependencies
+        run: npm install
+      - name: End to end test
+        run: npm test
+      - name: Lint
+        run: npm run lint
