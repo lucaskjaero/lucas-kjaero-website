@@ -1,11 +1,17 @@
-name: PR Build
+name: PR Javascript and content test
 
-on: [pull_request]
+on: 
+  pull_request:
+    paths:
+      - "*.js"
+      - "**/*.js"
+      - "content/*"
+      - "src/*"
 
 jobs:
 
   build-frontend:
-    name: "Test that frontend builds"
+    name: Test that frontend builds
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -27,7 +33,7 @@ jobs:
           path: public
 
   test:
-    name: "Lint and test frontend"
+    name: Lint and test frontend
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -44,8 +50,9 @@ jobs:
         run: npm run lint
   
   links:
-    name: "Check links"
+    name: Check links
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@master
       - name: Set up Python 3.7
@@ -79,6 +86,7 @@ jobs:
     name: Deploy to dev environment
     needs: [build-resume, build-frontend, security]
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/download-artifact@master
         name: Download website content
