@@ -1,6 +1,5 @@
 /* eslint-disable no-console */
 // Console logs are fine during the build process, probably actually encouraged.
-// Trigger frontend test
 
 const _ = require("lodash");
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
