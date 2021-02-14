@@ -1,11 +1,13 @@
-name: PR Build
+name: PR Check - Resume
 
-on: [pull_request]
+on: 
+  pull_request:
+    paths:
+      - "resume/*"
 
 jobs:
-
   build-resume:
-    name: "Test that resumes build"
+    name: Test that resumes build
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
@@ -27,17 +29,3 @@ jobs:
       with:
         name: lucas-kjaero-zhang-resume-chinese.pdf
         path: resume/lucas-kjaero-zhang-个人简历.pdf
-  
-  links:
-    name: "Check links"
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@master
-      - name: Set up Python 3.7
-        uses: actions/setup-python@v2.2.1
-        with:
-          python-version: 3.7
-      - name: Install dependencies
-        run: pip install -r requirements.txt
-      - name: Check links
-        run: python link_checker.py

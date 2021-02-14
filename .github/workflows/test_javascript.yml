@@ -1,4 +1,4 @@
-name: PR Javascript and content test
+name: PR Check - Javascript and Content
 
 on: 
   pull_request:
@@ -9,7 +9,6 @@ on:
       - "src/*"
 
 jobs:
-
   build-frontend:
     name: Test that frontend builds
     runs-on: ubuntu-latest
@@ -49,21 +48,6 @@ jobs:
       - name: Lint
         run: npm run lint
   
-  links:
-    name: Check links
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    steps:
-      - uses: actions/checkout@master
-      - name: Set up Python 3.7
-        uses: actions/setup-python@v2.2.1
-        with:
-          python-version: 3.7
-      - name: Install dependencies
-        run: pip install -r requirements.txt
-      - name: Check links
-        run: python link_checker.py
-  
   security:
     name: Security Scan
     runs-on: ubuntu-latest
@@ -84,7 +68,7 @@ jobs:
 
   deploy:
     name: Deploy to dev environment
-    needs: [build-resume, build-frontend, security]
+    needs: [build-frontend, security]
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:

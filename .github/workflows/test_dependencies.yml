@@ -1,4 +1,4 @@
-name: PR Dependency test
+name: PR Check - Dependencies
 
 on: 
   pull_request:
