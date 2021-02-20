@@ -41,10 +41,10 @@ exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
 
   return new Promise((resolve, reject) => {
-    const postTemplate = path.resolve("./src/templates/PostTemplate.js");
-    const pageTemplate = path.resolve("./src/templates/PageTemplate.js");
-    const categoryTemplate = path.resolve("./src/templates/CategoryTemplate.js");
-    const technologyTemplate = path.resolve("./src/templates/TechnologyTemplate.js");
+    const postTemplate = path.resolve("./src/templates/PostTemplate.tsx");
+    const pageTemplate = path.resolve("./src/templates/PageTemplate.tsx");
+    const categoryTemplate = path.resolve("./src/templates/CategoryTemplate.tsx");
+    const technologyTemplate = path.resolve("./src/templates/TechnologyTemplate.tsx");
 
     // Do not create draft post files in production.
     const activeEnv = process.env.ACTIVE_ENV || process.env.NODE_ENV || "development";
