@@ -5,6 +5,9 @@
   "license": "MIT",
   "dependencies": {
     "@babel/core": "7.7.5",
+    "@types/node": "^14.14.30",
+    "@types/react": "^17.0.1",
+    "@types/react-dom": "^17.0.0",
     "antd": "^4.12.3",
     "axios": "^0.21.1",
     "bluebird": "^3.7.2",
@@ -60,6 +63,7 @@
     "styled-jsx-plugin-stylelint": "^0.1.0",
     "tinycolor2": "^1.4.2",
     "typeface-open-sans": "^1.1.13",
+    "typescript": "^4.1.5",
     "webpack-bundle-analyzer": "^4.3.0",
     "yaml-loader": "^0.6.0"
   },
