@@ -43,7 +43,7 @@ jobs:
     - name: Build dependencies
       run: npm ci --only=production
     - name: Validate security of dependencies
-      run: npx audit-ci --moderate -a 1550 -a 1500 -a 786
+      run: npx audit-ci --high -a 1550 -a 1500 -a 786
   
   test:
     name: Lint and test frontend
