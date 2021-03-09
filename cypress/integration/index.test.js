@@ -1,5 +1,3 @@
-/* eslint-disable jest/expect-expect */
-
 describe("Check the home page", function () {
   beforeEach(function () {
     cy.visit("/");
