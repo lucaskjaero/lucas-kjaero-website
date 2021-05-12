@@ -15,7 +15,7 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@master
-      - uses: actions/setup-node@v2.1.4
+      - uses: actions/setup-node@v2.1.5
         name: Install node
         with:
           node-version: '12.x'
@@ -37,7 +37,7 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@master
-      - uses: actions/setup-node@v2.1.4
+      - uses: actions/setup-node@v2.1.5
         name: Install node
         with:
           node-version: '10.x'
