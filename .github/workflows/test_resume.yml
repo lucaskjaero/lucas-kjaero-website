@@ -1,9 +1,6 @@
 name: PR Check - Resume
 
-on: 
-  pull_request:
-    paths:
-      - "resume/*"
+on: [pull_request]
 
 jobs:
   build-resume:

@@ -1,12 +1,6 @@
 name: PR Check - Javascript and Content
 
-on: 
-  pull_request:
-    paths:
-      - "*.js"
-      - "**/*.js"
-      - "content/*"
-      - "src/*"
+on: [pull_request]
 
 jobs:
   build-frontend:
