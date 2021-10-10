@@ -1,21 +1,29 @@
-name: PR Check - Javascript and Content
+name: PR Check - Code
 
-on: 
-  pull_request:
-    paths:
-      - "*.js"
-      - "**/*.js"
-      - "content/*"
-      - "src/*"
+on: [pull_request]
 
 jobs:
+  links:
+    name: Check links
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Set up Python 3.7
+        uses: actions/setup-python@v2.2.2
+        with:
+          python-version: 3.7
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Check links
+        run: python link_checker.py
+  
   build-frontend:
-    name: Test that frontend builds
+    name: Test that frontend production bundle builds
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@master
-      - uses: actions/setup-node@v2.1.4
+      - uses: actions/setup-node@v2.4.1
         name: Install node
         with:
           node-version: '12.x'
@@ -30,14 +38,14 @@ jobs:
         with:
           name: gatsby-public
           path: public
-
+  
   test:
     name: Lint and test frontend
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@master
-      - uses: actions/setup-node@v2.1.4
+      - uses: actions/setup-node@v2.4.1
         name: Install node
         with:
           node-version: '10.x'
@@ -48,8 +56,8 @@ jobs:
       - name: Lint
         run: npm run lint
   
-  security:
-    name: Security Scan
+  code-security:
+    name: Code security scan
     runs-on: ubuntu-latest
 
     strategy:
@@ -65,25 +73,3 @@ jobs:
         languages: ${{ matrix.language }}
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v1
-
-  deploy:
-    name: Deploy to dev environment
-    needs: [build-frontend, security]
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    steps:
-      - uses: actions/download-artifact@master
-        name: Download website content
-        with:
-          name: gatsby-public
-          path: public
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-west-1
-      - name: Push to S3
-        run: aws s3 sync public s3://${{ secrets.AWS_DEV_S3_BUCKET }}/ --no-progress --delete
-      - name: Echo dev address
-        run: echo "http://lucas-kjaero-zhang-website-dev.s3-website-us-west-1.amazonaws.com"
