@@ -1,9 +1,7 @@
-name: Deploy website to S3
+name: Deploy website to preprod
 
 on:
-  pull_request:
-    types: [closed]
-    branches: [master]
+  workflow_dispatch:
 
 jobs:
   build-resume:
@@ -58,11 +56,12 @@ jobs:
         with:
           name: gatsby-public
           path: public
-  
-  deploy: 
-    name: Deploy to S3
+
+  deploy:
+    name: Deploy to dev environment
     needs: [build-resume, build-frontend]
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/download-artifact@master
         name: Download website content
@@ -86,69 +85,6 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-west-1
       - name: Push to S3
-        run: aws s3 sync public s3://${{ secrets.AWS_S3_BUCKET }}/ --no-progress --delete
-      - name: Invalidate Cloudfront cache
-        run: aws cloudfront create-invalidation --distribution-id EWJC89C0ACD7D --paths /index.html /*
-  
-  release: 
-    name: Add artifacts to release
-    needs: [build-resume, build-frontend]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: K-Phoen/semver-release-action@master
-        name: Calculate release version
-        id: release_version
-        with:
-          release_branch: master
-          release_strategy: none
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1.1.4
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ steps.release_version.outputs.tag }}
-          release_name: ${{ github.event.pull_request.title }}
-      - uses: actions/download-artifact@master
-        name: Download website content
-        with:
-          name: gatsby-public
-          path: public
-      - uses: actions/download-artifact@master
-        name: Download English resume
-        with:
-          name: lucas-kjaero-zhang-resume.pdf
-          path: public
-      - uses: actions/download-artifact@master
-        name: Download Chinese resume
-        with:
-          name: lucas-kjaero-zhang-resume-chinese.pdf
-          path: public
-      - name: Zip release
-        run: zip -r release.zip public
-      - uses: actions/upload-release-asset@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./release.zip
-          asset_name: release.zip
-          asset_content_type: application/zip
-      - uses: actions/upload-release-asset@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./public/lucas-kjaero-zhang-resume.pdf
-          asset_name: lucas-kjaero-zhang-resume.pdf
-          asset_content_type: application/pdf
-      - uses: actions/upload-release-asset@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./public/lucas-kjaero-zhang-个人简历.pdf
-          asset_name: lucas-kjaero-zhang-resume-zh.pdf
-          asset_content_type: application/pdf
+        run: aws s3 sync public s3://${{ secrets.AWS_DEV_S3_BUCKET }}/ --no-progress --delete
+      - name: Echo dev address
+        run: echo "http://lucas-kjaero-zhang-website-dev.s3-website-us-west-1.amazonaws.com"

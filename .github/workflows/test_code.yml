@@ -1,14 +1,24 @@
-name: PR Check - Dependencies
+name: PR Check - Code
 
-on: 
-  pull_request:
-    paths:
-      - "package.json"
-      - "package-lock.json"
+on: [pull_request]
 
 jobs:
+  links:
+    name: Check links
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Set up Python 3.7
+        uses: actions/setup-python@v2.2.1
+        with:
+          python-version: 3.7
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Check links
+        run: python link_checker.py
+  
   build-frontend:
-    name: Test that frontend builds
+    name: Test that frontend production bundle builds
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -29,22 +39,6 @@ jobs:
           name: gatsby-public
           path: public
   
-  security:
-    name: Security Scan
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
-    - uses: actions/setup-node@v2.1.4
-      name: Install node
-      with:
-        node-version: '12.x'
-    - name: Build dependencies
-      run: npm ci --only=production
-    - name: Validate security of dependencies
-      run: npx audit-ci --high -a 1550 -a 1500 -a 786
-  
   test:
     name: Lint and test frontend
     runs-on: ubuntu-latest
@@ -61,3 +55,21 @@ jobs:
         run: npm test
       - name: Lint
         run: npm run lint
+  
+  code-security:
+    name: Code security scan
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        language: ['javascript']
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v1
+      with:
+        languages: ${{ matrix.language }}
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v1

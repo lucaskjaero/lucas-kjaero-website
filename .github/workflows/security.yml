@@ -4,11 +4,12 @@ on:
   push:
     branches: [master]
   schedule:
-    - cron: '0 7 * * 4'
+    - cron: '0 7 * * *'
+  workflow_dispatch:
 
 jobs:
-  security:
-    name: Security Scan
+  code-security:
+    name: Code security scan
     runs-on: ubuntu-latest
 
     strategy:
@@ -24,3 +25,19 @@ jobs:
         languages: ${{ matrix.language }}
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v1
+
+  dependency-security:
+    name: Dependency security scan
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+    - uses: actions/setup-node@v2.1.4
+      name: Install node
+      with:
+        node-version: '12.x'
+    - name: Build dependencies
+      run: npm ci --only=production
+    - name: Validate security of dependencies
+      run: npx audit-ci --high -a 1550 -a 1500 -a 786
