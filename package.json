@@ -80,7 +80,7 @@
   },
   "devDependencies": {
     "@mapbox/stylelint-processor-arbitrary-tags": "^0.3.0",
-    "audit-ci": "^3.1.1",
+    "audit-ci": "^5.0.0",
     "babel-eslint": "^10.1.0",
     "babel-plugin-dynamic-import-webpack": "^1.0.2",
     "babel-plugin-import": "^1.13.3",
