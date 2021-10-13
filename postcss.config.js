@@ -6,6 +6,5 @@ module.exports = (ctx) => ({
         desktop: 1024,
       },
     },
-    "postcss-nested": {},
   },
 });
