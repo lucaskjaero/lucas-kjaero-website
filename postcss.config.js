@@ -11,15 +11,5 @@ module.exports = (ctx) => ({
       defaultLineHeight: "0",
     },
     "postcss-nested": {},
-    "postcss-cssnext": {},
   },
 });
-
-// "postcss-nested": {},
-// "postcss-sorting": {
-//   order: ["custom-properties", "dollar-variables", "declarations", "at-rules", "rules"],
-//   "properties-order": "alphabetical",
-//   "unspecified-properties-position": "bottom"
-// },
-// "postcss-utilities": {},
-// "postcss-cssnext": {}
