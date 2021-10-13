@@ -6,10 +6,6 @@ module.exports = (ctx) => ({
         desktop: 1024,
       },
     },
-    "postcss-text-remove-gap": {
-      defaultFontFamily: "Open Sans",
-      defaultLineHeight: "0",
-    },
     "postcss-nested": {},
   },
 });
