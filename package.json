@@ -7,7 +7,7 @@
     "@babel/core": "7.7.5",
     "@types/node": "^16.11.0",
     "@types/react": "^17.0.30",
-    "@types/react-dom": "^17.0.9",
+    "@types/react-dom": "^17.0.10",
     "antd": "^4.16.13",
     "axios": "^0.23.0",
     "bluebird": "^3.7.2",
