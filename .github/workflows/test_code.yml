@@ -9,7 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - name: Set up Python 3.7
-        uses: actions/setup-python@v2.2.1
+        uses: actions/setup-python@v2.3.1
         with:
           python-version: 3.7
       - name: Install dependencies
@@ -23,7 +23,7 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@master
-      - uses: actions/setup-node@v2.1.4
+      - uses: actions/setup-node@v2.5.1
         name: Install node
         with:
           node-version: '12.x'
@@ -45,7 +45,7 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@master
-      - uses: actions/setup-node@v2.1.4
+      - uses: actions/setup-node@v2.5.1
         name: Install node
         with:
           node-version: '10.x'
