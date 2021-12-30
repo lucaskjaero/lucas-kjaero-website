@@ -35,6 +35,16 @@ Absolutely. I'm in UTC+2 (Central European time), and am open to roles that alig
 ### Am you willing to relocate?
 At this time I'm not interested in relocating outside of Copenhagen.
 
+## Communication
+### Can we set up an introductory call?
+Absolutely. [Here's my calendar](https://calendly.com/lucaskjaerozhang/technical-recruiter-introduction-call), feel free to book any time slot that fits your schedule. If none of the times work for you, email me and we can find a time that will.
+
+### What's the best way to get in contact?
+Email is the best, but other methods also work. My email is lucas AT lucaskjaerozhang DOT com.
+
+### I have your US phone number, can I call you there?
+Unfortunately I don't currently use that number or check voicemails, as I am not living in the US. I'm still holding on to the phone number, but for now it's not possible to reach me there.
+
 ## Compensation
 ### What are your salary expectations?
 That depends on the role, including how interesting it is and how it impacts my career progression. That being said, I'm unlikely to be interested in compensation below Amazon L5 levels.
