@@ -4,7 +4,7 @@ title: Recruiter FAQ
 ## What type of roles do you fit?
 I'm a full-stack developer, but I've specialized in data. In general, positions related to product development or data engineering will be a good fit. Although I've previously been in devops and quality (SDET) roles, they're not my primary focus.
 
-Interested in more detail? You can deep dive [by looking at descriptions of some of my work projects](https://www.lucaskjaerozhang.com/project/), or just go straight to [my resume](https://www.lucaskjaerozhang.com/lucas-kjaero-zhang-resume.pdf).
+Interested in more detail? You can deep dive [by looking at descriptions of some of my work projects](https://www.lucaskjaerozhang.com/projects/), or just go straight to [my resume](https://www.lucaskjaerozhang.com/lucas-kjaero-zhang-resume.pdf).
 
 ## Timeframe
 I started my last role in early 2021, and am generally happy with my situation. I like to stay at companies for at least two years, and therefore am unlikely to be interested in switching before 2023. That being said, I'm always happy to connect. 
