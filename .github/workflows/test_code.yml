@@ -7,7 +7,7 @@ jobs:
     name: Check links
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v3.1.0
       - name: Set up Python 3.7
         uses: actions/setup-python@v2.3.1
         with:
@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v3.1.0
       - uses: actions/setup-node@v2.5.1
         name: Install node
         with:
@@ -44,7 +44,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v3.1.0
       - uses: actions/setup-node@v2.5.1
         name: Install node
         with:
@@ -66,7 +66,7 @@ jobs:
         language: ['javascript']
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3.1.0
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v1
       with:
