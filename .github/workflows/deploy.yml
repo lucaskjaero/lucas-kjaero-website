@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.pull_request.merged
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v3.1.0
         with:
           ref: master
       - name: Install latex and fonts
@@ -39,7 +39,7 @@ jobs:
     if: github.event.pull_request.merged
     timeout-minutes: 5
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v3.1.0
         with:
           ref: master
       - uses: actions/setup-node@v2.5.1
