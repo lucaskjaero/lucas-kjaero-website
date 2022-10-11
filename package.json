@@ -94,7 +94,7 @@
     "eslint-plugin-jsx-a11y": "^6.6.1",
     "eslint-plugin-mocha": "^9.0.0",
     "eslint-plugin-prettier": "^4.2.1",
-    "eslint-plugin-react": "^7.31.1",
+    "eslint-plugin-react": "^7.31.10",
     "json-loader": "^0.5.7",
     "postcss": "^8.4.17",
     "postcss-cli": "^9.1.0",
