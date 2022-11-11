@@ -96,7 +96,7 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.31.1",
     "json-loader": "^0.5.7",
-    "postcss": "^8.4.17",
+    "postcss": "^8.4.19",
     "postcss-cli": "^9.1.0",
     "postcss-custom-properties": "^12.1.9",
     "postcss-custom-selectors": "^6.0.3",
