@@ -101,7 +101,7 @@
     "postcss-custom-properties": "^12.1.9",
     "postcss-custom-selectors": "^6.0.3",
     "postcss-load-plugins": "^2.3.0",
-    "postcss-loader": "^4.1.0",
+    "postcss-loader": "^7.0.2",
     "postcss-media-variables": "^2.0.1",
     "postcss-sorting": "^7.0.1",
     "postcss-utilities": "^0.8.0",
