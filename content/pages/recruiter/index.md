@@ -7,7 +7,7 @@ I'm a full-stack developer, but I've specialized in data. In general, positions 
 Interested in more detail? You can deep dive [by looking at descriptions of some of my work projects](https://www.lucaskjaerozhang.com/project/), or just go straight to [my resume](https://www.lucaskjaerozhang.com/lucas-kjaero-zhang-resume.pdf).
 
 ## Timeframe
-I started my last role in early 2021, and am generally happy with my situation. I like to stay at companies for at least two years, and therefore am unlikely to be interested in switching before 2023. That being said, I'm always happy to connect. 
+I started my last role in early 2021, and am generally happy with my situation. I like to stay at companies for at least two years, and therefore am unlikely to be interested in switching before 2026. That being said, I'm always happy to connect. 
 
 ## Types of companies
 ### What kind of companies are you most interested in?
@@ -41,9 +41,6 @@ Absolutely. [Here's my calendar](https://calendly.com/lucaskjaerozhang/technical
 
 ### What's the best way to get in contact?
 Email is the best, but other methods also work. My email is lucas AT lucaskjaerozhang DOT com.
-
-### I have your US phone number, can I call you there?
-Unfortunately I don't currently use that number or check voicemails, as I am not living in the US. I'm still holding on to the phone number, but for now it's not possible to reach me there.
 
 ## Compensation
 ### What are your salary expectations?
