@@ -8,10 +8,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - name: Set up Python 3.7
-        uses: actions/setup-python@v2.2.2
+      - name: Set up Python 3.13.2
+        uses: actions/setup-python@v5.4.0
         with:
-          python-version: 3.7
+          python-version: 3.13.2
       - name: Install dependencies
         run: pip install -r requirements.txt
       - name: Check links
@@ -23,7 +23,7 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@master
-      - uses: actions/setup-node@v2.4.1
+      - uses: actions/setup-node@v4.2.0
         name: Install node
         with:
           node-version: '12.x'
@@ -45,7 +45,7 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@master
-      - uses: actions/setup-node@v2.4.1
+      - uses: actions/setup-node@v4.2.0
         name: Install node
         with:
           node-version: '10.x'
