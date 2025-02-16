@@ -26,12 +26,13 @@ jobs:
       - uses: actions/setup-node@v4.2.0
         name: Install node
         with:
-          node-version: '16.x'
+          node-version: '18.x'
       - name: Build dependencies
         run: npm ci --only=production
       - name: Build production bundle
         env:
           CI: true
+          GOOGLE_ANALYTICS_ID: ${{ secrets.GOOGLE_ANALYTICS_TRACKING_ID }}
         run: npm run build
       - uses: actions/upload-artifact@master
         name: Upload website content
@@ -48,11 +49,13 @@ jobs:
       - uses: actions/setup-node@v4.2.0
         name: Install node
         with:
-          node-version: '16.x'
+          node-version: '18.x'
       - name: Install dependencies
         run: npm install
       - name: End to end test
         run: npm test
+        env:
+          GOOGLE_ANALYTICS_ID: ${{ secrets.GOOGLE_ANALYTICS_TRACKING_ID }}
       - name: Lint
         run: npm run lint
   
