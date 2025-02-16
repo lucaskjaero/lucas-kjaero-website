@@ -44,6 +44,7 @@
     "js-yaml": "^4.1.0",
     "lodash": "^4.17.21",
     "normalize.css": "^8.0.0",
+    "pngquant": "^4.2.0",
     "postcss-easy-media-query": "^1.0.0",
     "postcss-nested": "^4.2.3",
     "prismjs": "^1.29.0",
