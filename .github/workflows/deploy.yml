@@ -45,7 +45,7 @@ jobs:
       - uses: actions/setup-node@v4.2.0
         name: Install node
         with:
-          node-version: '20.x'
+          node-version: '18.x'
       - name: Build dependencies
         run: npm ci --only=production
       - name: Build production bundle
