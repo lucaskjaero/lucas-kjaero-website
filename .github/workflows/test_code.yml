@@ -26,7 +26,7 @@ jobs:
       - uses: actions/setup-node@v4.4.0
         name: Install node
         with:
-          node-version: '16.x'
+          node-version: '18.x'
       - name: Build dependencies
         run: npm ci --only=production
       - name: Build production bundle
@@ -48,7 +48,7 @@ jobs:
       - uses: actions/setup-node@v4.4.0
         name: Install node
         with:
-          node-version: '16.x'
+          node-version: '18.x'
       - name: Install dependencies
         run: npm install
       - name: End to end test
