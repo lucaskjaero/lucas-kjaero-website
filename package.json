@@ -13,7 +13,7 @@
     "bluebird": "^3.7.2",
     "core-js": "^3.42.0",
     "fontfaceobserver": "^2.3.0",
-    "fs-extra": "^11.3.0",
+    "fs-extra": "^11.3.2",
     "gatsby": "^2.32.13",
     "gatsby-image": "^3.11.0",
     "gatsby-plugin-canonical-urls": "^2.10.0",
