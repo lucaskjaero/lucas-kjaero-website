@@ -41,7 +41,7 @@
     "gatsby-transformer-remark": "^2.16.1",
     "gatsby-transformer-sharp": "^2.12.1",
     "immutability-helper": "^3.1.1",
-    "js-yaml": "^4.1.0",
+    "js-yaml": "^4.1.1",
     "lodash": "^4.17.21",
     "normalize.css": "^8.0.0",
     "pngquant": "^4.2.0",
