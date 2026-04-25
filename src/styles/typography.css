@@ -1,3 +1,4 @@
+@reference 'tailwindcss';
 @reference './global.css';
 
 @layer base {
