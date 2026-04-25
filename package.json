@@ -15,6 +15,7 @@
     "cy:run": "cypress run --browser electron",
     "lint": "npm run lint:styles",
     "lint:styles": "stylelint \"src/**/*.css\"",
+    "lint:styles-fix": "stylelint \"src/**/*.css\" --fix",
     "test": "npm run build:static && start-server-and-test \"npm run preview -- --host 127.0.0.1 --port 4321\" http://127.0.0.1:4321 \"npm run cy:run\"",
     "prettier": "prettier --write **/*.{ts,tsx,css,astro,md,mdx} --ignore-path .gitignore"
   },
