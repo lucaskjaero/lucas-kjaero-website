@@ -23,7 +23,7 @@ export default defineConfig({
   site: 'https://www.lucaskjaerozhang.com',
   integrations: [mdx(), react(), sitemap(), icon()],
   vite: {
-    plugins: [tailwindcss()],
+    plugins: [tailwindcss() as any],
   },
   server: {
     port: 1234,

@@ -1,6 +1,4 @@
-import { defineConfig } from 'cypress'
-
-export default defineConfig({
+export default {
   e2e: {
     baseUrl: 'http://127.0.0.1:4321',
     specPattern: 'cypress/e2e/**/*.cy.js',
@@ -8,4 +6,4 @@ export default defineConfig({
     video: false,
     screenshotOnRunFailure: true,
   },
-})
+}
