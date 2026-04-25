@@ -17,9 +17,14 @@ export function calculateWordCountFromHtml(
   html: string | null | undefined,
 ): number {
   if (!html) return 0
-  const container = document.createElement('div')
-  container.innerHTML = html
-  const textOnly = container.textContent || ''
+  const textOnly = html
+    .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, ' ')
+    .replace(/<style\b[^<]*(?:(?!<\/style>)<[^<]*)*<\/style>/gi, ' ')
+    .replace(/<!--[\s\S]*?-->/g, ' ')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/&(?:nbsp|#160);/gi, ' ')
+    .replace(/&[a-z\d#]+;/gi, ' ')
+
   return textOnly.split(/\s+/).filter(Boolean).length
 }
 
