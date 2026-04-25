@@ -1,0 +1,103 @@
+---
+import Breadcrumbs from '@/components/breadcrumbs.astro'
+import Link from '@/components/link.astro'
+import PageHead from '@/components/page-head.astro'
+import { badgeVariants } from '@/components/ui/badge'
+import { buttonVariants } from '@/components/ui/button'
+import Layout from '@/layouts/layout.astro'
+import { Icon } from 'astro-icon/components'
+
+const documents = [
+  {
+    title: 'Resume',
+    description: 'Concise software engineering resume.',
+    variants: [
+      {
+        label: 'English',
+        href: '/lucas-kjaero-zhang-resume.pdf',
+        available: true,
+      },
+      {
+        label: 'Danish',
+        href: '',
+        available: false,
+      },
+      {
+        label: 'Chinese',
+        href: '/lucas-kjaero-zhang-个人简历.pdf',
+        available: true,
+      },
+    ],
+  },
+  {
+    title: 'CV',
+    description: 'Longer-form curriculum vitae.',
+    variants: [
+      {
+        label: 'English',
+        href: '',
+        available: false,
+      },
+      {
+        label: 'Danish',
+        href: '',
+        available: false,
+      },
+      {
+        label: 'Chinese',
+        href: '',
+        available: false,
+      },
+    ],
+  },
+]
+---
+
+<Layout class="max-w-3xl">
+  <PageHead slot="head" title="Resume" />
+  <Breadcrumbs items={[{ label: 'Resume', icon: 'lucide:file-user' }]} />
+
+  <section class="flex flex-col gap-y-3">
+    <h1 class="text-3xl leading-tight font-semibold sm:text-4xl">Resume</h1>
+    <p class="text-muted-foreground max-w-2xl text-base leading-7">
+      Downloadable resume and CV documents. The PDFs are generated from LaTeX
+      during the deployment build and published alongside the site.
+    </p>
+  </section>
+
+  <section class="grid gap-4">
+    {
+      documents.map((document) => (
+        <article class="bg-background/80 rounded-2xl border border-dashed p-5">
+          <div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+            <div>
+              <h2 class="text-xl font-medium">{document.title}</h2>
+              <p class="text-muted-foreground mt-1 text-sm">
+                {document.description}
+              </p>
+            </div>
+          </div>
+
+          <div class="mt-5 flex flex-wrap gap-2">
+            {document.variants.map((variant) =>
+              variant.available ? (
+                <Link
+                  href={variant.href}
+                  class={buttonVariants({ variant: 'outline' })}
+                  download
+                >
+                  <Icon name="lucide:download" class="size-4" />
+                  {variant.label}
+                </Link>
+              ) : (
+                <span class={badgeVariants({ variant: 'muted' })}>
+                  {variant.label} planned
+                </span>
+              ),
+            )}
+          </div>
+        </article>
+      ))
+    }
+  </section>
+</Layout>

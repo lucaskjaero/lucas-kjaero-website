@@ -121,9 +121,16 @@ typings/
 .env
 
 .cache/
+.astro/
+dist/
 .DS_Store
-public/
 yarn-error.log
+public/chunk-map.json
+public/render-page.js
+public/render-page.js.map
+public/webpack.stats.json
+public/manifest.webmanifest
+public/robots.txt
 
 # editors
 .idea/

@@ -1,0 +1,105 @@
+---
+import BlogCard from '@/components/blog-card.astro'
+import Link from '@/components/link.astro'
+import PageHead from '@/components/page-head.astro'
+import { buttonVariants } from '@/components/ui/button'
+import { SITE } from '@/consts'
+import Layout from '@/layouts/layout.astro'
+import { getRecentPosts } from '@/lib/data-utils'
+
+const posts = await getRecentPosts(SITE.featuredPostCount)
+---
+
+<Layout class="max-w-5xl px-0">
+  <PageHead slot="head" title="Home" />
+
+  <section
+    class="relative left-1/2 min-h-screen w-screen -translate-x-1/2 overflow-hidden"
+  >
+    <img
+      src="/assets/images/lucas-background.jpg"
+      alt=""
+      class="absolute inset-0 h-full w-full object-cover"
+    />
+    <div
+      class="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-white/35 to-transparent"
+    >
+    </div>
+    <div
+      class="absolute inset-0 bg-[linear-gradient(90deg,rgb(0_0_0/0.05),transparent_28%,transparent_68%,rgb(0_0_0/0.12))]"
+    >
+    </div>
+
+    <div
+      class="relative z-10 mx-auto flex min-h-screen max-w-5xl items-center justify-center px-4 py-12 sm:px-6 lg:px-8"
+    >
+      <div class="flex max-w-4xl flex-col items-center gap-y-5 text-center">
+        <h1
+          class="max-w-3xl text-5xl leading-tight font-semibold text-white drop-shadow-[0_3px_8px_rgb(0_0_0/0.55)] sm:text-6xl"
+        >
+          Lucas Kjaero-Zhang
+        </h1>
+        <p
+          class="max-w-2xl text-2xl leading-8 font-semibold text-white drop-shadow-[0_2px_6px_rgb(0_0_0/0.55)]"
+        >
+          Technologist. Traveler.
+        </p>
+        <div class="flex flex-wrap justify-center gap-3">
+          <Link
+            href="/blog"
+            class={buttonVariants() +
+              ' bg-primary text-primary-foreground shadow-lg hover:bg-primary/90'}
+          >
+            View Work
+          </Link>
+          <Link
+            href="/about"
+            class={buttonVariants({ variant: 'outline' }) +
+              ' border-white/50 bg-black/10 text-white hover:bg-white/10'}
+          >
+            About Me
+          </Link>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="flex flex-col gap-y-4 px-4 sm:px-0">
+    <div
+      class="relative left-1/2 w-screen -translate-x-1/2 bg-primary px-4 py-20 text-center text-primary-foreground"
+    >
+      <div class="mx-auto max-w-4xl">
+        <h2 class="text-4xl leading-tight font-semibold sm:text-5xl">
+          Well-rounded with a love of data
+        </h2>
+      </div>
+    </div>
+
+    <p class="text-muted-foreground max-w-3xl text-lg leading-8">
+      I build robust systems that collect, clean, and move data effectively. My
+      work spans application development, devops, quality, and the
+      infrastructure around them.
+    </p>
+
+    <div class="flex items-end justify-between gap-4">
+      <div>
+        <h2 class="text-2xl font-medium">Selected work</h2>
+        <p class="text-muted-foreground mt-1 text-sm">
+          Project write-ups from the archive.
+        </p>
+      </div>
+      <Link href="/blog" class={buttonVariants({ variant: 'ghost' })}>
+        All work
+      </Link>
+    </div>
+    <ul class="flex flex-col gap-y-4">
+      {
+        posts.map((post) => (
+          <li>
+            <BlogCard entry={post} />
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</Layout>
