@@ -1,4 +1,6 @@
 import { type ClassValue, clsx } from 'clsx'
+import sanitizeHtml from 'sanitize-html'
+import { decode } from 'html-entities'
 import { twMerge } from 'tailwind-merge'
 
 export function cn(...inputs: ClassValue[]) {
@@ -17,13 +19,12 @@ export function calculateWordCountFromHtml(
   html: string | null | undefined,
 ): number {
   if (!html) return 0
-  const textOnly = html
-    .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, ' ')
-    .replace(/<style\b[^<]*(?:(?!<\/style>)<[^<]*)*<\/style>/gi, ' ')
-    .replace(/<!--[\s\S]*?-->/g, ' ')
-    .replace(/<[^>]+>/g, ' ')
-    .replace(/&(?:nbsp|#160);/gi, ' ')
-    .replace(/&[a-z\d#]+;/gi, ' ')
+  const textOnly = decode(
+    sanitizeHtml(html, {
+      allowedTags: [],
+      allowedAttributes: {},
+    }),
+  ).replace(/\u00a0/g, ' ')
 
   return textOnly.split(/\s+/).filter(Boolean).length
 }
