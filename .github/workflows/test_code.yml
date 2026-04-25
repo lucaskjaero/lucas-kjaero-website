@@ -40,7 +40,7 @@ jobs:
           path: public
   
   test:
-    name: Smoke test frontend
+    name: Lint and test frontend
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
