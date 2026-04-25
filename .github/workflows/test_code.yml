@@ -36,8 +36,8 @@ jobs:
       - uses: actions/upload-artifact@master
         name: Upload website content
         with:
-          name: gatsby-public
-          path: public
+          name: website-dist
+          path: dist
   
   test:
     name: Lint and test frontend

@@ -48,8 +48,8 @@ jobs:
       - uses: actions/upload-artifact@master
         name: Upload website content
         with:
-          name: gatsby-public
-          path: public
+          name: website-dist
+          path: dist
 
   deploy:
     name: Deploy to dev environment
@@ -60,18 +60,20 @@ jobs:
       - uses: actions/download-artifact@master
         name: Download website content
         with:
-          name: gatsby-public
-          path: public
+          name: website-dist
+          path: dist
       - uses: actions/download-artifact@master
         name: Download English resume
         with:
           name: lucas-kjaero-zhang-resume.pdf
-          path: public
+          path: dist
       - uses: actions/download-artifact@master
         name: Download Chinese resume
         with:
           name: lucas-kjaero-zhang-resume-chinese.pdf
-          path: public
+          path: dist
+      - name: Verify website artifact
+        run: test -f dist/index.html
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
@@ -79,6 +81,6 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-west-1
       - name: Push to S3
-        run: aws s3 sync public s3://${{ secrets.AWS_DEV_S3_BUCKET }}/ --no-progress --delete
+        run: aws s3 sync dist s3://${{ secrets.AWS_DEV_S3_BUCKET }}/ --no-progress --delete
       - name: Echo dev address
         run: echo "http://lucas-kjaero-zhang-website-dev.s3-website-us-west-1.amazonaws.com"
