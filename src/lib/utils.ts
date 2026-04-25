@@ -17,7 +17,9 @@ export function calculateWordCountFromHtml(
   html: string | null | undefined,
 ): number {
   if (!html) return 0
-  const textOnly = html.replace(/<[^>]+>/g, '')
+  const container = document.createElement('div')
+  container.innerHTML = html
+  const textOnly = container.textContent || ''
   return textOnly.split(/\s+/).filter(Boolean).length
 }
 
