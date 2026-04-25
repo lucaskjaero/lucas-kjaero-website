@@ -131,6 +131,8 @@ public/render-page.js.map
 public/webpack.stats.json
 public/manifest.webmanifest
 public/robots.txt
+public/page-data/
+public/static/
 
 # editors
 .idea/
@@ -143,3 +145,6 @@ static/lucas-kjaero-zhang-resume.pdf
 
 # Cypress test
 cypress/videos/*
+cypress/integration/
+cypress/plugins/
+cypress/support/

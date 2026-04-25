@@ -21,7 +21,7 @@ export const NAV_LINKS: SocialLink[] = [
     label: 'about',
   },
   {
-    href: '/resume',
+    href: '/resume-landing',
     label: 'resume',
   },
 ]

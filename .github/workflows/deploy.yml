@@ -8,7 +8,7 @@ on:
       - 'src/content/**'
       - 'src/pages/about.astro'
       - 'src/pages/index.astro'
-      - 'src/pages/resume.astro'
+      - 'src/pages/resume-landing.astro'
       - 'resume/**'
       - 'public/assets/**'
       - 'public/favicon*'

@@ -29,7 +29,7 @@ const pages = [
     },
   },
   {
-    path: '/resume',
+    path: '/resume-landing',
     title: 'Resume',
     assertion: () => {
       cy.contains('h1', 'Resume').should('exist')
