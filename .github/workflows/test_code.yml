@@ -53,6 +53,8 @@ jobs:
         run: npm ci
       - name: End to end test
         run: npm test
+      - name: Lint
+        run: npm run lint
   
   code-security:
     name: Code security scan
