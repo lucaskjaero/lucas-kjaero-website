@@ -9,8 +9,11 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro check && astro build",
+    "build:static": "astro build",
     "preview": "astro preview",
     "astro": "astro",
+    "cy:run": "cypress run --browser electron",
+    "test": "npm run build:static && start-server-and-test \"npm run preview -- --host 127.0.0.1 --port 4321\" http://127.0.0.1:4321 \"npm run cy:run\"",
     "prettier": "prettier --write **/*.{ts,tsx,css,astro,md,mdx} --ignore-path .gitignore"
   },
   "dependencies": {
@@ -45,10 +48,12 @@
     "typescript": "^5.8.3"
   },
   "devDependencies": {
+    "cypress": "^15.14.1",
     "prettier": "^3.5.1",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-astro-organize-imports": "^0.4.11",
-    "prettier-plugin-tailwindcss": "^0.6.11"
+    "prettier-plugin-tailwindcss": "^0.6.11",
+    "start-server-and-test": "^3.0.2"
   },
   "prettier": {
     "semi": false,
