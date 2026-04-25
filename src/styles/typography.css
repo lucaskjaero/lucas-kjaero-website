@@ -1,6 +1,3 @@
-@reference 'tailwindcss';
-@reference './global.css';
-
 @layer base {
   p,
   h1,

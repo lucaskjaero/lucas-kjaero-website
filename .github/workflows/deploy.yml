@@ -5,13 +5,11 @@ on:
     types: [closed]
     branches: [master]
     paths:
-      - 'src/content/**'
-      - 'src/pages/about.astro'
-      - 'src/pages/index.astro'
-      - 'src/pages/resume-landing.astro'
+      - 'src/**'
+      - 'astro.config.ts'
       - 'resume/**'
       - 'public/assets/**'
-      - 'public/favicon*'
+      - 'public/fonts/**'
       - 'public/site.webmanifest'
 
 jobs:
