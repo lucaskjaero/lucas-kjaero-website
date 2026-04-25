@@ -1,7 +1,5 @@
 @import 'tailwindcss';
 
-@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
-
 @theme inline {
   --font-sans:
     Geist, ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
@@ -54,32 +52,10 @@
   --ring: oklch(0.708 0 0);
 }
 
-[data-theme='dark'] {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --primary: oklch(0.7 0.17 38);
-  --primary-foreground: oklch(0.145 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --ring: oklch(0.556 0 0);
-}
-
 .dot-hexagon-light {
   background-image:
     radial-gradient(circle, rgb(128 128 128 / 27%) 1px, transparent 1px),
     radial-gradient(circle, rgb(128 128 128 / 27%) 1px, transparent 1px);
-  background-position:
-    0 0,
-    12px 20.78px;
-  background-size: 24px 41.57px;
-}
-
-.dot-hexagon-dark {
-  background-image:
-    radial-gradient(circle, rgb(255 255 255 / 21%) 1px, transparent 1px),
-    radial-gradient(circle, rgb(255 255 255 / 21%) 1px, transparent 1px);
   background-position:
     0 0,
     12px 20.78px;
@@ -98,12 +74,6 @@
   border-color: var(--border);
   color: var(--foreground);
   backdrop-filter: blur(12px);
-}
-
-#site-header[data-transparent-header='true']:not(.is-scrolled)
-  [data-slot='button']:hover {
-  background-color: rgb(255 255 255 / 14%);
-  color: white;
 }
 
 @layer base {
