@@ -9,8 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-        with:
-          ref: master
       - name: Install latex and fonts
         run: sudo apt-get install texlive-xetex fonts-arphic-gbsn00lp fonts-wqy-zenhei fonts-arphic-gkai00mp latex-cjk-all
       - name: Compile English resume
@@ -36,8 +34,6 @@ jobs:
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@master
-        with:
-          ref: master
       - uses: actions/setup-node@v4.4.0
         name: Install node
         with:
