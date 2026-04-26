@@ -64,4 +64,10 @@ describe('site smoke tests', () => {
       .should('include', '<rss')
       .and('include', 'RPM data access lambda')
   })
+
+  it('serves legacy resume technology links', () => {
+    cy.visit('/technology/python/')
+    cy.location('pathname').should('eq', '/tags/python/')
+    cy.contains('a', 'Puzzle-8').should('exist')
+  })
 })

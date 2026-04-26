@@ -21,7 +21,14 @@ import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
   site: 'https://www.lucaskjaerozhang.com',
-  integrations: [mdx(), react(), sitemap(), icon()],
+  integrations: [
+    mdx(),
+    react(),
+    sitemap({
+      filter: (page) => !new URL(page).pathname.startsWith('/technology/'),
+    }),
+    icon(),
+  ],
   vite: {
     plugins: [tailwindcss() as never],
   },

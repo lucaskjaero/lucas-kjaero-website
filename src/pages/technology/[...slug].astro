@@ -1,0 +1,50 @@
+---
+export const legacyTechnologyRedirects = {
+  aws: '/tags/aws/',
+  django: '/tags/django/',
+  docker: '/tags/docker/',
+  elasticsearch: '/tags/elasticsearch/',
+  java: '/tags/java/',
+  javascript: '/tags/javascript/',
+  keras: '/tags/keras/',
+  numpy: '/tags/numpy/',
+  pandas: '/tags/pandas/',
+  postgresql: '/tags/postgresql/',
+  python: '/tags/python/',
+  react: '/tags/react/',
+  scala: '/tags/scala/',
+  sklearn: '/tags/sklearn/',
+  'spring-boot': '/tags/spring%20boot/',
+  sql: '/tags/sql/',
+  tensorflow: '/tags/tensorflow/',
+}
+
+export function getStaticPaths() {
+  return Object.entries(legacyTechnologyRedirects).map(([slug, target]) => ({
+    params: { slug },
+    props: { slug, target },
+  }))
+}
+
+const { slug, target } = Astro.props
+const pageTitle = `Redirecting ${slug}`
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex" />
+    <meta http-equiv="refresh" content={`0; url=${target}`} />
+    <link rel="canonical" href={target} />
+    <title>{pageTitle}</title>
+    <script is:inline define:vars={{ target }}>
+      window.location.replace(target)
+    </script>
+  </head>
+  <body>
+    <p>
+      Redirecting to <a href={target}>{target}</a>.
+    </p>
+  </body>
+</html>
