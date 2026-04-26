@@ -1,11 +1,10 @@
 patch:
-  - cypress/*
-  - resume/*
-  - ./*
-  - '**'
-  - '.*'
-  - '.*/**'
+  - changed-files:
+      - any-glob-to-any-file:
+          - '**'
 
 minor:
-  - src/content/**
-  - src/*
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'src/content/**'
+          - 'src/*'

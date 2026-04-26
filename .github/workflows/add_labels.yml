@@ -6,7 +6,11 @@ jobs:
   add-label:
     name: Add patch label to pull request
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
     steps:
+    - uses: actions/checkout@v6
     - uses: actions/labeler@v6
       with:
         repo-token: "${{ secrets.GITHUB_TOKEN }}"
