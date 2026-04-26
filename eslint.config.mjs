@@ -1,6 +1,5 @@
 import js from '@eslint/js'
 import astro from 'eslint-plugin-astro'
-import react from 'eslint-plugin-react'
 import reactHooks from 'eslint-plugin-react-hooks'
 import globals from 'globals'
 import tseslint from 'typescript-eslint'
@@ -34,19 +33,6 @@ export default [
     },
     rules: {
       'no-console': 'off',
-    },
-  },
-  {
-    files: ['**/*.{tsx,jsx}'],
-    ...react.configs.flat.recommended,
-    settings: {
-      react: {
-        version: 'detect',
-      },
-    },
-    rules: {
-      ...react.configs.flat.recommended.rules,
-      'react/react-in-jsx-scope': 'off',
     },
   },
   {
