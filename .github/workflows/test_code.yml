@@ -26,9 +26,9 @@ jobs:
       - uses: actions/setup-node@v4.4.0
         name: Install node
         with:
-          node-version: '16.x'
+          node-version: '22.x'
       - name: Build dependencies
-        run: npm ci --only=production
+        run: npm ci
       - name: Build production bundle
         env:
           CI: true
@@ -36,8 +36,8 @@ jobs:
       - uses: actions/upload-artifact@master
         name: Upload website content
         with:
-          name: gatsby-public
-          path: public
+          name: website-dist
+          path: dist
   
   test:
     name: Lint and test frontend
@@ -48,9 +48,9 @@ jobs:
       - uses: actions/setup-node@v4.4.0
         name: Install node
         with:
-          node-version: '16.x'
+          node-version: '22.x'
       - name: Install dependencies
-        run: npm install
+        run: npm ci
       - name: End to end test
         run: npm test
       - name: Lint

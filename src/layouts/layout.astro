@@ -1,0 +1,77 @@
+---
+import '@/styles/global.css'
+
+import Footer from '@/components/footer.astro'
+import Head from '@/components/head.astro'
+import Header from '@/components/header.astro'
+import { SITE } from '@/consts'
+import { cn } from '@/lib/utils'
+
+interface Props {
+  class?: string
+}
+
+const { class: className } = Astro.props
+const isHome = Astro.url.pathname === '/'
+---
+
+<!doctype html>
+<html
+  class="bg-background text-foreground scheme-light-dark"
+  lang={SITE.locale}
+>
+  <Head>
+    <slot name="head" />
+  </Head>
+  <body class="relative flex h-fit min-h-screen flex-col font-sans">
+    <div class="pointer-events-none fixed inset-0 -z-10">
+      <div class="dot-hexagon-light absolute inset-0"></div>
+      <div
+        class="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_50%,transparent_0%,rgb(255_255_255/0.5)_60%,rgb(255_255_255/0.9)_85%,white_100%)]"
+      >
+      </div>
+    </div>
+    <header
+      id="site-header"
+      data-transparent-header={isHome ? 'true' : undefined}
+      class={cn(
+        'top-0 z-50 divide-y transition-all duration-300 xl:divide-none',
+        isHome
+          ? 'fixed w-full text-white'
+          : 'bg-background/70 sticky backdrop-blur-sm',
+      )}
+    >
+      <Header />
+      <slot name="subposts-navigation" />
+      <slot name="table-of-contents" />
+    </header>
+    <main class={cn('mx-auto flex w-full grow flex-col px-4', className)}>
+      <slot />
+    </main>
+    <Footer />
+    {
+      isHome && (
+        <script is:inline data-astro-rerun>
+          ;(() => {
+            const header = document.getElementById('site-header')
+            if (!header) return
+
+            const updateHeader = () => {
+              header.classList.toggle('is-scrolled', window.scrollY > 24)
+            }
+
+            updateHeader()
+            window.addEventListener('scroll', updateHeader, { passive: true })
+            document.addEventListener(
+              'astro:before-swap',
+              () => {
+                window.removeEventListener('scroll', updateHeader)
+              },
+              { once: true },
+            )
+          })()
+        </script>
+      )
+    }
+  </body>
+</html>

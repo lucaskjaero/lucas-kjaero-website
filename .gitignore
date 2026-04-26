@@ -47,6 +47,7 @@ typings/
 
 # Optional REPL history
 .node_repl_history
+__pycache__/
 
 # Output of 'npm pack'
 *.tgz
@@ -121,8 +122,9 @@ typings/
 .env
 
 .cache/
+.astro/
+dist/
 .DS_Store
-public/
 yarn-error.log
 
 # editors

@@ -9,8 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-        with:
-          ref: master
       - name: Install latex and fonts
         run: sudo apt-get install texlive-xetex fonts-arphic-gbsn00lp fonts-wqy-zenhei fonts-arphic-gkai00mp latex-cjk-all
       - name: Compile English resume
@@ -29,21 +27,19 @@ jobs:
         with:
           name: lucas-kjaero-zhang-resume-chinese.pdf
           path: resume/lucas-kjaero-zhang-个人简历.pdf
-  
+
   build-frontend:
     name: Build frontend
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@master
-        with:
-          ref: master
       - uses: actions/setup-node@v4.4.0
         name: Install node
         with:
-          node-version: '16.x'
+          node-version: '22.x'
       - name: Build dependencies
-        run: npm ci --only=production
+        run: npm ci
       - name: Build production bundle
         env:
           GOOGLE_ANALYTICS_ID: ${{ secrets.GOOGLE_ANALYTICS_TRACKING_ID }}
@@ -52,8 +48,8 @@ jobs:
       - uses: actions/upload-artifact@master
         name: Upload website content
         with:
-          name: gatsby-public
-          path: public
+          name: website-dist
+          path: dist
 
   deploy:
     name: Deploy to dev environment
@@ -64,18 +60,20 @@ jobs:
       - uses: actions/download-artifact@master
         name: Download website content
         with:
-          name: gatsby-public
-          path: public
+          name: website-dist
+          path: dist
       - uses: actions/download-artifact@master
         name: Download English resume
         with:
           name: lucas-kjaero-zhang-resume.pdf
-          path: public
+          path: dist
       - uses: actions/download-artifact@master
         name: Download Chinese resume
         with:
           name: lucas-kjaero-zhang-resume-chinese.pdf
-          path: public
+          path: dist
+      - name: Verify website artifact
+        run: test -f dist/index.html
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
@@ -83,6 +81,6 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-west-1
       - name: Push to S3
-        run: aws s3 sync public s3://${{ secrets.AWS_DEV_S3_BUCKET }}/ --no-progress --delete
+        run: aws s3 sync dist s3://${{ secrets.AWS_DEV_S3_BUCKET }}/ --no-progress --delete
       - name: Echo dev address
         run: echo "http://lucas-kjaero-zhang-website-dev.s3-website-us-west-1.amazonaws.com"

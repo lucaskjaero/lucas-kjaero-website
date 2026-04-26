@@ -1,0 +1,85 @@
+@import 'tailwindcss';
+@import './typography.css';
+
+@theme inline {
+  --font-sans:
+    geist, ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-mono:
+    geist mono, ui-monospace, sfmono-regular, menlo, monaco, consolas,
+    'Liberation Mono', 'Courier New', monospace;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+}
+
+@font-face {
+  font-family: Geist;
+  src: url('/fonts/GeistVF.woff2') format('woff2-variations');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geist Mono';
+  src: url('/fonts/GeistMonoVF.woff2') format('woff2-variations');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --background: oklch(100% 0 0deg);
+  --foreground: oklch(14.5% 0 0deg);
+  --primary: oklch(65% 0.18 38deg);
+  --primary-foreground: oklch(98.5% 0 0deg);
+  --muted: oklch(97% 0 0deg);
+  --muted-foreground: oklch(55.6% 0 0deg);
+  --destructive: oklch(57.7% 0.245 27.325deg);
+  --border: oklch(92.2% 0 0deg);
+  --ring: oklch(70.8% 0 0deg);
+}
+
+.dot-hexagon-light {
+  background-image:
+    radial-gradient(circle, rgb(128 128 128 / 27%) 1px, transparent 1px),
+    radial-gradient(circle, rgb(128 128 128 / 27%) 1px, transparent 1px);
+  background-position:
+    0 0,
+    12px 20.78px;
+  background-size: 24px 41.57px;
+}
+
+#site-header[data-transparent-header='true'] {
+  background-color: transparent;
+  border-color: transparent;
+  color: white;
+  backdrop-filter: none;
+}
+
+#site-header[data-transparent-header='true'].is-scrolled {
+  background-color: color-mix(in oklab, var(--background) 82%, transparent);
+  border-color: var(--border);
+  color: var(--foreground);
+  backdrop-filter: blur(12px);
+}
+
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    @apply border-border outline-ring/50;
+
+    letter-spacing: 0;
+  }
+}

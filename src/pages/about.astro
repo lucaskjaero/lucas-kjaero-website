@@ -1,0 +1,57 @@
+---
+import Breadcrumbs from '@/components/breadcrumbs.astro'
+import Link from '@/components/link.astro'
+import PageHead from '@/components/page-head.astro'
+import { buttonVariants } from '@/components/ui/button'
+import Layout from '@/layouts/layout.astro'
+---
+
+<Layout class="max-w-3xl">
+  <PageHead slot="head" title="About" />
+  <Breadcrumbs items={[{ label: 'About', icon: 'lucide:info' }]} />
+
+  <section class="grid gap-8 md:grid-cols-[1fr_220px] md:items-start">
+    <div class="prose max-w-none">
+      <h1>About Me</h1>
+      <p>
+        I'm a full stack engineer with a focus on data and a broad range of
+        experience. I am able to build robust systems that effectively collect
+        and clean data.
+      </p>
+      <p>
+        I have worked at enterprise scale for six years, and have worked in a
+        variety of roles including application development, devops, and quality.
+        The deployment tool I maintained and improved has performed over 1
+        million deployments within the company, and I know that because I built
+        the data collection infrastructure for it.
+      </p>
+      <p>
+        I've lived on 3 continents and speak four languages. When I'm not
+        working, I love traveling, cooking new foods, learning languages, and
+        automating everything possible in my house.
+      </p>
+      <p>
+        Want to know more? Feel free to send me an email or browse some of my
+        work.
+      </p>
+    </div>
+
+    <aside class="bg-background/80 rounded-2xl border border-dashed p-3">
+      <img
+        src="/assets/images/avatar.jpg"
+        alt="Lucas Kjaero-Zhang"
+        class="aspect-square rounded-xl object-cover"
+      />
+    </aside>
+  </section>
+
+  <section class="flex flex-wrap gap-3">
+    <Link href="/blog" class={buttonVariants()}>Browse Work</Link>
+    <Link
+      href="mailto:lucas@lucaskjaerozhang.com"
+      class={buttonVariants({ variant: 'outline' })}
+    >
+      Email Me
+    </Link>
+  </section>
+</Layout>

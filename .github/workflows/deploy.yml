@@ -4,6 +4,13 @@ on:
   pull_request_target:
     types: [closed]
     branches: [master]
+    paths:
+      - 'src/**'
+      - 'astro.config.ts'
+      - 'resume/**'
+      - 'public/assets/**'
+      - 'public/fonts/**'
+      - 'public/site.webmanifest'
 
 jobs:
   build-resume:
@@ -32,7 +39,7 @@ jobs:
         with:
           name: lucas-kjaero-zhang-resume-chinese.pdf
           path: resume/lucas-kjaero-zhang-个人简历.pdf
-  
+
   build-frontend:
     name: Build frontend
     runs-on: ubuntu-latest
@@ -45,9 +52,9 @@ jobs:
       - uses: actions/setup-node@v4.4.0
         name: Install node
         with:
-          node-version: '16.x'
+          node-version: '22.x'
       - name: Build dependencies
-        run: npm ci --only=production
+        run: npm ci
       - name: Build production bundle
         env:
           GOOGLE_ANALYTICS_ID: ${{ secrets.GOOGLE_ANALYTICS_TRACKING_ID }}
@@ -56,10 +63,10 @@ jobs:
       - uses: actions/upload-artifact@master
         name: Upload website content
         with:
-          name: gatsby-public
-          path: public
-  
-  deploy: 
+          name: website-dist
+          path: dist
+
+  deploy:
     name: Deploy to S3
     needs: [build-resume, build-frontend]
     runs-on: ubuntu-latest
@@ -67,18 +74,20 @@ jobs:
       - uses: actions/download-artifact@master
         name: Download website content
         with:
-          name: gatsby-public
-          path: public
+          name: website-dist
+          path: dist
       - uses: actions/download-artifact@master
         name: Download English resume
         with:
           name: lucas-kjaero-zhang-resume.pdf
-          path: public
+          path: dist
       - uses: actions/download-artifact@master
         name: Download Chinese resume
         with:
           name: lucas-kjaero-zhang-resume-chinese.pdf
-          path: public
+          path: dist
+      - name: Verify website artifact
+        run: test -f dist/index.html
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
@@ -86,11 +95,11 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-west-1
       - name: Push to S3
-        run: aws s3 sync public s3://${{ secrets.AWS_S3_BUCKET }}/ --no-progress --delete
+        run: aws s3 sync dist s3://${{ secrets.AWS_S3_BUCKET }}/ --no-progress --delete
       - name: Invalidate Cloudfront cache
         run: aws cloudfront create-invalidation --distribution-id EWJC89C0ACD7D --paths /index.html /*
-  
-  release: 
+
+  release:
     name: Add artifacts to release
     needs: [build-resume, build-frontend]
     runs-on: ubuntu-latest
@@ -114,20 +123,22 @@ jobs:
       - uses: actions/download-artifact@master
         name: Download website content
         with:
-          name: gatsby-public
-          path: public
+          name: website-dist
+          path: dist
       - uses: actions/download-artifact@master
         name: Download English resume
         with:
           name: lucas-kjaero-zhang-resume.pdf
-          path: public
+          path: dist
       - uses: actions/download-artifact@master
         name: Download Chinese resume
         with:
           name: lucas-kjaero-zhang-resume-chinese.pdf
-          path: public
+          path: dist
+      - name: Verify website artifact
+        run: test -f dist/index.html
       - name: Zip release
-        run: zip -r release.zip public
+        run: zip -r release.zip dist
       - uses: actions/upload-release-asset@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -141,7 +152,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./public/lucas-kjaero-zhang-resume.pdf
+          asset_path: ./dist/lucas-kjaero-zhang-resume.pdf
           asset_name: lucas-kjaero-zhang-resume.pdf
           asset_content_type: application/pdf
       - uses: actions/upload-release-asset@master
@@ -149,6 +160,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./public/lucas-kjaero-zhang-个人简历.pdf
+          asset_path: ./dist/lucas-kjaero-zhang-个人简历.pdf
           asset_name: lucas-kjaero-zhang-resume-zh.pdf
           asset_content_type: application/pdf

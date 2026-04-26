@@ -36,7 +36,9 @@ def get_links_from_resumes():
 
 def get_links_from_markdown():
     links = []
-    for markdown_path in glob.glob('content/**/*.md', recursive=True):
+    markdown_paths = glob.glob('src/content/**/*.md', recursive=True)
+    markdown_paths.extend(glob.glob('src/content/**/*.mdx', recursive=True))
+    for markdown_path in markdown_paths:
         print("Checking markdown at " + markdown_path)
         links.extend(get_links_from_file(markdown_path))
     return links
@@ -76,4 +78,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-        
+
