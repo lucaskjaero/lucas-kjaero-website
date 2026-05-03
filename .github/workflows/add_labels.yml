@@ -1,20 +1,8 @@
-name: PR Check - Labeler
+name: PR Check - Dependabot Auto-Merge
 
 on: [pull_request_target]
 
 jobs:
-  add-label:
-    name: Add patch label to pull request
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pull-requests: write
-    steps:
-    - uses: actions/checkout@v6
-    - uses: actions/labeler@v6
-      with:
-        repo-token: "${{ secrets.GITHUB_TOKEN }}"
-  
   auto-merge:
     name: Enable auto-merge for Dependabot
     if: github.actor == 'dependabot[bot]'
