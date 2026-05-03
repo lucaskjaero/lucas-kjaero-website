@@ -23,10 +23,8 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@master
-      - uses: actions/setup-node@v6.4.0
+      - uses: ./.github/actions/setup-node
         name: Install node
-        with:
-          node-version: '22.x'
       - name: Build dependencies
         run: npm ci
       - name: Build production bundle
@@ -45,10 +43,8 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@master
-      - uses: actions/setup-node@v6.4.0
+      - uses: ./.github/actions/setup-node
         name: Install node
-        with:
-          node-version: '22.x'
       - name: Install dependencies
         run: npm ci
       - name: End to end test
