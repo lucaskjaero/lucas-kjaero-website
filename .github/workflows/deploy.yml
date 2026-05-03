@@ -49,10 +49,8 @@ jobs:
       - uses: actions/checkout@master
         with:
           ref: master
-      - uses: actions/setup-node@v6.4.0
+      - uses: ./.github/actions/setup-node
         name: Install node
-        with:
-          node-version: '22.x'
       - name: Build dependencies
         run: npm ci
       - name: Build production bundle
