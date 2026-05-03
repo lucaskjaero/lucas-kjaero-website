@@ -10,4 +10,4 @@ runs:
         run: |
           tlmgr install xecjk
           cd resume
-          latexmk -xelatex -file-line-error -halt-on-error -interaction=nonstopmode lucas-kjaero-zhang-resume.tex lucas-kjaero-zhang-个人简历.tex
+          latexmk lucas-kjaero-zhang-resume.tex lucas-kjaero-zhang-个人简历.tex
