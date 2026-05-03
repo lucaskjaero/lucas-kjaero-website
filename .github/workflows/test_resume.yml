@@ -9,6 +9,9 @@ jobs:
   build-resume:
     name: Test that resumes build
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
     steps:
     - uses: actions/checkout@master
     - name: Install latex and fonts
@@ -27,3 +30,9 @@ jobs:
           resume/lucas-kjaero-zhang-resume.pdf
           resume/lucas-kjaero-zhang-个人简历.pdf
         if-no-files-found: error
+    - name: Comment with resume preview link
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        PR_URL: ${{ github.event.pull_request.html_url }}
+        ARTIFACTS_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}#artifacts
+      run: gh pr comment "$PR_URL" --edit-last --create-if-none --body "Resume preview PDFs are available in the [resume-previews artifact]($ARTIFACTS_URL)."
