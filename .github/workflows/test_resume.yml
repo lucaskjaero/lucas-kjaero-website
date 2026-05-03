@@ -5,6 +5,11 @@ on:
     paths:
       - "resume/*"
 
+# Keep the PR comment pointing at the latest resume preview for a given PR.
+concurrency:
+  group: resume-preview-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
 jobs:
   build-resume:
     name: Test that resumes build
@@ -16,17 +21,31 @@ jobs:
     - uses: actions/checkout@master
     - uses: ./.github/actions/build-resume
       name: Compile resumes
-    - uses: actions/upload-artifact@v6
-      name: Upload resume previews
+    - uses: actions/upload-artifact@v7
+      id: upload-english-resume
+      name: Upload English resume preview
       with:
-        name: resume-previews
-        path: |
-          resume/lucas-kjaero-zhang-resume.pdf
-          resume/lucas-kjaero-zhang-个人简历.pdf
+        path: resume/lucas-kjaero-zhang-resume.pdf
         if-no-files-found: error
+        archive: false
+    - uses: actions/upload-artifact@v7
+      id: upload-chinese-resume
+      name: Upload Chinese resume preview
+      with:
+        path: resume/lucas-kjaero-zhang-个人简历.pdf
+        if-no-files-found: error
+        archive: false
     - name: Comment with resume preview link
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         PR_URL: ${{ github.event.pull_request.html_url }}
-        ARTIFACTS_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}#artifacts
-      run: gh pr comment "$PR_URL" --edit-last --create-if-none --body "Resume preview PDFs are available in the [resume-previews artifact]($ARTIFACTS_URL)."
+        ENGLISH_URL: ${{ steps.upload-english-resume.outputs.artifact-url }}
+        CHINESE_URL: ${{ steps.upload-chinese-resume.outputs.artifact-url }}
+      run: |
+        gh pr comment "$PR_URL" --edit-last --create-if-none --body "$(cat <<EOF
+        Resume preview PDFs:
+
+        - [English resume]($ENGLISH_URL)
+        - [Chinese resume]($CHINESE_URL)
+        EOF
+        )"
