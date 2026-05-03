@@ -9,16 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - name: Compile resumes
-        uses: xu-cheng/latex-action@v4
-        with:
-          working_directory: resume
-          root_file: |
-            lucas-kjaero-zhang-resume.tex
-            lucas-kjaero-zhang-个人简历.tex
-          latexmk_use_xelatex: true
-          os: alpine
-          extra_system_packages: font-wqy-zenhei font-noto-cjk
+      - uses: ./.github/actions/build-resume
+        name: Compile resumes
       - uses: actions/upload-artifact@master
         name: Upload English resume
         with:

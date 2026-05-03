@@ -1,0 +1,13 @@
+name: Build resume PDFs
+description: Compile the English and Chinese resume PDFs.
+runs:
+  using: composite
+  steps:
+    - name: Compile resumes
+      uses: xu-cheng/texlive-action@v3
+      with:
+        scheme: small
+        extra_system_packages: font-wqy-zenhei font-noto-cjk
+        run: |
+          cd resume
+          latexmk -xelatex -file-line-error -halt-on-error -interaction=nonstopmode lucas-kjaero-zhang-resume.tex lucas-kjaero-zhang-个人简历.tex
