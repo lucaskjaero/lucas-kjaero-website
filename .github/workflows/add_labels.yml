@@ -16,10 +16,21 @@ jobs:
         repo-token: "${{ secrets.GITHUB_TOKEN }}"
   
   auto-merge:
+    name: Enable auto-merge for Dependabot
+    if: github.actor == 'dependabot[bot]'
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
     steps:
-      - uses: actions/checkout@v6
-      - uses: ahmadnassri/action-dependabot-auto-merge@v2
+      - name: Fetch Dependabot metadata
+        id: dependabot-metadata
+        uses: dependabot/fetch-metadata@v2
         with:
-          target: minor
-          github-token: ${{ secrets.DEPENDABOT_AUTOMERGE_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Enable GitHub auto-merge
+        if: startsWith(steps.dependabot-metadata.outputs.update-type, 'version-update:')
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_URL: ${{ github.event.pull_request.html_url }}
+        run: gh pr merge "$PR_URL" --auto --squash --delete-branch
