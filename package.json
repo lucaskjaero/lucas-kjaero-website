@@ -29,7 +29,7 @@
     "@astrojs/sitemap": "3.7.3",
     "@expressive-code/plugin-collapsible-sections": "^0.44.0",
     "@expressive-code/plugin-line-numbers": "^0.44.0",
-    "@iconify-json/lucide": "^1.2.115",
+    "@iconify-json/lucide": "^1.2.116",
     "@shikijs/rehype": "^4.3.0",
     "@tailwindcss/vite": "4.3.2",
     "@types/react": "19.2.14",
