@@ -35,7 +35,7 @@
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
     "astro": "7.2.3",
-    "astro-icon": "^1.1.5",
+    "astro-icon": "^1.2.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "html-entities": "^2.6.0",
