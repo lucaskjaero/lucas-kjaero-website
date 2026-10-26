@@ -27,7 +27,7 @@
     "@astrojs/react": "7.1.0",
     "@astrojs/rss": "4.0.19",
     "@astrojs/sitemap": "3.7.4",
-    "@expressive-code/plugin-collapsible-sections": "^0.44.2",
+    "@expressive-code/plugin-collapsible-sections": "^0.44.3",
     "@expressive-code/plugin-line-numbers": "^0.44.2",
     "@iconify-json/lucide": "^1.2.146",
     "@shikijs/rehype": "^4.5.0",
