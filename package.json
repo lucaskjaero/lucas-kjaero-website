@@ -31,7 +31,7 @@
     "@expressive-code/plugin-line-numbers": "^0.44.2",
     "@iconify-json/lucide": "^1.2.146",
     "@shikijs/rehype": "^4.5.0",
-    "@tailwindcss/vite": "4.3.3",
+    "@tailwindcss/vite": "4.3.4",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
     "astro": "7.4.1",
